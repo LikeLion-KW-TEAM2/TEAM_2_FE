@@ -19,7 +19,7 @@ interface Item {
 
 const NavItem = ({ item }: Item) => {
   return (
-    <div className="flexColumnAlign text-primary-400">
+    <div className="flexColumnAlign text-primary-400 font-medium">
       {item.icon}
       <p className="text-xsmall">{item.name}</p>
     </div>
