@@ -14,10 +14,13 @@ function App() {
     },
   })
   return (
-    <>
-      <div className="w-8 text-lg font-bold">hello</div>
-      <button onClick={() => postData.mutate()}>post 요청</button>
-    </>
+    <div className="flexCenter">
+      <div className="h-svh w-full min-w-[320px] max-w-[450px] bg-slate-300">
+        <div className="w-8 text-lg font-bold">hello</div>
+        <button onClick={() => postData.mutate()}>post 요청</button>
+        <p>stop</p>
+      </div>
+    </div>
   )
 }
 
