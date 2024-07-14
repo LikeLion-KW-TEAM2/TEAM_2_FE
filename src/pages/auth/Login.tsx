@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -23,7 +24,7 @@ const Login = () => {
           로그인
         </Button>
         <Button size="large" width="w-full">
-          회원가입
+          <Link to={'/signup'}>회원가입</Link>
         </Button>
       </section>
     </div>
