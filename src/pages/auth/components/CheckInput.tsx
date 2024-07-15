@@ -4,7 +4,6 @@ import { IoIosArrowForward } from 'react-icons/io'
 
 const CheckInput = () => {
   const [isChecked, handleIsChecked] = useToggle()
-  console.log(isChecked)
 
   return (
     <div className="flexAlign" onClick={handleIsChecked}>
