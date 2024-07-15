@@ -10,7 +10,9 @@ const Label = ({ error, children }: ILabel) => {
     <div className="flexAlign gap-2">
       <h5 className="font-bold text-secondary-700">{children}</h5>
       {error && error.message && (
-        <p className="text-red-500">{error.message.toString()}</p>
+        <p className="text-xsmall text-error-primary">
+          {error.message.toString()}
+        </p>
       )}
     </div>
   )
