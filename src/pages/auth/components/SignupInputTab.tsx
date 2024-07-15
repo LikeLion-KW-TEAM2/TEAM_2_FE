@@ -24,7 +24,7 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
 
   return (
     <>
-      <div className="flexColumn mb-24 gap-4">
+      <div className="flexColumn mb-16 gap-4">
         <InputField>
           <InputField.Label error={errors?.nickname}>닉네임</InputField.Label>
           <InputField.Input

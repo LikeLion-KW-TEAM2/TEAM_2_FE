@@ -17,12 +17,16 @@ const Signup = () => {
 
   return (
     <div className="flexColumn">
-      <h4 className="my-12 w-[260px] font-bold text-primary-900">{SIGNUP_HEADER[0]}</h4>
+      <h4 className="my-12 w-[260px] font-bold text-primary-900">
+        {SIGNUP_HEADER[0]}
+      </h4>
 
-      <p className="mb-2 text-end text-small font-medium">({currentTab + 1}/2) Step</p>
+      <p className="mb-2 text-end text-small font-medium">
+        ({currentTab + 1}/2) Step
+      </p>
 
       <FormProvider {...formMethod}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-11">
           {currentTab === 0 && <SignupInputTab setCurrentTab={setCurrentTab} />}
           {currentTab === 1 && <SignupCheckTab />}
         </form>
