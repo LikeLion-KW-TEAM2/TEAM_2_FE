@@ -47,9 +47,12 @@ const Login = () => {
       </FormProvider>
 
       <section className="flexColumn mb-11 gap-3">
-        <Button size="large" width="w-full">
-          로그인
-        </Button>
+        <Link to={'/record'}>
+          <Button size="large" width="w-full">
+            로그인
+          </Button>
+        </Link>
+
         <Link to={'/signup'}>
           <Button size="large" width="w-full">
             회원가입

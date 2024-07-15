@@ -1,5 +1,6 @@
 import Login from '@/pages/auth/Login'
 import Signup from '@/pages/auth/Signup'
+import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
 
 const Router = () => {
@@ -7,6 +8,7 @@ const Router = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/record" element={<Record />} />
     </Routes>
   )
 }
