@@ -22,7 +22,7 @@ export function Modal({ children, isOpen, closeModal }: ModalProps) {
             onClick={closeHandler}
           >
             <div
-              className="z-7 rounded-2xl bg-white px-8 py-4"
+              className="z-7 rounded-2xl bg-white px-8 py-12"
               onClick={(e: any) => e.stopPropagation()}
             >
               {children}

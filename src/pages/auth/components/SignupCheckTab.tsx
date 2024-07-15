@@ -4,6 +4,7 @@ import useCheckClick from '@/hooks/useCheckClick'
 import Button from '@/components/Button'
 import { Modal } from './modal/Modal'
 import { useModal } from '@/hooks/useModal'
+import { Link } from 'react-router-dom'
 
 const AGREE_LIST = [
   '사용자 이용 약관 동의',
@@ -51,7 +52,12 @@ const SignupCheckTab = () => {
       </div>
 
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <div>hi</div>
+        <div className="flexColumnAlign gap-6">
+          <h4 className="font-bold">회원가입에 성공했습니다.</h4>
+          <Link to={'/login'}>
+            <Button size="small">로그인하러 가기</Button>
+          </Link>
+        </div>
       </Modal>
     </>
   )
