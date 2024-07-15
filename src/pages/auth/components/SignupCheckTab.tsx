@@ -1,18 +1,37 @@
-import { FaCheck } from 'react-icons/fa'
-import { IoIosArrowForward } from 'react-icons/io'
 import CheckInput from './CheckInput'
+import { BsCheckSquareFill } from 'react-icons/bs'
+import useCheckClick from '@/hooks/useCheckClick'
+
+const AGREE_LIST = [
+  '사용자 이용 약관 동의',
+  '개인정보 수집 및 이용 동의',
+  '광고성 정보 수신 동의 (선택)',
+]
 
 const SignupCheckTab = () => {
+  const { isChecked, isAllChecked, handleCheckClick, handleAllCheckClick } =
+    useCheckClick()
+
   return (
     <div className="text-secondary-900">
-      <CheckInput />
-      <div className="flexAlign">
-        <input type="checkbox" className="hidden" />
-        <FaCheck size={16} className="mr-2 text-secondary-400" />
-        <label className="flex-1 text-medium font-medium">
-          사용자 이용 약관 동의
-        </label>
-        <IoIosArrowForward size={20} />
+      <div className="flexAlign mb-8 gap-2" onClick={handleAllCheckClick}>
+        <BsCheckSquareFill
+          size={24}
+          className={`${isAllChecked ? 'text-primary-600' : 'text-secondary-400'}`}
+        />
+        <h5 className="font-bold">모두 동의합니다.</h5>
+      </div>
+
+      <div className="flexColumn gap-5">
+        {AGREE_LIST.map((item, index) => (
+          <CheckInput
+            key={index}
+            isChecked={isChecked[index]}
+            handleClick={() => handleCheckClick(index)}
+          >
+            {item}
+          </CheckInput>
+        ))}
       </div>
     </div>
   )
