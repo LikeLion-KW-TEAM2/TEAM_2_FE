@@ -23,13 +23,21 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
       <div className="flexColumn mb-24 gap-4">
         <InputField>
           <InputField.Label section="nickname">닉네임</InputField.Label>
-          <InputField.Input type="text" section="nickname" placeholder="닉네임을 입력해주세요." />
+          <InputField.Input
+            type="text"
+            section="nickname"
+            placeholder="닉네임을 입력해주세요."
+          />
         </InputField>
 
         <InputField>
           <InputField.Label section="id">아이디</InputField.Label>
           <div className="flex gap-4">
-            <InputField.Input type="text" section="id" placeholder="아이디를 입력해주세요." />
+            <InputField.Input
+              type="text"
+              section="id"
+              placeholder="아이디를 입력해주세요."
+            />
             <Button size="small">중복 확인</Button>
           </div>
         </InputField>
