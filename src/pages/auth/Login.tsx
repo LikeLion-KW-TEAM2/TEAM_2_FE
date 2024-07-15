@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Login = () => {
   return (
     <div className="flexColumn h-full">
-      <h1 className="text-primary-900 my-[106px] text-center font-bold">돈두댓</h1>
+      <h1 className="my-[106px] text-center font-bold text-primary-900">돈두댓</h1>
 
       <section className="flexColumn flex-1 gap-7">
         <InputField>
@@ -23,9 +23,11 @@ const Login = () => {
         <Button size="large" width="w-full">
           로그인
         </Button>
-        <Button size="large" width="w-full">
-          <Link to={'/signup'}>회원가입</Link>
-        </Button>
+        <Link to={'/signup'}>
+          <Button size="large" width="w-full">
+            회원가입
+          </Button>
+        </Link>
       </section>
     </div>
   )
