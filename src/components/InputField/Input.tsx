@@ -1,15 +1,21 @@
+import { useFormContext } from 'react-hook-form'
+
 export interface InputType {
   type: React.HTMLInputTypeAttribute
   placeholder?: string
+  section: string
 }
 
-const Input = ({ type, placeholder }: InputType) => {
+const Input = ({ type, placeholder, section }: InputType) => {
+  const { register } = useFormContext()
+
   return (
     <input
       type={type}
       size={15}
+      {...register(section)}
       placeholder={placeholder}
-      className="bg-secondary-100 placeholder:text-secondary-400 flex-1 rounded-2xl px-5 py-4 outline-none"
+      className="flex-1 rounded-2xl bg-secondary-100 px-5 py-4 outline-none placeholder:text-secondary-400"
     />
   )
 }

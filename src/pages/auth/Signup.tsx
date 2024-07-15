@@ -1,6 +1,8 @@
 import SignupInputTab from './components/SignupInputTab'
 import SignupCheckTab from './components/SignupCheckTab'
 import { useState } from 'react'
+import { useSignupForm } from '@/hooks/useSignupForm'
+import { FormProvider } from 'react-hook-form'
 
 const SIGNUP_HEADER = [
   '돈두댓에서 사용할 정보를 기입해주세요.',
@@ -8,16 +10,23 @@ const SIGNUP_HEADER = [
 ]
 
 const Signup = () => {
+  const formMethod = useSignupForm()
+  const { handleSubmit } = formMethod
   const [currentTab, setCurrentTab] = useState<number>(0)
+  const onSubmit = () => {}
 
   return (
     <div className="flexColumn">
-      <h4 className="text-primary-900 my-12 w-[260px] font-bold">{SIGNUP_HEADER[0]}</h4>
+      <h4 className="my-12 w-[260px] font-bold text-primary-900">{SIGNUP_HEADER[0]}</h4>
 
-      <p className="text-small mb-2 text-end font-medium">({currentTab + 1}/2) Step</p>
+      <p className="mb-2 text-end text-small font-medium">({currentTab + 1}/2) Step</p>
 
-      {currentTab === 0 && <SignupInputTab setCurrentTab={setCurrentTab} />}
-      {currentTab === 1 && <SignupCheckTab />}
+      <FormProvider {...formMethod}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {currentTab === 0 && <SignupInputTab setCurrentTab={setCurrentTab} />}
+          {currentTab === 1 && <SignupCheckTab />}
+        </form>
+      </FormProvider>
     </div>
   )
 }

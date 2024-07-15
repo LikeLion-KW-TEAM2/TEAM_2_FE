@@ -12,7 +12,7 @@ const CheckInput = () => {
         size={16}
         className={`mr-2 ${isChecked ? 'text-primary-600' : 'text-secondary-300'}`}
       />
-      <label className="text-medium flex-1 font-medium">사용자 이용 약관 동의</label>
+      <label className="flex-1 text-medium font-medium">사용자 이용 약관 동의</label>
       <IoIosArrowForward size={20} />
     </div>
   )
