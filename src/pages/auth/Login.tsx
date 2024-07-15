@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom'
 
 const Login = () => {
   const formMethod = useLoginForm()
-  const { handleSubmit } = formMethod
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = formMethod
   const onSubmit = () => {}
 
   return (
@@ -21,19 +25,21 @@ const Login = () => {
           className="flexColumn flex-1 gap-7"
         >
           <InputField>
-            <InputField.Label section="login">아이디</InputField.Label>
+            <InputField.Label error={errors?.login}>아이디</InputField.Label>
             <InputField.Input
               type="text"
-              section="login"
+              register={register('login')}
               placeholder="아이디를 입력해주세요."
             />
           </InputField>
 
           <InputField>
-            <InputField.Label section="password">비밀번호</InputField.Label>
+            <InputField.Label error={errors?.password}>
+              비밀번호
+            </InputField.Label>
             <InputField.Input
               type="password"
-              section="password"
+              register={register('password')}
               placeholder="비밀번호를 입력해주세요."
             />
           </InputField>

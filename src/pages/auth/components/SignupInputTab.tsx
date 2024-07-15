@@ -8,7 +8,11 @@ interface InputTabType {
 }
 
 const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
-  const { trigger } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+    trigger,
+  } = useFormContext()
 
   const handleClickNextButton = async () => {
     const isValid = await trigger(['nickname', 'id', 'password', 'confirm'])
@@ -22,20 +26,20 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
     <>
       <div className="flexColumn mb-24 gap-4">
         <InputField>
-          <InputField.Label section="nickname">닉네임</InputField.Label>
+          <InputField.Label error={errors?.nickname}>닉네임</InputField.Label>
           <InputField.Input
             type="text"
-            section="nickname"
+            register={register('nickname')}
             placeholder="닉네임을 입력해주세요."
           />
         </InputField>
 
         <InputField>
-          <InputField.Label section="id">아이디</InputField.Label>
+          <InputField.Label error={errors?.id}>아이디</InputField.Label>
           <div className="flex gap-4">
             <InputField.Input
               type="text"
-              section="id"
+              register={register('id')}
               placeholder="아이디를 입력해주세요."
             />
             <Button size="small">중복 확인</Button>
@@ -43,19 +47,21 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
         </InputField>
 
         <InputField>
-          <InputField.Label section="password">비밀번호</InputField.Label>
+          <InputField.Label error={errors?.password}>비밀번호</InputField.Label>
           <InputField.Input
             type="password"
-            section="password"
+            register={register('password')}
             placeholder="비밀번호를 입력해주세요."
           />
         </InputField>
 
         <InputField>
-          <InputField.Label section="confirm">비밀번호 확인</InputField.Label>
+          <InputField.Label error={errors?.confirm}>
+            비밀번호 확인
+          </InputField.Label>
           <InputField.Input
             type="password"
-            section="confirm"
+            register={register('confirm')}
             placeholder="비밀번호 확인을 입력해주세요."
           />
         </InputField>
