@@ -3,10 +3,10 @@ import { AiOutlineLeft } from 'react-icons/ai'
 
 const SubHeader = ({ children }: ChildrenType) => {
   return (
-    <div className="flexBetween p-4">
-      <AiOutlineLeft />
+    <div className="flexBetweenAlign p-4">
+      <AiOutlineLeft size={24} />
       <h4 className="font-bold text-primary-900">{children}</h4>
-      <p className="text-small font-bold text-error-primary">삭제</p>
+      <p className="text-medium font-medium text-error-primary">삭제</p>
     </div>
   )
 }
