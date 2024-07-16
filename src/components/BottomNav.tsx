@@ -19,7 +19,7 @@ interface Item {
 
 const NavItem = ({ item }: Item) => {
   return (
-    <div className="flexColumnAlign text-secondary-400 font-medium">
+    <div className="flexColumnAlign font-medium text-secondary-400">
       {item.icon}
       <p className="text-xsmall">{item.name}</p>
     </div>
@@ -28,7 +28,7 @@ const NavItem = ({ item }: Item) => {
 
 const BottomNav = () => {
   return (
-    <div className="flexAlign justify-evenly py-5">
+    <div className="flexAlign justify-around py-5">
       {NAV_ITEMS.map((item) => (
         <NavItem key={item.name} item={item} />
       ))}

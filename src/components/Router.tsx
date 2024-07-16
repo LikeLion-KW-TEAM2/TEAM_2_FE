@@ -2,6 +2,7 @@ import Login from '@/pages/auth/Login'
 import Signup from '@/pages/auth/Signup'
 import Friend from '@/pages/friend/Friend'
 import FriendSearch from '@/pages/friend/FriendSearch'
+import Guestbook from '@/pages/guestbook/Guestbook'
 import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
 
@@ -13,6 +14,7 @@ const Router = () => {
       <Route path="/record" element={<Record />} />
       <Route path="/friend" element={<Friend />} />
       <Route path="/friend/search" element={<FriendSearch />} />
+      <Route path="/guestbook" element={<Guestbook />} />
     </Routes>
   )
 }
