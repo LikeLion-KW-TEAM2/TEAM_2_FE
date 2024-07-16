@@ -10,18 +10,20 @@ const FriendSearch = () => {
       <SearchInput />
 
       <div className="flexColumn mt-8 gap-5">
-        {[...Array(7)].map((friend, index) => (
-          <TextWithProfile key={index}>
-            <TextWithProfile.Image />
-            <TextWithProfile.TextContainer>
-              <TextWithProfile.PrimaryText>
-                qwer1234
-              </TextWithProfile.PrimaryText>
-              <TextWithProfile.SecondaryText>
-                고롷케
-              </TextWithProfile.SecondaryText>
-            </TextWithProfile.TextContainer>
-          </TextWithProfile>
+        {[...Array(7)].map((_, index) => (
+          <div key={index}>
+            <TextWithProfile>
+              <TextWithProfile.Image />
+              <TextWithProfile.TextContainer>
+                <TextWithProfile.PrimaryText>
+                  qwer1234
+                </TextWithProfile.PrimaryText>
+                <TextWithProfile.SecondaryText>
+                  고롷케
+                </TextWithProfile.SecondaryText>
+              </TextWithProfile.TextContainer>
+            </TextWithProfile>
+          </div>
         ))}
       </div>
     </NavLayout>
