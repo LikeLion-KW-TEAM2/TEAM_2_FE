@@ -2,7 +2,7 @@ import CheckInput from './CheckInput'
 import { BsCheckSquareFill } from 'react-icons/bs'
 import useCheckClick from '@/hooks/useCheckClick'
 import Button from '@/components/Button'
-import { Modal } from './modal/Modal'
+import { Modal } from '@/components/modal/Modal'
 import { useModal } from '@/hooks/useModal'
 import { Link } from 'react-router-dom'
 

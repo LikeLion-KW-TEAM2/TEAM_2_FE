@@ -1,12 +1,13 @@
+import { CgClose } from 'react-icons/cg'
 import ModalPortal from './ModalPortal'
+import { IModal } from '@/types/common'
 
-interface ModalProps {
-  children: React.ReactNode
-  isOpen: boolean
-  closeModal: () => void
-}
-
-export function Modal({ children, isOpen, closeModal }: ModalProps) {
+export function Modal({
+  children,
+  closeBtn = false,
+  isOpen,
+  closeModal,
+}: IModal) {
   const closeHandler = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation()
     closeModal()
@@ -22,9 +23,16 @@ export function Modal({ children, isOpen, closeModal }: ModalProps) {
             onClick={closeHandler}
           >
             <div
-              className="z-7 rounded-2xl bg-white px-8 py-12"
+              className="z-7 relative rounded-2xl bg-white px-8 py-12"
               onClick={(e: any) => e.stopPropagation()}
             >
+              {closeBtn && (
+                <CgClose
+                  size={16}
+                  className="absolute right-4 top-4 cursor-pointer"
+                  onClick={closeModal}
+                />
+              )}
               {children}
             </div>
           </div>

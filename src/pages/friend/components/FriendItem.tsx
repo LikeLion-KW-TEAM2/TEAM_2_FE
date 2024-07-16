@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import { TextWithProfile } from '@/components/TextWithProfile'
 
-const FriendItem = () => {
+const FriendItem = ({ openModal }: { openModal: () => void }) => {
   return (
     <div className="flex gap-2 rounded-2xl bg-secondary-100 p-4">
       <section className="flex-1">
@@ -15,7 +15,9 @@ const FriendItem = () => {
           </TextWithProfile.TextContainer>
         </TextWithProfile>
       </section>
-      <Button size="xsmall">아이스크림 보기</Button>
+      <Button size="xsmall" handleClick={openModal}>
+        아이스크림 보기
+      </Button>
     </div>
   )
 }
