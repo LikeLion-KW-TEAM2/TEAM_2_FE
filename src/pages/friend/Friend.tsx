@@ -21,7 +21,7 @@ const Friend = () => {
         <SearchInput />
       </section>
 
-      <section className="flexColumn gap-5">
+      <section className="flexColumn gap-3">
         {[...Array(7)].map((_, i) => (
           <FriendItem key={i} openModal={openModal} />
         ))}

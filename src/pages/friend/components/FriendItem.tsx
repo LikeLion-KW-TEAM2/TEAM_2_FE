@@ -3,7 +3,7 @@ import { TextWithProfile } from '@/components/TextWithProfile'
 
 const FriendItem = ({ openModal }: { openModal: () => void }) => {
   return (
-    <div className="flex gap-2 rounded-2xl bg-secondary-100 p-4">
+    <div className="flexAlign gap-2 rounded-2xl border border-secondary-100 p-4">
       <section className="flex-1">
         <TextWithProfile>
           <TextWithProfile.Image />
@@ -16,7 +16,8 @@ const FriendItem = ({ openModal }: { openModal: () => void }) => {
         </TextWithProfile>
       </section>
       <Button size="xsmall" handleClick={openModal}>
-        아이스크림 보기
+        <p>아이스크림</p>
+        <p>보기</p>
       </Button>
     </div>
   )
