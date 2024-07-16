@@ -1,12 +1,19 @@
-import { ChildrenType } from '@/types/common'
+import { ReactNode } from 'react'
 import { AiOutlineLeft } from 'react-icons/ai'
 
-const SubHeader = ({ children }: ChildrenType) => {
+interface ISubHeader {
+  hidden?: boolean
+  children: ReactNode
+}
+
+const SubHeader = ({ hidden = false, children }: ISubHeader) => {
   return (
     <div className="flexBetweenAlign p-4">
       <AiOutlineLeft size={24} />
       <h4 className="font-bold text-primary-900">{children}</h4>
-      <p className="text-medium font-medium text-error-primary">삭제</p>
+      <p className="text-medium font-medium text-error-primary">
+        {!hidden && '삭제'}
+      </p>
     </div>
   )
 }
