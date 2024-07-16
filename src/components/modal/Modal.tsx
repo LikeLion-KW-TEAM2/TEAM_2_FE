@@ -23,7 +23,7 @@ export function Modal({
             onClick={closeHandler}
           >
             <div
-              className="z-7 relative rounded-2xl bg-white px-8 py-12"
+              className="z-7 relative max-w-[350px] rounded-2xl bg-white px-8 py-12"
               onClick={(e: any) => e.stopPropagation()}
             >
               {closeBtn && (

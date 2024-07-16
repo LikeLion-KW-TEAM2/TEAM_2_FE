@@ -71,6 +71,9 @@ export default {
         medium: '0px 6px 15px -2px rgba(16, 24, 40, 0.05)',
         large: '0px 8px 24px -3px rgba(16, 24, 40, 0.10)',
       },
+      aspectRatio: {
+        icecream: '7 / 10',
+      },
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

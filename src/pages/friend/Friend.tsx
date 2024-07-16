@@ -4,10 +4,7 @@ import NavLayout from '@/components/NavLayout'
 import SearchInput from './components/SearchInput'
 import { useNavigate } from 'react-router-dom'
 import { useModal } from '@/hooks/useModal'
-import { Modal } from '@/components/modal/Modal'
-import { BsSend } from 'react-icons/bs'
-import { CgClose } from 'react-icons/cg'
-import ModalIceCream from './components/ModalIceCream'
+import ModalFriendIceCream from './components/ModalFriendIceCream'
 
 const Friend = () => {
   const navigate = useNavigate()
@@ -27,7 +24,7 @@ const Friend = () => {
         ))}
       </section>
 
-      <ModalIceCream isOpen={isOpen} closeModal={closeModal} />
+      <ModalFriendIceCream isOpen={isOpen} closeModal={closeModal} />
     </NavLayout>
   )
 }

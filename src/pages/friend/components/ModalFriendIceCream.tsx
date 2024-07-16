@@ -2,7 +2,7 @@ import { Modal } from '@/components/modal/Modal'
 import { ModalType } from '@/types/common'
 import { BsSend } from 'react-icons/bs'
 
-const ModalIceCream = ({ isOpen, closeModal }: ModalType) => {
+const ModalFriendIceCream = ({ isOpen, closeModal }: ModalType) => {
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>
       <h4 className="mb-3 text-center font-bold">고롷케님의 아이스크림</h4>
@@ -30,4 +30,4 @@ const ModalIceCream = ({ isOpen, closeModal }: ModalType) => {
   )
 }
 
-export default ModalIceCream
+export default ModalFriendIceCream
