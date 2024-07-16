@@ -9,9 +9,9 @@ const FriendItem = () => {
           <TextWithProfile.Image />
           <TextWithProfile.TextContainer>
             <TextWithProfile.PrimaryText>고롷케</TextWithProfile.PrimaryText>
-            <TextWithProfile.PrimaryText>
+            <TextWithProfile.SecondaryText>
               개선 중인 습관 : 3개
-            </TextWithProfile.PrimaryText>
+            </TextWithProfile.SecondaryText>
           </TextWithProfile.TextContainer>
         </TextWithProfile>
       </section>
