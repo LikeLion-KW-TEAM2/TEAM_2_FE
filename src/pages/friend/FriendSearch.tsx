@@ -2,6 +2,7 @@ import NavLayout from '@/components/NavLayout'
 import SubHeader from '@/components/SubHeader'
 import SearchInput from './components/SearchInput'
 import { TextWithProfile } from '@/components/TextWithProfile'
+import Button from '@/components/Button'
 
 const FriendSearch = () => {
   return (
@@ -11,7 +12,7 @@ const FriendSearch = () => {
 
       <div className="flexColumn mt-8 gap-5">
         {[...Array(7)].map((_, index) => (
-          <div key={index}>
+          <div key={index} className="flexBetweenAlign">
             <TextWithProfile>
               <TextWithProfile.Image />
               <TextWithProfile.TextContainer>
@@ -23,6 +24,8 @@ const FriendSearch = () => {
                 </TextWithProfile.SecondaryText>
               </TextWithProfile.TextContainer>
             </TextWithProfile>
+
+            <Button size="xsmall">추가</Button>
           </div>
         ))}
       </div>
