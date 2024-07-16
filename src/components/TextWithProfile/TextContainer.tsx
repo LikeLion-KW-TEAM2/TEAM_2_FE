@@ -1,7 +1,7 @@
 import { ChildrenType } from '@/types/common'
 
 const TextContainer = ({ children }: ChildrenType) => {
-  return <p className="text-xsmall">{children}</p>
+  return <div className="text-xsmall">{children}</div>
 }
 
 export default TextContainer
