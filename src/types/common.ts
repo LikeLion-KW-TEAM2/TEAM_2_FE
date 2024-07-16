@@ -11,4 +11,4 @@ export interface IModal {
   closeModal: () => void
 }
 
-export type ModalIceCreamType = Pick<IModal, 'isOpen' | 'closeModal'>
+export type ModalType = Pick<IModal, 'isOpen' | 'closeModal'>

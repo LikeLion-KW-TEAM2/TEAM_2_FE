@@ -1,6 +1,10 @@
+import Button from '@/components/Button'
 import HeaderWithProfile from '@/components/HeaderWithProfile'
+import { Modal } from '@/components/modal/Modal'
 import NavLayout from '@/components/NavLayout'
+import { useModal } from '@/hooks/useModal'
 import { BiTrash } from 'react-icons/bi'
+import ModalGuestbook from './components/ModalGuestbook'
 
 const MESSAGES = [
   { name: '고롷케', content: '얼마 안남았다 조금만 버텨', date: '7/28' },
@@ -17,27 +21,35 @@ const MESSAGES = [
 ]
 
 const Guestbook = () => {
+  const { isOpen, openModal, closeModal } = useModal()
   return (
-    <NavLayout>
-      <HeaderWithProfile />
+    <>
+      <NavLayout>
+        <HeaderWithProfile />
 
-      <section className="flexColumn gap-4">
-        {MESSAGES.map((message, index) => (
-          <div
-            key={index}
-            className="flexColumn justify-end gap-3 rounded-2xl bg-secondary-100 px-4 py-3"
-          >
-            <p className="text-medium font-medium">{message.content}</p>
-            <div className="flexAlign gap-1 self-end">
-              <p className="text-xsmall font-medium text-primary-600">
-                {message.date} {message.name}
-              </p>
-              <BiTrash size={12} className="text-error-primary" />
+        <section className="flexColumn gap-4">
+          {MESSAGES.map((message, index) => (
+            <div
+              key={index}
+              className="flexColumn justify-end gap-3 rounded-2xl bg-secondary-100 px-4 py-3"
+            >
+              <p className="text-medium font-medium">{message.content}</p>
+              <div className="flexAlign gap-1 self-end">
+                <p className="text-xsmall font-medium text-primary-600">
+                  {message.date} {message.name}
+                </p>
+                <BiTrash
+                  size={12}
+                  className="text-error-primary"
+                  onClick={openModal}
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
-    </NavLayout>
+          ))}
+        </section>
+      </NavLayout>
+      <ModalGuestbook isOpen={isOpen} closeModal={closeModal} />
+    </>
   )
 }
 

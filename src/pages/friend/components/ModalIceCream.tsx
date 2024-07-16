@@ -1,8 +1,8 @@
 import { Modal } from '@/components/modal/Modal'
-import { ModalIceCreamType } from '@/types/common'
+import { ModalType } from '@/types/common'
 import { BsSend } from 'react-icons/bs'
 
-const ModalIceCream = ({ isOpen, closeModal }: ModalIceCreamType) => {
+const ModalIceCream = ({ isOpen, closeModal }: ModalType) => {
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>
       <h4 className="mb-3 text-center font-bold">고롷케님의 아이스크림</h4>
