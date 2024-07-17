@@ -9,7 +9,7 @@ const FriendList = () => {
 
       <div className="flexColumn gap-8">
         {[...Array(7)].map((_, i) => (
-          <div className="flexBetweenAlign px-4">
+          <div className="flexBetweenAlign px-4" key={i}>
             <TextWithProfile>
               <TextWithProfile.Image />
               <TextWithProfile.TextContainer>
