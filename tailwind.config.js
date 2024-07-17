@@ -68,8 +68,9 @@ export default {
         sans: ['PUREUNJEONNAM', 'sans-serif'],
       },
       boxShadow: {
-        medium: '0px 6px 15px -2px rgba(16, 24, 40, 0.05)',
-        large: '0px 8px 24px -3px rgba(16, 24, 40, 0.10)',
+        small: '0px 2px 20px -10px rgba(16, 24, 40, 0.08)',
+        medium: '0px 6px 15px -2px rgba(16, 24, 40, 0.5)',
+        large: '0px 8px 40px -3px rgba(16, 24, 40, 0.10)',
       },
       aspectRatio: {
         icecream: '7 / 10',
