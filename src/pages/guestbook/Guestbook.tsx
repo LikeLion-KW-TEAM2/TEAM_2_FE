@@ -38,10 +38,10 @@ const Guestbook = () => {
           {MESSAGES.map(({ date, content }) => (
             <div key={date} className="flexColumn mb-7 gap-2">
               <h6 className="font-bold text-primary-600">{date}</h6>
-              {content.map(({ name, message }) => (
+              {content.map(({ name, message }, index) => (
                 <div
-                  key={date}
-                  className="flexColumn shadow-small justify-end gap-3 rounded-2xl border border-secondary-100 px-4 py-3"
+                  key={index}
+                  className="flexColumn justify-end gap-3 rounded-2xl border border-secondary-100 px-4 py-3 shadow-small"
                 >
                   <p className="text-medium font-medium text-secondary-800">
                     {message}
