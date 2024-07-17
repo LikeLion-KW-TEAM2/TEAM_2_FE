@@ -65,7 +65,7 @@ export default {
         xsmall: '12px',
       },
       fontFamily: {
-        sans: ['PUREUNJEONNAM', 'sans-serif'],
+        sans: ['MangoDdobak', 'sans-serif'],
       },
       boxShadow: {
         small: '0px 2px 20px -10px rgba(16, 24, 40, 0.08)',
