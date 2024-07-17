@@ -1,6 +1,6 @@
 import SubHeader from '@/components/SubHeader'
-import defaultImg from '@/assets/images/default.svg'
 import { IoIosArrowForward } from 'react-icons/io'
+import { TextWithProfile } from '@/components/TextWithProfile'
 
 const MYPAGE_LIST = [
   '비밀번호 변경',
@@ -14,17 +14,18 @@ const Mypage = () => {
   return (
     <div>
       <SubHeader hidden>마이페이지</SubHeader>
+
       <div className="flexAlign shadow-small mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6">
-        <img
-          src={defaultImg}
-          className="h-[52px] w-[52px] rounded-full border-[0.5px] border-secondary-200"
-          alt="profile-img"
-        />
-        <div className="flexColumn mr-auto gap-1">
-          <p className="text-medium font-medium">고롷케</p>
-          <p className="text-xsmall">프로필 수정하기</p>
-        </div>
-        <IoIosArrowForward className="text-secondary-400" size={24} />
+        <TextWithProfile>
+          <TextWithProfile.Image />
+          <TextWithProfile.TextContainer>
+            <TextWithProfile.PrimaryText>고롷케</TextWithProfile.PrimaryText>
+            <TextWithProfile.SecondaryText>
+              프로필 수정하기
+            </TextWithProfile.SecondaryText>
+          </TextWithProfile.TextContainer>
+        </TextWithProfile>
+        <IoIosArrowForward className="ml-auto text-secondary-400" size={24} />
       </div>
 
       <ul className="flexColumn gap-7 px-2">
