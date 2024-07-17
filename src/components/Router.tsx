@@ -11,10 +11,12 @@ import Mypage from '@/pages/mypage/Mypage'
 import PasswordEdit from '@/pages/mypage/PasswordEdit'
 import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
+import Onboarding from './Onboarding'
 
 const Router = () => {
   return (
     <Routes>
+      <Route path="/" element={<Onboarding />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/record" element={<Record />} />

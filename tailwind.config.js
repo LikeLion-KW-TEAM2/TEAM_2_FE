@@ -75,6 +75,11 @@ export default {
       aspectRatio: {
         icecream: '7 / 10',
       },
+      utilities: {
+        '.webkit-overflow-scrolling-touch': {
+          '-webkit-overflow-scrolling': 'touch',
+        },
+      },
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],
