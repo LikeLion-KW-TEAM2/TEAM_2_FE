@@ -3,8 +3,8 @@ import { TextWithProfile } from '@/components/TextWithProfile'
 
 const FriendItem = ({ openModal }: { openModal: () => void }) => {
   return (
-    <div className="flexAlign gap-2 rounded-2xl border border-secondary-100 p-4">
-      <section className="flex-1">
+    <div className="flexAlign gap-2 border-b border-secondary-100 px-4 py-[20px]">
+      <div className="flex-1">
         <TextWithProfile>
           <TextWithProfile.Image />
           <TextWithProfile.TextContainer>
@@ -14,7 +14,8 @@ const FriendItem = ({ openModal }: { openModal: () => void }) => {
             </TextWithProfile.SecondaryText>
           </TextWithProfile.TextContainer>
         </TextWithProfile>
-      </section>
+      </div>
+
       <Button size="xsmall" handleClick={openModal}>
         <p>아이스크림</p>
         <p>보기</p>
