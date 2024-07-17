@@ -5,7 +5,7 @@ const Image = () => {
     <div className="h-[52px] w-[52px] rounded-full">
       <img
         src={defaultImg}
-        className="h-14 w-14 rounded-full border-[0.5px] border-secondary-200 bg-secondary-50 object-cover"
+        className="h-[52px] w-[52px] rounded-full border-[0.5px] border-secondary-200 bg-secondary-50 object-cover"
         alt="default-img"
       />
     </div>

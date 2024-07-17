@@ -5,6 +5,7 @@ import FriendSearch from '@/pages/friend/FriendSearch'
 import Guestbook from '@/pages/guestbook/Guestbook'
 import Icecream from '@/pages/icecream/Icecream'
 import AccountInfo from '@/pages/mypage/AccountInfo'
+import FriendList from '@/pages/mypage/FriendList'
 import Mypage from '@/pages/mypage/Mypage'
 import PasswordEdit from '@/pages/mypage/PasswordEdit'
 import Record from '@/pages/record/Record'
@@ -23,6 +24,7 @@ const Router = () => {
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/mypage/account-info" element={<AccountInfo />} />
       <Route path="/mypage/password" element={<PasswordEdit />} />
+      <Route path="/mypage/friend-list" element={<FriendList />} />
     </Routes>
   )
 }
