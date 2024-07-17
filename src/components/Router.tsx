@@ -4,6 +4,7 @@ import Friend from '@/pages/friend/Friend'
 import FriendSearch from '@/pages/friend/FriendSearch'
 import Guestbook from '@/pages/guestbook/Guestbook'
 import Icecream from '@/pages/icecream/Icecream'
+import AccountInfo from '@/pages/mypage/AccountInfo'
 import Mypage from '@/pages/mypage/Mypage'
 import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path="/guestbook" element={<Guestbook />} />
       <Route path="/icecream" element={<Icecream />} />
       <Route path="/mypage" element={<Mypage />} />
+      <Route path="/mypage/account-info" element={<AccountInfo />} />
     </Routes>
   )
 }

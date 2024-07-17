@@ -7,6 +7,7 @@ interface IButton {
   children: ReactNode
   disabled?: boolean
   error?: boolean
+  className?: string
   handleClick?: () => void
 }
 
@@ -17,6 +18,7 @@ const Button = ({
   children,
   disabled = false,
   error = false,
+  className,
   handleClick,
 }: IButton) => {
   let style = ''
@@ -28,7 +30,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`flex-shrink-0 rounded-full bg-primary-600 font-bold text-secondary-50 shadow-large transition-all hover:scale-[1.02] ${width} ${style} ${error && 'bg-error-primary'} ${disabled && 'bg-secondary-50'}`}
+      className={`flex-shrink-0 rounded-full bg-primary-600 font-bold text-secondary-50 shadow-large transition-all hover:scale-[1.02] ${width} ${style} ${error && 'bg-error-primary'} ${disabled && 'bg-secondary-50'} ${className}`}
       disabled={disabled}
       onClick={handleClick}
     >
