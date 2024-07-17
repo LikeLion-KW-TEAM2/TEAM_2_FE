@@ -8,7 +8,7 @@ export interface ILabel {
 const Label = ({ error, children }: ILabel) => {
   return (
     <div className="flexAlign gap-2">
-      <h5 className="font-bold text-secondary-700">{children}</h5>
+      <h6 className="font-bold text-secondary-700">{children}</h6>
       {error && error.message && (
         <p className="text-xsmall text-error-primary">
           {error.message.toString()}
