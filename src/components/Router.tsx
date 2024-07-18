@@ -13,6 +13,7 @@ import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
 import Onboarding from './Onboarding/Onboarding'
 import RecordEdit from '@/pages/record/RecordEdit'
+import RecordAdd from '@/pages/record/RecordAdd'
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/record" element={<Record />} />
       <Route path="/record/edit" element={<RecordEdit />} />
+      <Route path="/record/add" element={<RecordAdd />} />
       <Route path="/friend" element={<Friend />} />
       <Route path="/friend/search" element={<FriendSearch />} />
       <Route path="/guestbook" element={<Guestbook />} />
