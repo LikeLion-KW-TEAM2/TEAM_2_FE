@@ -1,13 +1,13 @@
 import HeaderWithProfile from '@/components/HeaderWithProfile'
 import HabitCalendar from './components/HabitCalander'
+import NavLayout from '@/components/NavLayout'
 
 const Record = () => {
   return (
-    <div>
+    <NavLayout>
       <HeaderWithProfile />
-
       <HabitCalendar />
-    </div>
+    </NavLayout>
   )
 }
 
