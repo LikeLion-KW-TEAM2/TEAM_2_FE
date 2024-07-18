@@ -13,7 +13,7 @@ const Record = () => {
       <HeaderWithProfile />
       <HabitCalendar />
 
-      <div className="flexColumn mt-[60px] gap-6">
+      <div className="flexColumn mt-[60px] flex-1 gap-6 overflow-y-scroll scrollbar-hide">
         {RECORD_LIST.map((item) => (
           <HabitItem item={item} />
         ))}
