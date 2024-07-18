@@ -20,7 +20,7 @@ const Icecream = () => {
           </div>
           <AiOutlineQuestionCircle
             size={20}
-            className="text-primary-600"
+            className="cursor-pointer text-primary-600"
             onClick={openModal}
           />
         </div>
