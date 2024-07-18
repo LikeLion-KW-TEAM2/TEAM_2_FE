@@ -54,7 +54,7 @@ const Onboarding = () => {
       </div>
 
       {currentTab === 2 && (
-        <Link to={'/record'} className="absolute bottom-5">
+        <Link to={'/login'} className="absolute bottom-5">
           <Button width="w-[167px]" size="large">
             시작하기
           </Button>
