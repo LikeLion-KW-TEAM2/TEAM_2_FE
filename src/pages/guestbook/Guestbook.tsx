@@ -34,7 +34,7 @@ const Guestbook = () => {
       <NavLayout>
         <HeaderWithProfile />
 
-        <section className="flexColumn gap-4">
+        <section className="flexColumn flex-1 gap-4 overflow-y-scroll scrollbar-hide">
           {MESSAGES.map(({ date, content }) => (
             <div key={date} className="flexColumn mb-7 gap-2">
               <h6 className="font-bold text-primary-600">{date}</h6>
