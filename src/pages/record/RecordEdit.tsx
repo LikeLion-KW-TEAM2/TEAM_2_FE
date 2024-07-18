@@ -2,12 +2,16 @@ import Button from '@/components/Button'
 import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
 import SubHeader from '@/components/SubHeader'
+import { useModal } from '@/hooks/useModal'
 import { useToggle } from '@/hooks/useToggle'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import ModalCompleteHabit from './components/ModalCompleteHabit'
 
 const RecordEdit = () => {
   const [isDateDropDownOpen, handleDateDropDownOpen] = useToggle()
   const [isPrivateDropDownOpen, handlePrivateDropDownOpen] = useToggle()
+  const { isOpen, openModal, closeModal } = useModal()
+
   return (
     <div>
       <SubHeader>수정하기</SubHeader>
@@ -65,10 +69,12 @@ const RecordEdit = () => {
         <Button width="w-full" size="medium">
           완료
         </Button>
-        <Button width="w-full" size="medium">
+        <Button width="w-full" size="medium" handleClick={openModal}>
           습관 극복 완료
         </Button>
       </div>
+
+      <ModalCompleteHabit isOpen={isOpen} closeModal={closeModal} />
     </div>
   )
 }
