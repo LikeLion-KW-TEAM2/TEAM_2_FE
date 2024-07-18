@@ -19,7 +19,7 @@ const ModalFriendIceCream = ({ isOpen, closeModal }: ModalType) => {
       </div>
       <div className="flexAlign rounded-2xl bg-secondary-100 px-3 py-2">
         <input
-          className="flex-1 bg-transparent text-secondary-900 placeholder:text-secondary-500 focus:outline-none"
+          className="flex-1 bg-transparent text-xsmall text-secondary-900 placeholder:text-secondary-500 focus:outline-none"
           placeholder="응원의 한마디를 보내주세요."
         />
         <div className="rounded-full bg-secondary-200 p-1 text-secondary-500">
