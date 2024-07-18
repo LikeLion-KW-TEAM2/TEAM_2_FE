@@ -15,7 +15,7 @@ const Record = () => {
 
       <div className="flexColumn mt-[60px] flex-1 gap-6 overflow-y-scroll scrollbar-hide">
         {RECORD_LIST.map((item) => (
-          <HabitItem item={item} />
+          <HabitItem item={item} key={item} />
         ))}
         <div className="flexAlign gap-2 self-center text-secondary-500">
           <AiOutlinePlusCircle size={12} />
