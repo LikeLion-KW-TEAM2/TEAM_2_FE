@@ -1,13 +1,14 @@
 import SubHeader from '@/components/SubHeader'
 import { IoIosArrowForward } from 'react-icons/io'
 import { TextWithProfile } from '@/components/TextWithProfile'
+import { Link } from 'react-router-dom'
 
 const MYPAGE_LIST = [
-  '비밀번호 변경',
-  '개선한 습관 목록',
-  '친구 목록 관리',
-  '서비스 이용 약관',
-  '자주 묻는 질문',
+  { text: '비밀번호 변경', link: '/mypage/password' },
+  { text: '개선한 습관 목록', link: '/mypage/complete-habit' },
+  { text: '친구 목록 관리', link: '/mypage/friend-list' },
+  { text: '서비스 이용 약관', link: '/mypage' },
+  { text: '자주 묻는 질문', link: '/mypage' },
 ]
 
 const Mypage = () => {
@@ -15,7 +16,10 @@ const Mypage = () => {
     <div>
       <SubHeader hidden>마이페이지</SubHeader>
 
-      <div className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small">
+      <Link
+        to={'/mypage/account-info'}
+        className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small"
+      >
         <TextWithProfile>
           <TextWithProfile.Image />
           <TextWithProfile.TextContainer>
@@ -26,13 +30,15 @@ const Mypage = () => {
           </TextWithProfile.TextContainer>
         </TextWithProfile>
         <IoIosArrowForward className="ml-auto text-secondary-400" size={24} />
-      </div>
+      </Link>
 
       <ul className="flexColumn gap-7 px-2">
         {MYPAGE_LIST.map((item) => (
-          <li key={item}>{item}</li>
+          <Link to={item.link} key={item.text}>
+            <li>{item.text}</li>
+          </Link>
         ))}
-        <li className="text-error-primary">계정 탈퇴</li>
+        <li className="cursor-pointer text-error-primary">계정 탈퇴</li>
       </ul>
     </div>
   )
