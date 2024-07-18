@@ -18,7 +18,7 @@ const SubHeader = ({ hidden = false, children }: ISubHeader) => {
         onClick={() => navigate(-1)}
       />
       <h5 className="font-bold text-primary-900">{children}</h5>
-      <p className="absolute right-4 top-5 cursor-pointer text-medium font-medium text-error-primary">
+      <p className="absolute right-4 top-5 cursor-pointer text-medium font-bold text-error-primary">
         {!hidden && '삭제'}
       </p>
     </div>

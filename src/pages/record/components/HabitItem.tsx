@@ -1,5 +1,6 @@
 import { useToggle } from '@/hooks/useToggle'
 import { AiOutlineClose } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const HabitItem = ({ item }: { item: string }) => {
   const [isChecked, handleChecked] = useToggle()
@@ -15,9 +16,11 @@ const HabitItem = ({ item }: { item: string }) => {
       </div>
 
       <p className="mr-auto">{item}</p>
-      <p className="cursor-pointer border-b-[0.3px] border-secondary-600 text-xsmall font-bold">
-        수정
-      </p>
+      <Link to={'/record/edit'}>
+        <p className="cursor-pointer border-b-[0.3px] border-secondary-600 text-xsmall font-bold">
+          수정
+        </p>
+      </Link>
     </div>
   )
 }
