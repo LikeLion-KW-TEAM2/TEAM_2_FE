@@ -8,9 +8,9 @@ const MESSAGES = [
   {
     date: '24/07/17',
     content: [
-      { name: '고롷케', message: '얼마 안남았다 조금만 버텨' },
+      { name: '고로케', message: '얼마 안남았다 조금만 버텨' },
       {
-        name: '고롷냐',
+        name: '고로냐',
         message: '짝다리 짚는거 진짜 나도 빨리 고쳐야하는데.. 잘해보자',
       },
     ],
@@ -18,9 +18,9 @@ const MESSAGES = [
   {
     date: '24/07/15',
     content: [
-      { name: '고롷케', message: '얼마 안남았다 조금만 버텨' },
+      { name: '고로케', message: '얼마 안남았다 조금만 버텨' },
       {
-        name: '고롷냐',
+        name: '고로냐',
         message: '짝다리 짚는거 진짜 나도 빨리 고쳐야하는데.. 잘해보자',
       },
     ],

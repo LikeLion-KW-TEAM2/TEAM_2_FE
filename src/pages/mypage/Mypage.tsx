@@ -15,11 +15,11 @@ const Mypage = () => {
     <div>
       <SubHeader hidden>마이페이지</SubHeader>
 
-      <div className="flexAlign shadow-small mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6">
+      <div className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small">
         <TextWithProfile>
           <TextWithProfile.Image />
           <TextWithProfile.TextContainer>
-            <TextWithProfile.PrimaryText>고롷케</TextWithProfile.PrimaryText>
+            <TextWithProfile.PrimaryText>고로케</TextWithProfile.PrimaryText>
             <TextWithProfile.SecondaryText>
               프로필 수정하기
             </TextWithProfile.SecondaryText>

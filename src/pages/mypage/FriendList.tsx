@@ -17,7 +17,7 @@ const FriendList = () => {
                   qwer1234
                 </TextWithProfile.PrimaryText>
                 <TextWithProfile.SecondaryText>
-                  고롷케
+                  고로케
                 </TextWithProfile.SecondaryText>
               </TextWithProfile.TextContainer>
             </TextWithProfile>

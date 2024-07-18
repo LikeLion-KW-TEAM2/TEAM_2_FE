@@ -5,7 +5,7 @@ import { BsSend } from 'react-icons/bs'
 const ModalFriendIceCream = ({ isOpen, closeModal }: ModalType) => {
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>
-      <h4 className="mb-3 text-center font-bold">고롷케님의 아이스크림</h4>
+      <h4 className="mb-3 text-center font-bold">고로케님의 아이스크림</h4>
       <div className="mb-3 h-[280px] bg-slate-300" />
       <p className="mb-1 text-small font-medium">습관 목록</p>
       <ul className="grid list-disc grid-cols-2 items-center text-xsmall">
