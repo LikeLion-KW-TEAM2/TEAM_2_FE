@@ -10,7 +10,7 @@ const FriendSearch = () => {
       <SubHeader hidden>친구 검색</SubHeader>
       <SearchInput />
 
-      <div className="flexColumn mt-8 gap-5">
+      <div className="flexColumn mt-8 flex-1 gap-5 overflow-y-scroll scrollbar-hide">
         {[...Array(7)].map((_, index) => (
           <div key={index} className="flexBetweenAlign">
             <TextWithProfile>
