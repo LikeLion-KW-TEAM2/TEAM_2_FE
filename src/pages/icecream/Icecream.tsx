@@ -3,6 +3,8 @@ import NavLayout from '@/components/NavLayout'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import ModalMyIcecream from './components/ModalMyIcecream'
 import { useModal } from '@/hooks/useModal'
+import bgIcecream from '@/assets/images/icecream-bg.svg'
+import icecream from '@/assets/images/icecream-1.svg'
 
 const Icecream = () => {
   const { isOpen, openModal, closeModal } = useModal()
@@ -24,7 +26,14 @@ const Icecream = () => {
         </div>
 
         <section className="mt-4">
-          <div className="aspect-icecream bg-slate-300" />
+          <div className="relative">
+            <img src={bgIcecream} className="w-full" alt="bg" />
+            <img
+              src={icecream}
+              className="absolute bottom-16 left-2/4 -translate-x-1/2 transition-all hover:-translate-y-4"
+              alt="icecream"
+            />
+          </div>
         </section>
       </NavLayout>
       <ModalMyIcecream isOpen={isOpen} closeModal={closeModal} />
