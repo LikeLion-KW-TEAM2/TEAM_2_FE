@@ -27,10 +27,16 @@ const Button = ({
   else if (size === 'small') style = 'px-5 py-[6px] text-small'
   else if (size === 'xsmall') style = 'px-4 py-1 text-xsmall'
 
+  const bgColor = error
+    ? 'bg-error-primary'
+    : disabled
+      ? 'bg-secondary-50'
+      : 'bg-primary-600'
+
   return (
     <button
       type={type}
-      className={`flex-shrink-0 rounded-full bg-primary-600 font-bold text-secondary-50 shadow-large transition-all hover:scale-[1.02] ${width} ${style} ${error && 'bg-error-primary'} ${disabled && 'bg-secondary-50'} ${className}`}
+      className={`flex-shrink-0 rounded-full font-bold text-secondary-50 shadow-large transition-all hover:scale-[1.02] ${width} ${style} ${bgColor} ${className}`}
       disabled={disabled}
       onClick={handleClick}
     >

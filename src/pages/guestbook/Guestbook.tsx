@@ -2,7 +2,7 @@ import HeaderWithProfile from '@/components/HeaderWithProfile'
 import NavLayout from '@/components/NavLayout'
 import { useModal } from '@/hooks/useModal'
 import { BiTrash } from 'react-icons/bi'
-import ModalGuestbook from './components/ModalGuestbook'
+import ModalDelete from '@/components/ModalDelete'
 
 const MESSAGES = [
   {
@@ -62,7 +62,7 @@ const Guestbook = () => {
           ))}
         </section>
       </NavLayout>
-      <ModalGuestbook isOpen={isOpen} closeModal={closeModal} />
+      <ModalDelete isOpen={isOpen} closeModal={closeModal} />
     </>
   )
 }
