@@ -1,10 +1,12 @@
 import onboardingIcecream from '@/assets/images/onboarding.svg'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
-import Button from './Button'
+import Button from '../Button'
 import useTouchEvent from '@/hooks/useTouchEvent'
 import { Link } from 'react-router-dom'
+import SectionText from './SectionText'
+import SectionDot from './SectionDot'
 
-const TEXT = [
+const ONBOARDING_DATA = [
   {
     image: <AiOutlineCheckCircle className="h-24 w-24 text-primary-500" />,
     header: '나만의 습관 기록',
@@ -34,50 +36,6 @@ const TEXT = [
   },
 ]
 
-interface ICurrentTabWithSetFunc {
-  currentTab: number
-  onDotClick: (index: number) => void
-}
-
-const SectionText = () => {
-  return (
-    <>
-      {TEXT.map(({ image, header, first, second }) => (
-        <div className="flexColumn w-full flex-shrink-0 gap-9" key={header}>
-          <div className="grid h-[232px] w-full place-items-center">
-            {image}
-          </div>
-          <div className="flexColumnAlign mb-9 gap-[40px]">
-            <h4 className="font-bold text-secondary-800">{header}</h4>
-            <div className="text-center font-medium text-secondary-700">
-              <h5>{first}</h5>
-              <h5>{second}</h5>
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
-  )
-}
-
-const SectionDot = ({ currentTab, onDotClick }: ICurrentTabWithSetFunc) => {
-  return (
-    <div className="mb-6 flex gap-2">
-      {[...Array(3)].map((_, index) => {
-        const dotStyle =
-          index === currentTab ? 'w-6 bg-primary-600' : 'w-2 bg-secondary-300'
-        return (
-          <div
-            key={index}
-            className={`h-2 cursor-pointer rounded-full opacity-90 ${dotStyle}`}
-            onClick={() => onDotClick(index)}
-          />
-        )
-      })}
-    </div>
-  )
-}
-
 const Onboarding = () => {
   const { currentTab, carouselRef, onDotClick, ...event } = useTouchEvent()
 
@@ -89,7 +47,7 @@ const Onboarding = () => {
           {...event}
           className="webkit-overflow-scrolling-touch flex overflow-auto overflow-x-hidden"
         >
-          <SectionText />
+          <SectionText data={ONBOARDING_DATA} />
         </div>
 
         <SectionDot currentTab={currentTab} onDotClick={onDotClick} />

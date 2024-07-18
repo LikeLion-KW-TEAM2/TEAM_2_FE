@@ -11,7 +11,7 @@ import Mypage from '@/pages/mypage/Mypage'
 import PasswordEdit from '@/pages/mypage/PasswordEdit'
 import Record from '@/pages/record/Record'
 import { Route, Routes } from 'react-router-dom'
-import Onboarding from './Onboarding'
+import Onboarding from './Onboarding/Onboarding'
 
 const Router = () => {
   return (
