@@ -10,12 +10,12 @@ const HabitCalendar = () => {
   const [date, setDate] = useState(now.get('date'))
   const daysInMonth = dayjs(`${year}-${month}`).daysInMonth()
 
-  const CURRENT_DAY_STYLE = `bg-primary-300 rounded-full `
+  const CURRENT_DAY_STYLE = `bg-primary-200 rounded-full`
 
   return (
-    <div className="margin-auto h-[450px] w-full">
+    <div className="margin-auto w-full">
       <p className="mb-4 text-large font-bold text-primary-700">{month}월</p>
-      <div className="flex flex-nowrap overflow-x-scroll">
+      <div className="flex flex-nowrap overflow-x-scroll scrollbar-hide">
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = dayjs(`${year}-${month}-${i}`).format('dd')
           return (
