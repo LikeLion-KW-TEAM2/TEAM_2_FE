@@ -18,7 +18,7 @@ const Friend = () => {
         <SearchInput />
       </section>
 
-      <section className="flexColumn">
+      <section className="flexColumn flex-1 overflow-y-scroll scrollbar-hide">
         {[...Array(7)].map((_, i) => (
           <FriendItem key={i} openModal={openModal} />
         ))}
