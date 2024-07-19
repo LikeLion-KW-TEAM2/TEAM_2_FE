@@ -1,9 +1,12 @@
-import { RequestLoginForm } from '@/types/auth'
+import { RequestLoginForm, RequestSignupForm } from '@/types/auth'
 import { postData } from '../service'
 
 const POST = {
-  login({ id, password }: RequestLoginForm): Promise<any> {
-    return postData(`/login`, { id, password })
+  login(loginData: RequestLoginForm): Promise<any> {
+    return postData(`/login`, loginData)
+  },
+  signup(signupData: RequestSignupForm): Promise<any> {
+    return postData(`/signup`, signupData)
   },
 }
 

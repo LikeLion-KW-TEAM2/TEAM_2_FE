@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { SignupForm } from '@/types/auth'
 
 const schema = z
   .object({
@@ -28,7 +29,7 @@ const schema = z
   })
 
 export const useSignupForm = () => {
-  const formMethod = useForm({
+  const formMethod = useForm<SignupForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     resolver: zodResolver(schema),

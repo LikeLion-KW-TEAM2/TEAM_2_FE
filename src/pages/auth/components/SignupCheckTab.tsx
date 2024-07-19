@@ -3,8 +3,8 @@ import { BsCheckSquareFill } from 'react-icons/bs'
 import useCheckClick from '@/hooks/useCheckClick'
 import Button from '@/components/Button'
 import { Modal } from '@/components/modal/Modal'
-import { useModal } from '@/hooks/useModal'
 import { Link } from 'react-router-dom'
+import { ModalType } from '@/types/common'
 
 const AGREE_LIST = [
   '사용자 이용 약관 동의',
@@ -12,14 +12,9 @@ const AGREE_LIST = [
   '광고성 정보 수신 동의 (선택)',
 ]
 
-const SignupCheckTab = () => {
-  const { isOpen, openModal, closeModal } = useModal()
+const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
   const { isChecked, isAllChecked, handleCheckClick, handleAllCheckClick } =
     useCheckClick()
-
-  const handleFinishForm = () => {
-    openModal()
-  }
 
   return (
     <>
@@ -45,7 +40,7 @@ const SignupCheckTab = () => {
         </div>
 
         <div className="absolute bottom-10 left-4 right-4">
-          <Button width="w-full" size="large" handleClick={handleFinishForm}>
+          <Button type="submit" width="w-full" size="large">
             회원가입 완료
           </Button>
         </div>
