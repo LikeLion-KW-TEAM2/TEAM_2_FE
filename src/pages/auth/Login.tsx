@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import useInput from '@/hooks/useInput'
 import { useLogin } from '@/services/auth/useAuthService'
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -15,7 +15,9 @@ const Login = () => {
     loginMutate(input)
   }
 
-  if (isSuccess) navigate('/record')
+  useEffect(() => {
+    if (isSuccess) navigate('/record')
+  }, [isSuccess])
 
   return (
     <div className="flexColumn h-full">
