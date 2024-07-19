@@ -19,6 +19,7 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
   const valueOfId = getValues('userId')
 
   const { mutate: checkDuplicationMutate, isError } = useCheckOfDuplicationId()
+  const [successMessage, setSuccessMessage] = useState<string>('')
   const [hasCheckedDuplication, setHasCheckedDuplication] = useState(false)
 
   const handleClickNextButton = async () => {
@@ -38,8 +39,9 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
     const isValid = await trigger('userId')
     if (isValid) {
       checkDuplicationMutate(valueOfId, {
-        onSuccess: () => {
+        onSuccess: (res) => {
           setHasCheckedDuplication(true)
+          setSuccessMessage(res)
         },
         onError: () => {
           setError('userId', { message: '이미 존재하는 아이디입니다.' })
@@ -62,7 +64,9 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
         </InputField>
 
         <InputField>
-          <InputField.Label error={errors?.userId}>아이디</InputField.Label>
+          <InputField.Label error={errors?.userId} success={successMessage}>
+            아이디
+          </InputField.Label>
           <div className="flex gap-4">
             <InputField.Input
               type="text"

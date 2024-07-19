@@ -2,10 +2,12 @@ import { ReactNode } from 'react'
 
 export interface ILabel {
   error?: any
+  success?: string
   children: ReactNode
 }
 
-const Label = ({ error, children }: ILabel) => {
+const Label = ({ error, children, success }: ILabel) => {
+  console.log(success)
   return (
     <div className="flexAlign gap-2">
       <h6 className="font-bold text-secondary-700">{children}</h6>
@@ -14,6 +16,7 @@ const Label = ({ error, children }: ILabel) => {
           {error.message.toString()}
         </p>
       )}
+      {success && <p className="text-xsmall text-[#15B53D]">{success}</p>}
     </div>
   )
 }
