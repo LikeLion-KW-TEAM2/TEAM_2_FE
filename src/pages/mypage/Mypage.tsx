@@ -2,6 +2,7 @@ import SubHeader from '@/components/SubHeader'
 import { IoIosArrowForward } from 'react-icons/io'
 import { TextWithProfile } from '@/components/TextWithProfile'
 import { Link } from 'react-router-dom'
+import { useMypage } from '@/services/mypage/useMypageService'
 
 const MYPAGE_LIST = [
   { text: '비밀번호 변경', link: '/mypage/password' },
@@ -12,6 +13,13 @@ const MYPAGE_LIST = [
 ]
 
 const Mypage = () => {
+  const { data: mypageData, status } = useMypage()
+
+  if (status === 'pending') return null
+  if (status === 'error') return null
+
+  const { name, profileImage } = mypageData
+
   return (
     <div>
       <SubHeader hidden>마이페이지</SubHeader>
@@ -21,9 +29,9 @@ const Mypage = () => {
         className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small"
       >
         <TextWithProfile>
-          <TextWithProfile.Image />
+          <TextWithProfile.Image src={profileImage} />
           <TextWithProfile.TextContainer>
-            <TextWithProfile.PrimaryText>고로케</TextWithProfile.PrimaryText>
+            <TextWithProfile.PrimaryText>{name}</TextWithProfile.PrimaryText>
             <TextWithProfile.SecondaryText>
               프로필 수정하기
             </TextWithProfile.SecondaryText>

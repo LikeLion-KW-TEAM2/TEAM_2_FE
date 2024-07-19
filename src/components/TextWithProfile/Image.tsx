@@ -1,10 +1,14 @@
 import defaultImg from '@/assets/images/default.svg'
 
-const Image = () => {
+export interface IImage {
+  src?: string
+}
+
+const Image = ({ src }: IImage) => {
   return (
     <div className="h-[52px] w-[52px] rounded-full">
       <img
-        src={defaultImg}
+        src={src || defaultImg}
         className="h-[52px] w-[52px] rounded-full border-[0.5px] border-secondary-200 bg-secondary-50 object-cover"
         alt="default-img"
       />
