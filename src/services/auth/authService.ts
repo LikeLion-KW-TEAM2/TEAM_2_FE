@@ -8,6 +8,9 @@ const POST = {
   signup(signupData: RequestSignupForm): Promise<any> {
     return postData(`/signup`, signupData)
   },
+  idValidate(id: string): Promise<any> {
+    return postData(`/signup/idvalidate`, id)
+  },
 }
 
 const authService = {

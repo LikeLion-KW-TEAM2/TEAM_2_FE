@@ -27,7 +27,7 @@ const Signup = () => {
   }, [isSuccess])
 
   return (
-    <div className="flexColumn">
+    <div className="flexColumn h-full">
       <h4 className="my-12 w-[260px] font-bold text-primary-900">
         {SIGNUP_HEADER[currentTab]}
       </h4>
@@ -37,7 +37,10 @@ const Signup = () => {
       </p>
 
       <FormProvider {...formMethod}>
-        <form onSubmit={handleSubmit(onSubmit)} className="mb-11">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex-1 overflow-y-scroll scrollbar-hide"
+        >
           {currentTab === 0 && <SignupInputTab setCurrentTab={setCurrentTab} />}
           {currentTab === 1 && (
             <SignupCheckTab isOpen={isOpen} closeModal={closeModal} />
