@@ -15,7 +15,7 @@ export function useLogin() {
 export function useSignup() {
   return useMutation({
     mutationFn: (signupData: RequestSignupForm) =>
-      authService.POST.login(signupData),
+      authService.POST.signup(signupData),
     onError: (error: any) => {
       console.error('error', error)
     },

@@ -5,8 +5,8 @@ import { SignupForm } from '@/types/auth'
 
 const schema = z
   .object({
-    nickname: z.string().min(3, { message: '닉네임은 3글자 이상입니다.' }),
-    id: z
+    name: z.string().min(3, { message: '닉네임은 3글자 이상입니다.' }),
+    userId: z
       .string()
       .min(6, { message: '아이디는 6글자 이상입니다.' })
       .max(12, { message: '아이디는 12글자 이하입니다.' })
@@ -21,6 +21,7 @@ const schema = z
         message: '영문자와 숫자를 모두 포함해야 합니다.',
       }),
     confirm: z.string(),
+    agree: z.number(),
   })
   .partial()
   .refine((data) => data.password === data.confirm, {

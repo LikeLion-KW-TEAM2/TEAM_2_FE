@@ -30,7 +30,7 @@ const Button = ({
   const bgColor = error
     ? 'bg-error-primary'
     : disabled
-      ? 'bg-secondary-50'
+      ? 'bg-secondary-400'
       : 'bg-primary-600'
 
   return (

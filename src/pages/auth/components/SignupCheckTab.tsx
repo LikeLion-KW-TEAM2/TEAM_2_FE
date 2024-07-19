@@ -13,8 +13,13 @@ const AGREE_LIST = [
 ]
 
 const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
-  const { isChecked, isAllChecked, handleCheckClick, handleAllCheckClick } =
-    useCheckClick()
+  const {
+    isChecked,
+    isAllChecked,
+    isButtonDisabled,
+    handleCheckClick,
+    handleAllCheckClick,
+  } = useCheckClick()
 
   return (
     <>
@@ -39,11 +44,15 @@ const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
           ))}
         </div>
 
-        <div className="absolute bottom-10 left-4 right-4">
-          <Button type="submit" width="w-full" size="large">
-            회원가입 완료
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          width="w-auto"
+          size="large"
+          className="absolute bottom-10 left-4 right-4"
+          disabled={isButtonDisabled}
+        >
+          회원가입 완료
+        </Button>
       </div>
 
       <Modal isOpen={isOpen} closeModal={closeModal}>

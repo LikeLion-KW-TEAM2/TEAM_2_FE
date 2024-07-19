@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { useCheckOfDuplicationId } from '@/services/auth/useAuthService'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 interface InputTabType {
@@ -16,13 +16,13 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
     getValues,
     setError,
   } = useFormContext()
-  const valueOfId = getValues('id')
+  const valueOfId = getValues('userId')
 
   const { mutate: checkDuplicationMutate, isError } = useCheckOfDuplicationId()
   const [hasCheckedDuplication, setHasCheckedDuplication] = useState(false)
 
   const handleClickNextButton = async () => {
-    const isValid = await trigger(['nickname', 'id', 'password', 'confirm'])
+    const isValid = await trigger(['name', 'userId', 'password', 'confirm'])
     if (isValid && !isError) {
       console.log('성공')
       setCurrentTab(1)
@@ -35,14 +35,14 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
   }
 
   const handleCheckOfDuplicationId = async () => {
-    const isValid = await trigger('id')
+    const isValid = await trigger('userId')
     if (isValid) {
       checkDuplicationMutate(valueOfId, {
         onSuccess: () => {
           setHasCheckedDuplication(true)
         },
         onError: () => {
-          setError('id', { message: '이미 존재하는 아이디입니다.' })
+          setError('userId', { message: '이미 존재하는 아이디입니다.' })
           setHasCheckedDuplication(false)
         },
       })
@@ -53,20 +53,20 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
     <>
       <div className="flexColumn mb-8 gap-4">
         <InputField>
-          <InputField.Label error={errors?.nickname}>닉네임</InputField.Label>
+          <InputField.Label error={errors?.name}>닉네임</InputField.Label>
           <InputField.Input
             type="text"
-            register={register('nickname')}
+            register={register('name')}
             placeholder="닉네임을 입력해주세요."
           />
         </InputField>
 
         <InputField>
-          <InputField.Label error={errors?.id}>아이디</InputField.Label>
+          <InputField.Label error={errors?.userId}>아이디</InputField.Label>
           <div className="flex gap-4">
             <InputField.Input
               type="text"
-              register={register('id')}
+              register={register('userId')}
               placeholder="아이디를 입력해주세요."
             />
             <Button size="small" handleClick={handleCheckOfDuplicationId}>

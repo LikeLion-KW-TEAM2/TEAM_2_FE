@@ -4,10 +4,11 @@ export interface RequestLoginForm {
 }
 
 export interface SignupForm {
-  nickname: string
-  id: string
+  name: string
+  userId: string
   password: string
   confirm: string
+  agree: number
 }
 
 export type RequestSignupForm = Omit<SignupForm, 'confirm'>

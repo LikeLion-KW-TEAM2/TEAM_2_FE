@@ -18,8 +18,9 @@ const Signup = () => {
   const { isOpen, openModal, closeModal } = useModal()
   const [currentTab, setCurrentTab] = useState<number>(0)
   const { mutate: signupMutate, isSuccess } = useSignup()
-  const onSubmit = ({ nickname, id, password }: RequestSignupForm) => {
-    signupMutate({ nickname, id, password })
+  const onSubmit = ({ name, userId, password, agree }: RequestSignupForm) => {
+    console.log({ name, userId, password, agree })
+    // signupMutate({ name, userId, password, agree })
   }
 
   useEffect(() => {
