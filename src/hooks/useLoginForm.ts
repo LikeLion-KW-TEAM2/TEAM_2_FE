@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { RequestLoginForm } from '@/types/auth'
 
 const schema = z.object({
   id: z
@@ -20,7 +21,7 @@ const schema = z.object({
 })
 
 export const useLoginForm = () => {
-  const formMethod = useForm({
+  const formMethod = useForm<RequestLoginForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     resolver: zodResolver(schema),

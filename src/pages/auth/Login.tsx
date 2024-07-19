@@ -1,17 +1,21 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
-import { useLoginForm } from '@/hooks/useLoginForm'
-import { FormProvider } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import useInput from '@/hooks/useInput'
+import { useLogin } from '@/services/auth/useAuthService'
+import { FormEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const formMethod = useLoginForm()
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = formMethod
-  const onSubmit = () => {}
+  const navigate = useNavigate()
+  const { input, onChange } = useInput({ id: '', password: '' })
+  const { mutate: loginMutate, isSuccess, isError, error } = useLogin()
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    loginMutate(input)
+  }
+
+  if (isSuccess) navigate('/record')
 
   return (
     <div className="flexColumn h-full">
@@ -19,46 +23,48 @@ const Login = () => {
         돈두댓
       </h1>
 
-      <FormProvider {...formMethod}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flexColumn flex-1 gap-7"
-        >
+      <form onSubmit={handleSubmit}>
+        <div className="flexColumn flex-1 gap-7">
           <InputField>
-            <InputField.Label error={errors?.login}>아이디</InputField.Label>
+            <InputField.Label>아이디</InputField.Label>
             <InputField.Input
               type="text"
-              register={register('login')}
+              name="id"
+              value={input.id}
+              onChange={onChange}
               placeholder="아이디를 입력해주세요."
             />
           </InputField>
 
           <InputField>
-            <InputField.Label error={errors?.password}>
-              비밀번호
-            </InputField.Label>
+            <InputField.Label>비밀번호</InputField.Label>
             <InputField.Input
               type="password"
-              register={register('password')}
+              name="password"
+              value={input.password}
+              onChange={onChange}
               placeholder="비밀번호를 입력해주세요."
             />
           </InputField>
-        </form>
-      </FormProvider>
+        </div>
+        {isError && error && (
+          <p className="mt-2 text-small text-error-primary">
+            아이디와 비밀번호를 다시 확인해주세요.
+          </p>
+        )}
 
-      <section className="flexColumn mb-11 gap-3">
-        <Link to={'/record'}>
-          <Button size="large" width="w-full">
+        <div className="flexColumn absolute bottom-10 left-4 right-4 gap-3">
+          <Button type="submit" size="large" width="w-full">
             로그인
           </Button>
-        </Link>
 
-        <Link to={'/signup'}>
-          <Button size="large" width="w-full">
-            회원가입
-          </Button>
-        </Link>
-      </section>
+          <Link to={'/signup'}>
+            <Button size="large" width="w-full">
+              회원가입
+            </Button>
+          </Link>
+        </div>
+      </form>
     </div>
   )
 }
