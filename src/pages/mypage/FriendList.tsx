@@ -1,10 +1,27 @@
+import ModalDelete from '@/components/ModalDelete'
 import SubHeader from '@/components/SubHeader'
 import { TextWithProfile } from '@/components/TextWithProfile'
-import { useFriendList } from '@/services/mypage/useMypageService'
+import { useModal } from '@/hooks/useModal'
+import {
+  useDeleteFriend,
+  useFriendList,
+} from '@/services/mypage/useMypageService'
+import { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const FriendList = () => {
   const { data: friendList, status } = useFriendList()
+  const { isOpen, openModal, closeModal } = useModal()
+  const { mutate: deleteFriend } = useDeleteFriend()
+  const [clickedUserId, setClickedUserId] = useState<string>('')
+
+  const handleOpenModal = (userId: string) => {
+    setClickedUserId(userId)
+    openModal()
+  }
+  const handleClickDeleteButton = (userId: string) => {
+    deleteFriend(userId)
+  }
 
   if (status === 'pending') return null
   if (status === 'error') return null
@@ -29,12 +46,18 @@ const FriendList = () => {
             </TextWithProfile>
 
             <AiOutlineClose
-              className="cursor-pointer text-secondary-400"
               size={16}
+              className="cursor-pointer text-secondary-400"
+              onClick={() => handleOpenModal(userId)}
             />
           </div>
         ))}
       </div>
+      <ModalDelete
+        isOpen={isOpen}
+        closeModal={closeModal}
+        handleClick={() => handleClickDeleteButton(clickedUserId)}
+      />
     </div>
   )
 }

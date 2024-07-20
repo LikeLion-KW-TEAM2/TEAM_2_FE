@@ -62,7 +62,11 @@ const Guestbook = () => {
           ))}
         </section>
       </NavLayout>
-      <ModalDelete isOpen={isOpen} closeModal={closeModal} />
+      <ModalDelete
+        isOpen={isOpen}
+        closeModal={closeModal}
+        handleClick={() => {}}
+      />
     </>
   )
 }

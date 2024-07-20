@@ -32,7 +32,11 @@ const SubHeader = ({ hidden = false, children }: ISubHeader) => {
         </p>
       </div>
 
-      <ModalDelete isOpen={isOpen} closeModal={closeModal} />
+      <ModalDelete
+        isOpen={isOpen}
+        closeModal={closeModal}
+        handleClick={() => {}}
+      />
     </>
   )
 }

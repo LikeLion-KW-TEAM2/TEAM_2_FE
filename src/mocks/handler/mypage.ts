@@ -33,4 +33,8 @@ export const mypage = [
   http.get('http://localhost:8080/mypage/friend', () => {
     return HttpResponse.json(friendList)
   }),
+
+  http.delete(`http://localhost:8080/mypage/friend/qwer1234`, () => {
+    return HttpResponse.json(JSON.stringify('ok'))
+  }),
 ]

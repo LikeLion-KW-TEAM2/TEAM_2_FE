@@ -1,5 +1,5 @@
 import { FriendListResponse, MypageResponse } from '@/types/mypage'
-import { getData } from '../service'
+import { deleteData, getData } from '../service'
 
 const GET = {
   mypage(): Promise<MypageResponse> {
@@ -10,8 +10,15 @@ const GET = {
   },
 }
 
+const DELETE = {
+  friend(id: string): Promise<any> {
+    return deleteData(`/mypage/friend/${id}`)
+  },
+}
+
 const mypageService = {
   GET,
+  DELETE,
 }
 
 export default mypageService

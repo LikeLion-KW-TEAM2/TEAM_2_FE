@@ -3,11 +3,11 @@ export interface MypageResponse {
   profileImage: string
 }
 
-interface FriendList {
+export interface FriendType {
   userId: string
   name: string
   profileImage: string
 }
 export interface FriendListResponse {
-  list: FriendList[]
+  list: FriendType[]
 }
