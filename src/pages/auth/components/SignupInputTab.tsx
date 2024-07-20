@@ -37,16 +37,19 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
   const handleCheckOfDuplicationId = async () => {
     const isValid = await trigger('userId')
     if (isValid) {
-      checkDuplicationMutate(getValues('userId'), {
-        onSuccess: (res) => {
-          setHasCheckedDuplication(true)
-          setSuccessMessage(res)
+      checkDuplicationMutate(
+        { userId: getValues('userId') },
+        {
+          onSuccess: (res) => {
+            setHasCheckedDuplication(true)
+            setSuccessMessage(res)
+          },
+          onError: () => {
+            setError('userId', { message: '이미 존재하는 아이디입니다.' })
+            setHasCheckedDuplication(false)
+          },
         },
-        onError: () => {
-          setError('userId', { message: '이미 존재하는 아이디입니다.' })
-          setHasCheckedDuplication(false)
-        },
-      })
+      )
     }
   }
 

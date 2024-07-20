@@ -1,3 +1,7 @@
+export interface RequestDuplicationId {
+  userId: string
+}
+
 export interface RequestLoginForm {
   userId: string
   password: string

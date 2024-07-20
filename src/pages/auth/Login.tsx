@@ -2,6 +2,7 @@ import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { useLoginForm } from '@/hooks/useLoginForm'
 import { useLogin } from '@/services/auth/useAuthService'
+import { RequestLoginForm } from '@/types/auth'
 import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -12,8 +13,8 @@ const Login = () => {
   const { mutate: loginMutate, isSuccess, isError, error } = useLogin()
   const { handleSubmit, register } = formMethod
 
-  const handleLoginFormSubmit = (formData: any) => {
-    loginMutate(formData)
+  const handleLoginFormSubmit = (loginForm: RequestLoginForm) => {
+    loginMutate(loginForm)
   }
 
   useEffect(() => {

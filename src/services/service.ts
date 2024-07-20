@@ -23,6 +23,15 @@ export async function postData<T, U>(
   return response.data
 }
 
+export async function postFormData<T, U>(
+  endpoint: string,
+  data: U,
+  config?: AxiosRequestConfig,
+): Promise<T> {
+  const response = await instance.post(endpoint, data, config)
+  return response.data
+}
+
 export async function putData<T, U>(endpoint: string, data: U): Promise<T> {
   const response = await instance.put(endpoint, data)
   return response.data
