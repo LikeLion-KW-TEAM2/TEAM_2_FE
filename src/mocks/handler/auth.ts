@@ -6,7 +6,12 @@ export const auth = [
     // return HttpResponse.text(JSON.stringify('user_not_exists'), {
     //   status: 404,
     // })
-    return HttpResponse.json(JSON.stringify('ok'))
+    // return HttpResponse.json(JSON.stringify('ok'))
+    return new HttpResponse(null, {
+      headers: {
+        Authorization: 'mySecret=abc-123',
+      },
+    })
   }),
   http.post('http://localhost:8080/signup', () => {
     console.log('회원가입')
