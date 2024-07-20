@@ -7,7 +7,6 @@ export interface ILabel {
 }
 
 const Label = ({ error, children, success }: ILabel) => {
-  console.log(success)
   return (
     <div className="flexAlign gap-2">
       <h6 className="font-bold text-secondary-700">{children}</h6>

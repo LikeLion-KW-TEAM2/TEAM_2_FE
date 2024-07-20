@@ -1,18 +1,19 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
-import useInput from '@/hooks/useInput'
+import { useLoginForm } from '@/hooks/useLoginForm'
 import { useLogin } from '@/services/auth/useAuthService'
-import { FormEvent, useEffect } from 'react'
+import { useEffect } from 'react'
+import { FormProvider } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate()
-  const { input, onChange } = useInput({ id: '', password: '' })
+  const formMethod = useLoginForm()
   const { mutate: loginMutate, isSuccess, isError, error } = useLogin()
+  const { handleSubmit, register } = formMethod
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    loginMutate(input)
+  const handleLoginFormSubmit = (formData: any) => {
+    loginMutate(formData)
   }
 
   useEffect(() => {
@@ -25,48 +26,46 @@ const Login = () => {
         돈두댓
       </h1>
 
-      <form onSubmit={handleSubmit}>
-        <div className="flexColumn flex-1 gap-7">
-          <InputField>
-            <InputField.Label>아이디</InputField.Label>
-            <InputField.Input
-              type="text"
-              name="id"
-              value={input.id}
-              onChange={onChange}
-              placeholder="아이디를 입력해주세요."
-            />
-          </InputField>
+      <FormProvider {...formMethod}>
+        <form onSubmit={handleSubmit(handleLoginFormSubmit)}>
+          <div className="flexColumn flex-1 gap-7">
+            <InputField>
+              <InputField.Label>아이디</InputField.Label>
+              <InputField.Input
+                type="text"
+                register={register('userId')}
+                placeholder="아이디를 입력해주세요."
+              />
+            </InputField>
 
-          <InputField>
-            <InputField.Label>비밀번호</InputField.Label>
-            <InputField.Input
-              type="password"
-              name="password"
-              value={input.password}
-              onChange={onChange}
-              placeholder="비밀번호를 입력해주세요."
-            />
-          </InputField>
-        </div>
-        {isError && error && (
-          <p className="mt-2 text-small text-error-primary">
-            아이디와 비밀번호를 다시 확인해주세요.
-          </p>
-        )}
+            <InputField>
+              <InputField.Label>비밀번호</InputField.Label>
+              <InputField.Input
+                type="password"
+                register={register('password')}
+                placeholder="비밀번호를 입력해주세요."
+              />
+            </InputField>
+          </div>
+          {isError && error && (
+            <p className="mt-2 text-small text-error-primary">
+              아이디와 비밀번호를 다시 확인해주세요.
+            </p>
+          )}
 
-        <div className="flexColumn absolute bottom-10 left-4 right-4 gap-3">
-          <Button type="submit" size="large" width="w-full">
-            로그인
-          </Button>
-
-          <Link to={'/signup'}>
-            <Button size="large" width="w-full">
-              회원가입
+          <div className="flexColumn absolute bottom-10 left-4 right-4 gap-3">
+            <Button type="submit" size="large" width="w-full">
+              로그인
             </Button>
-          </Link>
-        </div>
-      </form>
+
+            <Link to={'/signup'}>
+              <Button size="large" width="w-full">
+                회원가입
+              </Button>
+            </Link>
+          </div>
+        </form>
+      </FormProvider>
     </div>
   )
 }

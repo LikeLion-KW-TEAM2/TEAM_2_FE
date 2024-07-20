@@ -24,6 +24,9 @@ export function useSignup() {
 
 export function useCheckOfDuplicationId() {
   return useMutation({
-    mutationFn: (id: string) => authService.POST.idValidate(id),
+    mutationFn: (userId: string) => authService.POST.idValidate(userId),
+    onError: (error: any) => {
+      console.error('error', error)
+    },
   })
 }

@@ -16,7 +16,6 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
     getValues,
     setError,
   } = useFormContext()
-  const valueOfId = getValues('userId')
 
   const { mutate: checkDuplicationMutate, isError } = useCheckOfDuplicationId()
   const [successMessage, setSuccessMessage] = useState<string>('')
@@ -38,7 +37,7 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
   const handleCheckOfDuplicationId = async () => {
     const isValid = await trigger('userId')
     if (isValid) {
-      checkDuplicationMutate(valueOfId, {
+      checkDuplicationMutate(getValues('userId'), {
         onSuccess: (res) => {
           setHasCheckedDuplication(true)
           setSuccessMessage(res)

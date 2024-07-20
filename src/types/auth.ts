@@ -1,5 +1,5 @@
 export interface RequestLoginForm {
-  id: string
+  userId: string
   password: string
 }
 

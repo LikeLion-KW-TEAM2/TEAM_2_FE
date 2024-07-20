@@ -8,8 +8,8 @@ const POST = {
   signup(signupData: RequestSignupForm): Promise<any> {
     return postData(`/signup`, signupData)
   },
-  idValidate(id: string): Promise<any> {
-    return postData(`/signup/idvalidate`, id)
+  idValidate(userId: string): Promise<any> {
+    return postData(`/signup/idvalidate`, { userId: userId })
   },
 }
 
