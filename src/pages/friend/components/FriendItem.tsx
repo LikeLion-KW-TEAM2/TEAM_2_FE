@@ -9,7 +9,7 @@ interface IFriendItem {
 }
 
 const FriendItem = ({ friend }: IFriendItem) => {
-  const { userId, name, profileImage, count } = friend
+  const { userId, name, image, count } = friend
   const { isOpen, openModal, closeModal } = useModal()
 
   return (
@@ -17,7 +17,7 @@ const FriendItem = ({ friend }: IFriendItem) => {
       <div className="flexAlign gap-2 border-b border-secondary-100 px-4 py-[20px]">
         <div className="flex-1">
           <TextWithProfile>
-            <TextWithProfile.Image src={profileImage} />
+            <TextWithProfile.Image src={image} />
             <TextWithProfile.TextContainer>
               <TextWithProfile.PrimaryText>{name}</TextWithProfile.PrimaryText>
               <TextWithProfile.SecondaryText>

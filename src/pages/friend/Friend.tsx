@@ -14,7 +14,7 @@ const Friend = () => {
 
   return (
     <NavLayout>
-      <HeaderWithProfile src={friendData.myProfileImage} />
+      <HeaderWithProfile src={friendData.myImage} />
 
       <section className="mb-8" onClick={() => navigate('/friend/search')}>
         <SearchInput />

@@ -1,11 +1,11 @@
 export interface FriendType {
   userId: string
   name: string
-  profileImage: string
+  image: string
   count: number
 }
 
 export interface FriendPageResponse {
-  myProfileImage: string
+  myImage: string
   list: FriendType[]
 }

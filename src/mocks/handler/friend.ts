@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 import { friendList } from './mypage'
 
 const friendPage = {
-  my_profile_image: '/src/assets/images/default.svg',
+  myImage: '/src/assets/images/default.svg',
   list: [...friendList.list],
 }
 

@@ -18,7 +18,7 @@ const Mypage = () => {
   if (status === 'pending') return null
   if (status === 'error') return null
 
-  const { name, profileImage } = mypageData
+  const { name, image } = mypageData
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Mypage = () => {
         className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small"
       >
         <TextWithProfile>
-          <TextWithProfile.Image src={profileImage} />
+          <TextWithProfile.Image src={image} />
           <TextWithProfile.TextContainer>
             <TextWithProfile.PrimaryText>{name}</TextWithProfile.PrimaryText>
             <TextWithProfile.SecondaryText>

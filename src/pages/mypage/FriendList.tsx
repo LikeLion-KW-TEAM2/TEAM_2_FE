@@ -31,10 +31,10 @@ const FriendList = () => {
       <SubHeader hidden>친구 목록 관리</SubHeader>
 
       <div className="flexColumn gap-8">
-        {friendList?.list.map(({ userId, name, profileImage }) => (
+        {friendList?.list.map(({ userId, name, image }) => (
           <div className="flexBetweenAlign px-4" key={userId}>
             <TextWithProfile>
-              <TextWithProfile.Image src={profileImage} />
+              <TextWithProfile.Image src={image} />
               <TextWithProfile.TextContainer>
                 <TextWithProfile.PrimaryText>
                   {userId}
