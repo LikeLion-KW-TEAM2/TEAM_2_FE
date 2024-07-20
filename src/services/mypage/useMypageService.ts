@@ -8,3 +8,10 @@ export function useMypage() {
     queryFn: () => mypageService.GET.mypage(),
   })
 }
+
+export function useFriendList() {
+  return useQuery({
+    queryKey: queryKeys.friendList(),
+    queryFn: () => mypageService.GET.friendList(),
+  })
+}

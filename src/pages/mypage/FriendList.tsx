@@ -1,28 +1,37 @@
 import SubHeader from '@/components/SubHeader'
 import { TextWithProfile } from '@/components/TextWithProfile'
+import { useFriendList } from '@/services/mypage/useMypageService'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const FriendList = () => {
+  const { data: friendList, status } = useFriendList()
+
+  if (status === 'pending') return null
+  if (status === 'error') return null
+
   return (
     <div>
       <SubHeader hidden>친구 목록 관리</SubHeader>
 
       <div className="flexColumn gap-8">
-        {[...Array(7)].map((_, i) => (
-          <div className="flexBetweenAlign px-4" key={i}>
+        {friendList?.list.map(({ userId, name, profileImage }) => (
+          <div className="flexBetweenAlign px-4" key={userId}>
             <TextWithProfile>
-              <TextWithProfile.Image />
+              <TextWithProfile.Image src={profileImage} />
               <TextWithProfile.TextContainer>
                 <TextWithProfile.PrimaryText>
-                  qwer1234
+                  {userId}
                 </TextWithProfile.PrimaryText>
                 <TextWithProfile.SecondaryText>
-                  고로케
+                  {name}
                 </TextWithProfile.SecondaryText>
               </TextWithProfile.TextContainer>
             </TextWithProfile>
 
-            <AiOutlineClose className="text-secondary-400" size={16} />
+            <AiOutlineClose
+              className="cursor-pointer text-secondary-400"
+              size={16}
+            />
           </div>
         ))}
       </div>
