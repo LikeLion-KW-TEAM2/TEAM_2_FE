@@ -7,9 +7,11 @@ import {
 } from '@/types/auth'
 import { instance } from '../service'
 import { useNavigate } from 'react-router-dom'
+import { useTokenActions } from '@/store/token'
 
 export function useLogin() {
   const navigate = useNavigate()
+  const { setToken } = useTokenActions()
 
   return useMutation({
     mutationFn: (loginData: RequestLoginForm) => {
@@ -20,6 +22,7 @@ export function useLogin() {
     },
     onSuccess: (res: any) => {
       instance.defaults.headers.common['Authorization'] = res.authorization
+      setToken(res.authorization)
       navigate('/record')
     },
     onError: (error: any) => {
