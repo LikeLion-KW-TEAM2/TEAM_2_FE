@@ -5,7 +5,7 @@ const user = {
   profileImage: '/src/assets/images/default.svg',
 }
 
-const friendList = {
+export const friendList = {
   list: [
     {
       userId: 'qwer1234',
