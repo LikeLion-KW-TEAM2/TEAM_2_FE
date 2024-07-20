@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import queryKeys from './queries'
 import mypageService from './mypageService'
-import { FriendListResponse, FriendType } from '@/types/mypage'
+import { FriendListResponse } from '@/types/mypage'
 
 export function useMypage() {
   return useQuery({
