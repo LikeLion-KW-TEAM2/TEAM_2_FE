@@ -6,8 +6,11 @@ import {
   RequestSignupForm,
 } from '@/types/auth'
 import { instance } from '../service'
+import { useNavigate } from 'react-router-dom'
 
 export function useLogin() {
+  const navigate = useNavigate()
+
   return useMutation({
     mutationFn: (loginData: RequestLoginForm) => {
       const formData = new FormData()
@@ -17,6 +20,7 @@ export function useLogin() {
     },
     onSuccess: (res: any) => {
       instance.defaults.headers.common['Authorization'] = res.authorization
+      navigate('/record')
     },
     onError: (error: any) => {
       console.error('error', error)
