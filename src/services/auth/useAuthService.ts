@@ -5,9 +5,9 @@ import {
   RequestLoginForm,
   RequestSignupForm,
 } from '@/types/auth'
-import { instance } from '../service'
 import { useNavigate } from 'react-router-dom'
 import { useTokenActions } from '@/store/token'
+import { instance } from '../service'
 
 export function useLogin() {
   const navigate = useNavigate()
@@ -20,9 +20,9 @@ export function useLogin() {
       formData.append('password', loginData.password)
       return authService.POST.login(formData)
     },
-    onSuccess: (res: any) => {
-      instance.defaults.headers.common['Authorization'] = res.authorization
-      setToken(res.authorization)
+    onSuccess: ({ headers }: any) => {
+      instance.defaults.headers.common['Authorization'] = headers.authorization
+      setToken(headers.authorization)
       navigate('/record')
     },
     onError: (error: any) => {

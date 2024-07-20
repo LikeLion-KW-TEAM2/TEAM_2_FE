@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Splash from './components/Splash'
-import Router from './components/Router/router'
+import Router from './components/Router/Router'
 
 function App() {
   const [showSplash, setShowSplash] = useState<boolean>(true)

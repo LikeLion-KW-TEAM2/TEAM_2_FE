@@ -2,6 +2,7 @@ import { create } from 'zustand'
 
 interface Actions {
   setToken: (newToken: string) => void
+  resetToken: () => void
 }
 
 interface TokenStore {
@@ -13,6 +14,7 @@ export const useTokenStore = create<TokenStore>((set) => ({
   token: null,
   actions: {
     setToken: (newToken) => set(() => ({ token: newToken })),
+    resetToken: () => set(() => ({ token: null })),
   },
 }))
 

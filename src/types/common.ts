@@ -1,3 +1,9 @@
+import {
+  AxiosInstance,
+  AxiosInterceptorManager,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios'
 import { ReactNode } from 'react'
 
 export interface ChildrenType {

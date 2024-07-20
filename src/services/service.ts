@@ -1,37 +1,37 @@
-import axios, { AxiosRequestConfig, AxiosResponseHeaders } from 'axios'
+import axios, { AxiosInstance, AxiosResponse } from 'axios'
 
-export const instance = axios.create({
+const config = {
   baseURL: import.meta.env.VITE_SERVER_URL,
   withCredentials: true,
   timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
   },
-})
-
-export async function getData<T>(endpoint: string): Promise<T> {
-  const response = await instance.get(endpoint)
-  return response.data
 }
 
-export async function postData<T, U>(
-  endpoint: string,
-  data: U,
-  config?: AxiosRequestConfig,
-  returnHeader?: boolean,
-): Promise<T | AxiosResponseHeaders> {
-  const response = await instance.post(endpoint, data, config)
+function setInterceptors(instance: AxiosInstance) {
+  instance.interceptors.response.use(
+    (response: AxiosResponse) => {
+      const { data, headers } = response
+      return { ...data, headers }
+    },
+    (error) => {
+      return Promise.reject(error)
+    },
+  )
 
-  if (returnHeader) return response.headers as AxiosResponseHeaders
-  return response.data
+  return instance
 }
 
-export async function putData<T, U>(endpoint: string, data: U): Promise<T> {
-  const response = await instance.put(endpoint, data)
-  return response.data
+function createInstance() {
+  const instance = axios.create(config)
+  return setInterceptors(instance)
 }
 
-export async function deleteData<T>(endpoint: string): Promise<T> {
-  const response = await instance.delete(endpoint)
-  return response.data
+function createInstanceWithoutAuth() {
+  const instance = axios.create(config)
+  return instance
 }
+
+export const instance = createInstance()
+export const instanceWithoutAuth = createInstanceWithoutAuth()

@@ -1,14 +1,14 @@
-import { FriendPageResponse } from '@/types/friend'
-import { getData } from '../service'
+// import { FriendPageResponse } from '@/types/friend'
+// import { getData } from '../service'
 
-const GET = {
-  friend(): Promise<FriendPageResponse> {
-    return getData(`/friend`)
-  },
-}
+// const GET = {
+//   friend(): Promise<FriendPageResponse> {
+//     return getData(`/friend`)
+//   },
+// }
 
-const friendService = {
-  GET,
-}
+// const friendService = {
+//   GET,
+// }
 
-export default friendService
+// export default friendService
