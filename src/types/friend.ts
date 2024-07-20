@@ -9,3 +9,5 @@ export interface FriendPageResponse {
   myImage: string
   list: FriendType[]
 }
+
+export type SearchResponse = Omit<FriendType, 'count'>[]

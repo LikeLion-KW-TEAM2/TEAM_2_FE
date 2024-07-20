@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 let baseURL = ''
 if (import.meta.env.VITE_REACT_APP_MOCK !== 'development') {
@@ -18,9 +18,8 @@ const config = {
 
 function setInterceptors(instance: AxiosInstance) {
   instance.interceptors.response.use(
-    (response: AxiosResponse) => {
-      const { data, headers } = response
-      return { ...data, headers }
+    (response) => {
+      return response.data
     },
     (error) => {
       return Promise.reject(error)

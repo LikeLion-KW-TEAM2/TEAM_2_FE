@@ -3,24 +3,34 @@ import SubHeader from '@/components/SubHeader'
 import SearchInput from './components/SearchInput'
 import { TextWithProfile } from '@/components/TextWithProfile'
 import Button from '@/components/Button'
+import { useSearchList } from '@/services/friend/useFriendService'
+import { useSearchParams } from 'react-router-dom'
 
 const FriendSearch = () => {
+  const [searchParams, _] = useSearchParams()
+  const searchId = searchParams.get('search') as string
+  const { data: searchData, status } = useSearchList(searchId)
+  console.log(searchData)
+
+  if (status === 'pending') return null
+  if (status === 'error') return null
+
   return (
     <NavLayout>
       <SubHeader hidden>친구 검색</SubHeader>
       <SearchInput />
 
       <div className="flexColumn mt-8 flex-1 gap-5 overflow-y-scroll scrollbar-hide">
-        {[...Array(7)].map((_, index) => (
-          <div key={index} className="flexBetweenAlign">
+        {searchData.map(({ userId, name, image }) => (
+          <div key={userId} className="flexBetweenAlign">
             <TextWithProfile>
-              <TextWithProfile.Image />
+              <TextWithProfile.Image src={image} />
               <TextWithProfile.TextContainer>
                 <TextWithProfile.PrimaryText>
-                  qwer1234
+                  {userId}
                 </TextWithProfile.PrimaryText>
                 <TextWithProfile.SecondaryText>
-                  고로케
+                  {name}
                 </TextWithProfile.SecondaryText>
               </TextWithProfile.TextContainer>
             </TextWithProfile>
