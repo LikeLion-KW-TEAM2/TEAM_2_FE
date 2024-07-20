@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponseHeaders } from 'axios'
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
@@ -18,17 +18,11 @@ export async function postData<T, U>(
   endpoint: string,
   data: U,
   config?: AxiosRequestConfig,
-): Promise<T> {
+  returnHeader?: boolean,
+): Promise<T | AxiosResponseHeaders> {
   const response = await instance.post(endpoint, data, config)
-  return response.data
-}
 
-export async function postFormData<T, U>(
-  endpoint: string,
-  data: U,
-  config?: AxiosRequestConfig,
-): Promise<T> {
-  const response = await instance.post(endpoint, data, config)
+  if (returnHeader) return response.headers as AxiosResponseHeaders
   return response.data
 }
 

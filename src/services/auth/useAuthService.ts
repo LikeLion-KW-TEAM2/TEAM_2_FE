@@ -5,6 +5,7 @@ import {
   RequestLoginForm,
   RequestSignupForm,
 } from '@/types/auth'
+import { instance } from '../service'
 
 export function useLogin() {
   return useMutation({
@@ -13,6 +14,9 @@ export function useLogin() {
       formData.append('userId', loginData.userId)
       formData.append('password', loginData.password)
       return authService.POST.login(formData)
+    },
+    onSuccess: (res: any) => {
+      instance.defaults.headers.common['Authorization'] = res.authorization
     },
     onError: (error: any) => {
       console.error('error', error)

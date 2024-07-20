@@ -3,6 +3,7 @@ import { InputField } from '@/components/InputField'
 import { useLoginForm } from '@/hooks/useLoginForm'
 import { useLogin } from '@/services/auth/useAuthService'
 import { RequestLoginForm } from '@/types/auth'
+import axios from 'axios'
 import { useEffect } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -14,12 +15,16 @@ const Login = () => {
   const { handleSubmit, register } = formMethod
 
   const handleLoginFormSubmit = (loginForm: RequestLoginForm) => {
+    console.log('1')
+    const formData = new FormData()
+    formData.append('userId', loginForm.userId)
+    formData.append('password', loginForm.password)
     loginMutate(loginForm)
   }
 
-  useEffect(() => {
-    if (isSuccess) navigate('/record')
-  }, [isSuccess])
+  // useEffect(() => {
+  //   if (isSuccess) navigate('/record')
+  // }, [isSuccess])
 
   return (
     <div className="flexColumn h-full">
