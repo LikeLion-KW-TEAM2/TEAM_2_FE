@@ -73,3 +73,9 @@ export const useCompleteHabits = () => {
     queryFn: () => mypageService.GET.completeHabit(),
   })
 }
+
+export const useEditPassword = () => {
+  return useMutation({
+    mutationFn: (password: string) => mypageService.POST.editPassword(password),
+  })
+}

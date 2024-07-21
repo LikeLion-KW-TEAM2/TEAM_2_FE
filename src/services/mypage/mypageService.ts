@@ -26,6 +26,9 @@ const POST = {
   editAccount(accountInfo: AccountInfoRequest): Promise<any> {
     return instance.post(`/mypage/edit`, accountInfo)
   },
+  editPassword(password: string): Promise<any> {
+    return instance.post(`/mypage/edit/password`, password)
+  },
 }
 
 const DELETE = {

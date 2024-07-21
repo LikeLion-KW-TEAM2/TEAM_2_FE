@@ -59,4 +59,7 @@ export const mypage = [
   http.get('http://localhost:8080/mypage/donehabits', () => {
     return HttpResponse.json(habits)
   }),
+  http.post('http://localhost:8080/mypage/edit/password', () => {
+    return HttpResponse.json(JSON.stringify('ok'))
+  }),
 ]

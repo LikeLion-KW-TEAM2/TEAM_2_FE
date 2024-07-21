@@ -6,7 +6,7 @@ import { AccountInfoResponse, EditAccountInfoRequest } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/useAccountInfoForm'
 import { useEditAccountInfo } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
-import ModalAccount from './ModalAccount'
+import ModalUpdate from '@/components/ModalUpdate'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
@@ -63,7 +63,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
           </Button>
         </form>
       </FormProvider>
-      <ModalAccount isOpen={isOpen} closeModal={closeModal} />
+      <ModalUpdate isOpen={isOpen} closeModal={closeModal} />
     </>
   )
 }

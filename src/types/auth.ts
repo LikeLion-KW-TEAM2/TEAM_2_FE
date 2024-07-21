@@ -16,3 +16,4 @@ export interface SignupForm {
 }
 
 export type RequestSignupForm = Omit<SignupForm, 'confirm'>
+export type PasswordForm = Pick<SignupForm, 'password' | 'confirm'>
