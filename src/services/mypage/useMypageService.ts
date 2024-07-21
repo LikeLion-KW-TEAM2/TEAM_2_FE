@@ -66,3 +66,10 @@ export const useEditAccountInfo = () => {
     },
   })
 }
+
+export const useCompleteHabits = () => {
+  return useQuery({
+    queryKey: queryKeys.completeHabit(),
+    queryFn: () => mypageService.GET.completeHabit(),
+  })
+}

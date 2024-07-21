@@ -17,5 +17,14 @@ export interface AccountInfoResponse {
   myImage: string
 }
 
+interface Habit {
+  habits_id: string
+  habits_term: string
+}
+
+export interface CompleteHabitResponse {
+  list: Habit[]
+}
+
 export type AccountInfoRequest = AccountInfoResponse
 export type EditAccountInfoRequest = AccountInfoResponse

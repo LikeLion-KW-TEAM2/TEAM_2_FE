@@ -1,6 +1,7 @@
 import {
   AccountInfoRequest,
   AccountInfoResponse,
+  CompleteHabitResponse,
   FriendListResponse,
   MypageResponse,
 } from '@/types/mypage'
@@ -15,6 +16,9 @@ const GET = {
   },
   accountInfo(): Promise<AccountInfoResponse> {
     return instance.get(`/mypage/edit`)
+  },
+  completeHabit(): Promise<CompleteHabitResponse> {
+    return instance.get(`/mypage/donehabits`)
   },
 }
 
