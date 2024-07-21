@@ -1,6 +1,6 @@
 import SignupInputTab from './components/SignupInputTab'
 import SignupCheckTab from './components/SignupCheckTab'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSignupForm } from '@/hooks/useSignupForm'
 import { FormProvider } from 'react-hook-form'
 import { RequestSignupForm } from '@/types/auth'
@@ -17,17 +17,16 @@ const Signup = () => {
   const { handleSubmit } = formMethod
   const { isOpen, openModal, closeModal } = useModal()
   const [currentTab, setCurrentTab] = useState<number>(0)
-  const { mutate: signupMutate, isSuccess } = useSignup()
+  const { mutate: signupMutate } = useSignup()
   const onSubmit = ({ name, userId, password, agree }: RequestSignupForm) => {
     console.log({ name, userId, password, agree })
-    // signupMutate({ name, userId, password, agree }, {
-    //   onSuccess: () =>  openModal()
-    // })
+    signupMutate(
+      { name, userId, password, agree },
+      {
+        onSuccess: () => openModal(),
+      },
+    )
   }
-
-  // useEffect(() => {
-  //   if (isSuccess) openModal()
-  // }, [isSuccess])
 
   return (
     <div className="flexColumn h-full">

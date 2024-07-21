@@ -42,7 +42,7 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
         {
           onSuccess: (res) => {
             setHasCheckedDuplication(true)
-            setSuccessMessage(res)
+            setSuccessMessage(res.data)
           },
           onError: () => {
             setError('userId', { message: '이미 존재하는 아이디입니다.' })
