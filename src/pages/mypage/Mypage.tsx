@@ -14,7 +14,6 @@ const MYPAGE_LIST = [
 
 const Mypage = () => {
   const { data: mypageData, status } = useMypage()
-
   if (status === 'pending') return null
   if (status === 'error') return null
 

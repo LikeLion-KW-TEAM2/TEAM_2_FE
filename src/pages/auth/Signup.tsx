@@ -20,12 +20,14 @@ const Signup = () => {
   const { mutate: signupMutate, isSuccess } = useSignup()
   const onSubmit = ({ name, userId, password, agree }: RequestSignupForm) => {
     console.log({ name, userId, password, agree })
-    // signupMutate({ name, userId, password, agree })
+    // signupMutate({ name, userId, password, agree }, {
+    //   onSuccess: () =>  openModal()
+    // })
   }
 
-  useEffect(() => {
-    if (isSuccess) openModal()
-  }, [isSuccess])
+  // useEffect(() => {
+  //   if (isSuccess) openModal()
+  // }, [isSuccess])
 
   return (
     <div className="flexColumn h-full">

@@ -1,24 +1,39 @@
-// import { FriendListResponse, MypageResponse } from '@/types/mypage'
-// import { deleteData, getData } from '../service'
+import {
+  AccountInfoRequest,
+  AccountInfoResponse,
+  FriendListResponse,
+  MypageResponse,
+} from '@/types/mypage'
+import { instance } from '../service'
 
-// const GET = {
-//   mypage(): Promise<MypageResponse> {
-//     return getData(`/mypage`)
-//   },
-//   friendList(): Promise<FriendListResponse> {
-//     return getData(`/mypage/friend`)
-//   },
-// }
+const GET = {
+  mypage(): Promise<MypageResponse> {
+    return instance.get(`/mypage`)
+  },
+  friendList(): Promise<FriendListResponse> {
+    return instance.get(`/mypage/friend`)
+  },
+  accountInfo(): Promise<AccountInfoResponse> {
+    return instance.get(`/mypage/edit`)
+  },
+}
 
-// const DELETE = {
-//   friend(id: string): Promise<any> {
-//     return deleteData(`/mypage/friend/${id}`)
-//   },
-// }
+const POST = {
+  editAccount(accountInfo: AccountInfoRequest): Promise<any> {
+    return instance.post(`/mypage/edit`, accountInfo)
+  },
+}
 
-// const mypageService = {
-//   GET,
-//   DELETE,
-// }
+const DELETE = {
+  friend(id: string): Promise<any> {
+    return instance.delete(`/mypage/friend/${id}`)
+  },
+}
 
-// export default mypageService
+const mypageService = {
+  GET,
+  POST,
+  DELETE,
+}
+
+export default mypageService

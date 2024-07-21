@@ -11,3 +11,11 @@ export interface FriendType {
 export interface FriendListResponse {
   list: FriendType[]
 }
+
+export interface AccountInfoResponse {
+  name: string
+  myImage: string
+}
+
+export type AccountInfoRequest = AccountInfoResponse
+export type EditAccountInfoRequest = AccountInfoResponse

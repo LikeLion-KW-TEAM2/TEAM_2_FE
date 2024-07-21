@@ -37,4 +37,12 @@ export const mypage = [
   http.delete(`http://localhost:8080/mypage/friend/qwer1234`, () => {
     return HttpResponse.json(JSON.stringify('ok'))
   }),
+
+  http.get('http://localhost:8080/mypage/edit', () => {
+    return HttpResponse.json({ name: '고로케', myImage: user.image })
+  }),
+
+  http.post('http://localhost:8080/mypage/edit', () => {
+    return HttpResponse.json(JSON.stringify('ok'))
+  }),
 ]
