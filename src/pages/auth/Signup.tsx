@@ -19,7 +19,6 @@ const Signup = () => {
   const [currentTab, setCurrentTab] = useState<number>(0)
   const { mutate: signupMutate } = useSignup()
   const onSubmit = ({ name, userId, password, agree }: RequestSignupForm) => {
-    console.log({ name, userId, password, agree })
     signupMutate(
       { name, userId, password, agree },
       {
