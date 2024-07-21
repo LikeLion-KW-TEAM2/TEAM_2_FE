@@ -2,10 +2,10 @@ import SubHeader from '@/components/SubHeader'
 
 const CompleteHabit = () => {
   return (
-    <div>
+    <div className="flexColumn h-full">
       <SubHeader hidden>개선된 습관 목록</SubHeader>
 
-      <div className="flexColumn gap-3">
+      <div className="flexColumn flex-1 gap-3 overflow-y-scroll pb-3 scrollbar-hide">
         {[...Array(7)].map((_, i) => (
           <div
             className="flexColumn gap-[10px] rounded-2xl border border-secondary-100 p-4 shadow-sm"
