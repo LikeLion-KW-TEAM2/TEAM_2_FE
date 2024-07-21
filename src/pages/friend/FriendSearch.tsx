@@ -3,14 +3,18 @@ import SubHeader from '@/components/SubHeader'
 import SearchInput from './components/SearchInput'
 import { TextWithProfile } from '@/components/TextWithProfile'
 import Button from '@/components/Button'
-import { useSearchList } from '@/services/friend/useFriendService'
+import { useAddition, useSearchList } from '@/services/friend/useFriendService'
 import { useSearchParams } from 'react-router-dom'
 
 const FriendSearch = () => {
   const [searchParams, _] = useSearchParams()
   const searchId = searchParams.get('search') as string
   const { data: searchData, status } = useSearchList(searchId)
-  console.log(searchData)
+  const { mutate: addFriend } = useAddition()
+
+  const handleClickAddButton = (userId: string) => {
+    addFriend(userId)
+  }
 
   if (status === 'pending') return null
   if (status === 'error') return null
@@ -21,7 +25,7 @@ const FriendSearch = () => {
       <SearchInput />
 
       <div className="flexColumn mt-8 flex-1 gap-5 overflow-y-scroll scrollbar-hide">
-        {searchData.map(({ userId, name, image }) => (
+        {searchData.map(({ userId, name, image, isFriend }) => (
           <div key={userId} className="flexBetweenAlign">
             <TextWithProfile>
               <TextWithProfile.Image src={image} />
@@ -35,7 +39,13 @@ const FriendSearch = () => {
               </TextWithProfile.TextContainer>
             </TextWithProfile>
 
-            <Button size="xsmall">추가</Button>
+            <Button
+              size="xsmall"
+              disabled={isFriend}
+              handleClick={() => handleClickAddButton(userId)}
+            >
+              추가
+            </Button>
           </div>
         ))}
       </div>

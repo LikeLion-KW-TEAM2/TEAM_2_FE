@@ -10,8 +10,15 @@ const GET = {
   },
 }
 
+const POST = {
+  add(searchId: string) {
+    return instance.post(`/friend/create/${searchId}`, {})
+  },
+}
+
 const friendService = {
   GET,
+  POST,
 }
 
 export default friendService

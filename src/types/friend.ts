@@ -5,9 +5,16 @@ export interface FriendType {
   count: number
 }
 
+export interface SearchFriend {
+  userId: string
+  name: string
+  image: string
+  isFriend: boolean
+}
+
+export type SearchResponse = SearchFriend[]
+
 export interface FriendPageResponse {
   myImage: string
   list: FriendType[]
 }
-
-export type SearchResponse = Omit<FriendType, 'count'>[]
