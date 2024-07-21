@@ -18,3 +18,14 @@ export interface FriendPageResponse {
   myImage: string
   list: FriendType[]
 }
+
+export interface FriendIcecreamResponse {
+  name: string
+  countList: string[]
+  level: number
+}
+
+export interface GuestbookRequest {
+  userId: string
+  content: string
+}

@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import queryKeys from './queries'
 import friendService from './friendService'
+import { GuestbookRequest } from '@/types/friend'
 
 export const useFriendPageList = () => {
   return useQuery({
@@ -24,6 +25,23 @@ export const useAddition = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.all })
     },
+    onError: (error: any) => {
+      console.error('error', error)
+    },
+  })
+}
+
+export const useFriendIcecream = (id: string) => {
+  return useQuery({
+    queryKey: queryKeys.icecream(id),
+    queryFn: () => friendService.GET.icecream(id),
+  })
+}
+
+export const useGuestBook = () => {
+  return useMutation({
+    mutationFn: (message: GuestbookRequest) =>
+      friendService.POST.guestbook(message),
     onError: (error: any) => {
       console.error('error', error)
     },

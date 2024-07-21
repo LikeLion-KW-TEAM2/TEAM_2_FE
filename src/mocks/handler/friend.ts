@@ -61,6 +61,12 @@ const addFriend = () => {
   ]
 }
 
+const icecream = {
+  name: '고로케',
+  countList: ['다리꼬기', '짝다리짚기'],
+  level: 1,
+}
+
 export const friend = [
   http.get('http://localhost:8080/friend', () => {
     console.log('친구 목록')
@@ -74,5 +80,9 @@ export const friend = [
     console.log('친구 추가')
     addFriend()
     return HttpResponse.json(JSON.stringify('ok'))
+  }),
+  http.get('http://localhost:8080/friend/icecream/qwer1234', () => {
+    console.log('친구 아이스크림')
+    return HttpResponse.json(icecream)
   }),
 ]

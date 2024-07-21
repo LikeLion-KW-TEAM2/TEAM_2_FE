@@ -14,14 +14,13 @@ const Friend = () => {
   return (
     <NavLayout>
       <HeaderWithProfile src={friendData.myImage} />
-
       <SearchInput />
 
-      <section className="flexColumn flex-1 overflow-y-scroll scrollbar-hide">
+      <div className="flexColumn flex-1 overflow-y-scroll scrollbar-hide">
         {friendData?.list.map((friend) => (
           <FriendItem friend={friend} key={friend.userId} />
         ))}
-      </section>
+      </div>
     </NavLayout>
   )
 }

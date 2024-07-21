@@ -33,7 +33,11 @@ const FriendItem = ({ friend }: IFriendItem) => {
         </Button>
       </div>
 
-      <ModalFriendIceCream isOpen={isOpen} closeModal={closeModal} />
+      <ModalFriendIceCream
+        isOpen={isOpen}
+        closeModal={closeModal}
+        userId={userId}
+      />
     </>
   )
 }
