@@ -1,7 +1,7 @@
 import { auth } from './handler/auth'
 import { friend } from './handler/friend'
 import { guestbook } from './handler/guestbook'
-import { icecream } from './handler/icecream'
+// import { icecream } from './handler/icecream'
 import { mypage } from './handler/mypage'
 
 export const handlers = [
@@ -9,5 +9,5 @@ export const handlers = [
   ...mypage,
   ...friend,
   ...guestbook,
-  ...icecream,
+  // ...icecream,
 ]
