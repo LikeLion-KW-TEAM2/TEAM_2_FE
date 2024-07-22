@@ -12,7 +12,11 @@ const Content = ({ content, name, openModal }: IContent) => {
       <p className="text-medium font-medium text-secondary-800">{content}</p>
       <div className="flexAlign gap-1 self-end">
         <p className="text-xsmall font-medium text-primary-500">{name}</p>
-        <BiTrash size={12} className="text-error-primary" onClick={openModal} />
+        <BiTrash
+          size={12}
+          className="cursor-pointer text-error-primary"
+          onClick={openModal}
+        />
       </div>
     </div>
   )

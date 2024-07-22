@@ -7,8 +7,15 @@ const GET = {
   },
 }
 
+const DELETE = {
+  content(id: number): Promise<GuestbookResponse> {
+    return instance.get(`/guestbook/delete/${id}`)
+  },
+}
+
 const guestbookService = {
   GET,
+  DELETE,
 }
 
 export default guestbookService

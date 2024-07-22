@@ -38,4 +38,8 @@ export const guestbook = [
     console.log('방명록')
     return HttpResponse.json(MESSAGES)
   }),
+  http.delete('http://localhost:8080/guestbook/delete/4', () => {
+    console.log('방명록 삭제')
+    return HttpResponse.json('방명록 삭제가 완료되었습니다.')
+  }),
 ]
