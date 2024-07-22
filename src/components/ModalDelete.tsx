@@ -6,10 +6,10 @@ const ModalDelete = ({ isOpen, closeModal, handleClick }: ModalClickType) => {
   const handleClickDeleteButton = () => {
     try {
       handleClick()
+      closeModal()
     } catch {
       console.log('실패')
     }
-    closeModal()
   }
 
   return (
