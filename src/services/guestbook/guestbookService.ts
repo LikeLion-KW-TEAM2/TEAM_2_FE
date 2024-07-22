@@ -9,7 +9,7 @@ const GET = {
 
 const DELETE = {
   content(id: number): Promise<GuestbookResponse> {
-    return instance.get(`/guestbook/delete/${id}`)
+    return instance.delete(`/guestbook/delete/${id}`)
   },
 }
 

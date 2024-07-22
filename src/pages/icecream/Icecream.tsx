@@ -4,15 +4,22 @@ import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import ModalMyIcecream from './components/ModalMyIcecream'
 import { useModal } from '@/hooks/useModal'
 import bgIcecream from '@/assets/images/icecream-bg.svg'
-import icecream from '@/assets/images/icecream-1.svg'
+import { useIcecreamLevel } from '@/services/icecream/useIcecreamService'
+import convertLevelToIcecream from '@/utils/convertLevelToIcecream'
 
 const Icecream = () => {
   const { isOpen, openModal, closeModal } = useModal()
+  const { data: icecreamData, status } = useIcecreamLevel()
+
+  if (status === 'pending') return null
+  if (status === 'error') return null
+
+  const { myImage, level } = icecreamData
 
   return (
     <>
       <NavLayout>
-        <HeaderWithProfile />
+        <HeaderWithProfile src={myImage} />
         <div className="flexBetweenAlign">
           <div className="flexColumn gap-1 text-large font-medium">
             <p>나만의 습관 아이스크림이 녹지 않도록</p>
@@ -29,8 +36,8 @@ const Icecream = () => {
           <div className="relative">
             <img src={bgIcecream} className="w-full" alt="bg" />
             <img
-              src={icecream}
-              className="absolute bottom-16 left-2/4 -translate-x-1/2 transition-all hover:-translate-y-4"
+              src={convertLevelToIcecream(level)}
+              className="absolute bottom-16 left-2/4 w-[149px] -translate-x-1/2 transition-all hover:-translate-y-4"
               alt="icecream"
             />
           </div>
