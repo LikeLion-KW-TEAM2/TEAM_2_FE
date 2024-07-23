@@ -1,4 +1,11 @@
+import { RecordResponse } from '@/types/record'
 import { instance } from '../service'
+
+const GET = {
+  record(): Promise<RecordResponse> {
+    return instance.get(`/home`)
+  },
+}
 
 const PUT = {
   check(habitId: number) {
@@ -6,8 +13,12 @@ const PUT = {
   },
 }
 
-const recordService = {
-  PUT,
+const DELETE = {
+  deleteHabit(habitId: number) {
+    return instance.delete(`/home/habit/delete/${habitId}`)
+  },
 }
+
+const recordService = { GET, PUT, DELETE }
 
 export default recordService
