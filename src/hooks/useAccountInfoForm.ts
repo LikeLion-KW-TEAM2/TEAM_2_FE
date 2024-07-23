@@ -1,4 +1,4 @@
-import { AccountInfoRequest, AccountInfoResponse } from '@/types/mypage'
+import { AccountInfoRequest } from '@/types/mypage'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -8,7 +8,7 @@ const schema = z.object({
   myImage: z.string(),
 })
 
-export const useAccountInfoForm = (defaultValues: AccountInfoResponse) => {
+export const useAccountInfoForm = (defaultValues: AccountInfoRequest) => {
   const formMethod = useForm<AccountInfoRequest>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
