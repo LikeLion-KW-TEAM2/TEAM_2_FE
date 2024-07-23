@@ -21,11 +21,15 @@ export const record = [
       name: '다리 꼬기',
       periodType: 6,
       privacy: 0,
-      dDay: 23,
+      overcome: 23,
     })
   }),
   http.put('http://localhost:8080/home/habit/check/0', () => {
     console.log('습관 체크')
     return HttpResponse.json('습관 체크 성공')
+  }),
+  http.put(`/home/habit/change/0`, () => {
+    console.log('습관 수정')
+    return HttpResponse.json('습관 수정 성공')
   }),
 ]

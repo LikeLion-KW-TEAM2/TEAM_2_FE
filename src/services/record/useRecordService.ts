@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import recordService from './recordService'
 import queryKeys from './queries'
+import { EditForm, EditRequest } from '@/types/record'
 
 export const useRecord = () => {
   return useQuery({
@@ -25,5 +26,12 @@ export const useCheckHabit = () => {
 export const useDeleteHabit = () => {
   return useMutation({
     mutationFn: (habitId: number) => recordService.DELETE.deleteHabit(habitId),
+  })
+}
+
+export const useEditHabit = () => {
+  return useMutation({
+    mutationFn: ({ habitId, formData }: EditRequest) =>
+      recordService.PUT.edit(habitId, formData),
   })
 }

@@ -1,4 +1,4 @@
-import { EditPageResponse, RecordResponse } from '@/types/record'
+import { EditPageResponse, EditForm, RecordResponse } from '@/types/record'
 import { instance } from '../service'
 
 const GET = {
@@ -13,6 +13,9 @@ const GET = {
 const PUT = {
   check(habitId: number) {
     return instance.put(`/home/habit/check/${habitId}`)
+  },
+  edit(habitId: number, formData: EditForm) {
+    return instance.put(`/home/habit/change/${habitId}`, formData)
   },
 }
 

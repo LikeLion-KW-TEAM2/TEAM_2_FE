@@ -1,13 +1,13 @@
 import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
 import { useToggle } from '@/hooks/useToggle'
-import { EditPageRequest } from '@/types/record'
+import { EditForm } from '@/types/record'
 import { useFormContext } from 'react-hook-form'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 const SelectPeriod = () => {
   const [isDateDropDownOpen, handleDateDropDownOpen] = useToggle()
-  const { setValue } = useFormContext<EditPageRequest>()
+  const { setValue } = useFormContext<EditForm>()
 
   const handlePeriodChange = (periodType: number) => {
     setValue('periodType', periodType)

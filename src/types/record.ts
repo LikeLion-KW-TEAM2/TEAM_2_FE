@@ -15,11 +15,16 @@ export interface EditPageResponse {
   name: string
   periodType: number
   privacy: number
-  dDay: number
+  overcome: number
 }
 
-export interface EditPageRequest {
+export interface EditForm {
   name: string
   periodType: number
   privacy: number
+}
+
+export interface EditRequest {
+  habitId: number
+  formData: EditForm
 }
