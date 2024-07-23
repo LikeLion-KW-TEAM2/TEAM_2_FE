@@ -27,7 +27,7 @@ const Router = () => {
 
       <Route element={<PrivateRoute />}>
         <Route path="/record" element={<Record />} />
-        <Route path="/record/edit" element={<RecordEdit />} />
+        <Route path="/record/edit/:id" element={<RecordEdit />} />
         <Route path="/record/add" element={<RecordAdd />} />
         <Route path="/friend" element={<Friend />} />
         <Route path="/friend/search" element={<FriendSearch />} />

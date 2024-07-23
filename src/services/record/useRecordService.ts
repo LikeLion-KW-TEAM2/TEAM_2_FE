@@ -9,6 +9,13 @@ export const useRecord = () => {
   })
 }
 
+export const useEditPage = (habitId: number) => {
+  return useQuery({
+    queryKey: queryKeys.edit(habitId),
+    queryFn: () => recordService.GET.editPage(habitId),
+  })
+}
+
 export const useCheckHabit = () => {
   return useMutation({
     mutationFn: (habitId: number) => recordService.PUT.check(habitId),

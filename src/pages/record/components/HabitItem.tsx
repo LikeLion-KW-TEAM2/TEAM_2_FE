@@ -22,7 +22,7 @@ const HabitItem = ({ id, name, status }: Record) => {
       </div>
 
       <p className="mr-auto">{name}</p>
-      <Link to={'/record/edit'}>
+      <Link to={`/record/edit/${id}`}>
         <p className="cursor-pointer border-b-[0.3px] border-secondary-600 text-xsmall font-bold">
           수정
         </p>

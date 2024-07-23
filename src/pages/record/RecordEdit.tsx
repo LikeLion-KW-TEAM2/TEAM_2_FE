@@ -6,11 +6,20 @@ import { useModal } from '@/hooks/useModal'
 import { useToggle } from '@/hooks/useToggle'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import ModalCompleteHabit from './components/ModalCompleteHabit'
+import { useEditPage } from '@/services/record/useRecordService'
+import { useParams } from 'react-router-dom'
 
 const RecordEdit = () => {
   const [isDateDropDownOpen, handleDateDropDownOpen] = useToggle()
   const [isPrivateDropDownOpen, handlePrivateDropDownOpen] = useToggle()
   const { isOpen, openModal, closeModal } = useModal()
+  const { id: habitId } = useParams()
+  const { data: editPage, status } = useEditPage(parseInt(habitId as string))
+
+  if (status === 'pending') return null
+  if (status === 'error') return null
+
+  const { id, dDay, name, periodType, privacy } = editPage
 
   return (
     <div>

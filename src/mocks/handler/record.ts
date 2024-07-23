@@ -14,6 +14,16 @@ export const record = [
     console.log('습관 기록 페이지')
     return HttpResponse.json(homeData)
   }),
+  http.get('http://localhost:8080/home/habit/0', () => {
+    console.log('수정 페이지')
+    return HttpResponse.json({
+      id: 0,
+      name: '다리 꼬기',
+      periodType: 6,
+      privacy: 0,
+      dDay: 23,
+    })
+  }),
   http.put('http://localhost:8080/home/habit/check/0', () => {
     console.log('습관 체크')
     return HttpResponse.json('습관 체크 성공')

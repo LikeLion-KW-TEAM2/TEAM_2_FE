@@ -1,9 +1,12 @@
-import { RecordResponse } from '@/types/record'
+import { EditPageResponse, RecordResponse } from '@/types/record'
 import { instance } from '../service'
 
 const GET = {
   record(): Promise<RecordResponse> {
     return instance.get(`/home`)
+  },
+  editPage(habitId: number): Promise<EditPageResponse> {
+    return instance.get(`/home/habit/${habitId}`)
   },
 }
 
