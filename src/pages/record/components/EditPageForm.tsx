@@ -7,7 +7,10 @@ import { useEditForm } from '@/hooks/useEditForm'
 import { useEditHabit } from '@/services/record/useRecordService'
 import { EditForm, EditPageResponse } from '@/types/record'
 
-type EditFormType = EditPageResponse & { openModal: () => void }
+type EditFormType = EditPageResponse & {
+  openOvercomModal: () => void
+  openSuccessModal: () => void
+}
 
 const EditPageForm = ({
   id,
@@ -15,7 +18,8 @@ const EditPageForm = ({
   name,
   periodType,
   privacy,
-  openModal,
+  openOvercomModal,
+  openSuccessModal,
 }: EditFormType) => {
   const IS_COMPLETED = overcome === 0
   const { mutate: editHabit } = useEditHabit()
@@ -33,8 +37,8 @@ const EditPageForm = ({
   } = formMethod
 
   const handleSubmitEditHabit = (formData: EditForm) => {
-    console.log(formData)
     editHabit({ habitId: id, formData })
+    openSuccessModal()
   }
 
   return (
@@ -58,7 +62,7 @@ const EditPageForm = ({
           <Button
             width="w-full"
             size="medium"
-            handleClick={openModal}
+            handleClick={openOvercomModal}
             disabled={!IS_COMPLETED}
           >
             {overcome === 0

@@ -4,9 +4,21 @@ import ModalCompleteHabit from './components/ModalCompleteHabit'
 import { useEditPage } from '@/services/record/useRecordService'
 import { useParams } from 'react-router-dom'
 import EditPageForm from './components/EditPageForm'
+import { Modal } from '@/components/modal/Modal'
+import Button from '@/components/Button'
 
 const RecordEdit = () => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const {
+    isOpen: isOvercomModalOpen,
+    openModal: openOvercomModal,
+    closeModal: closeOvercomModal,
+  } = useModal()
+  const {
+    isOpen: isSuccessModalOpen,
+    openModal: openSuccessModal,
+    closeModal: closeSuccessModal,
+  } = useModal()
+
   const { id: habitId } = useParams()
   const { data: editPage, status } = useEditPage(parseInt(habitId as string))
 
@@ -22,9 +34,25 @@ const RecordEdit = () => {
         name={editPage.name}
         periodType={editPage.periodType}
         privacy={editPage.privacy}
-        openModal={openModal}
+        openOvercomModal={openOvercomModal}
+        openSuccessModal={openSuccessModal}
       />
-      <ModalCompleteHabit isOpen={isOpen} closeModal={closeModal} />
+      <ModalCompleteHabit
+        isOpen={isOvercomModalOpen}
+        closeModal={closeOvercomModal}
+      />
+
+      <Modal isOpen={isSuccessModalOpen} closeModal={closeSuccessModal}>
+        <h4 className="mb-6 font-bold">수정이 완료되었습니다.</h4>
+        <Button
+          width="w-full"
+          className="flex-1"
+          size="small"
+          handleClick={closeSuccessModal}
+        >
+          닫기
+        </Button>
+      </Modal>
     </div>
   )
 }

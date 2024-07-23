@@ -24,11 +24,11 @@ export const record = [
       overcome: 23,
     })
   }),
-  http.put('http://localhost:8080/home/habit/check/0', () => {
+  http.put('http://localhost:8080/home/habit/change/0', () => {
     console.log('습관 체크')
     return HttpResponse.json('습관 체크 성공')
   }),
-  http.put(`/home/habit/change/0`, () => {
+  http.put(`http://localhost:8080/home/habit/0`, () => {
     console.log('습관 수정')
     return HttpResponse.json('습관 수정 성공')
   }),
