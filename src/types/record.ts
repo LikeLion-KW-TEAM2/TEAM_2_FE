@@ -17,3 +17,9 @@ export interface EditPageResponse {
   privacy: number
   dDay: number
 }
+
+export interface EditPageRequest {
+  name: string
+  periodType: number
+  privacy: number
+}
