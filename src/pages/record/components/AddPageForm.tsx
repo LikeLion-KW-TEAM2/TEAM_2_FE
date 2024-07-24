@@ -26,7 +26,6 @@ const AddPageForm = ({ openModal }: IAddPageForm) => {
     addHabit(formData)
     openModal()
   }
-
   return (
     <FormProvider {...formMethod}>
       <form

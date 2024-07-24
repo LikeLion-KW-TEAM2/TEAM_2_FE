@@ -10,7 +10,7 @@ interface IHabitList {
 }
 
 const HabitList = ({ list, habitsData }: IHabitList) => {
-  const [habitList, setHabitList] = useState<Habits[]>(list)
+  const [habitList, setHabitList] = useState<Habits[]>(list || [])
 
   useEffect(() => {
     if (habitsData) setHabitList(habitsData)
