@@ -34,7 +34,7 @@ export const record = [
       name: '다리 꼬기',
       periodType: 6,
       privacy: 0,
-      overcome: 23,
+      dday: 23,
     })
   }),
   http.put('http://localhost:8080/home/habit/check/0', () => {

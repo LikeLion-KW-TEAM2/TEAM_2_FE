@@ -15,7 +15,7 @@ export interface EditPageResponse {
   name: string
   periodType: number
   privacy: number
-  overcome: number
+  dday: number
 }
 
 export interface EditForm {

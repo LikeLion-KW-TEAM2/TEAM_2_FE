@@ -14,14 +14,14 @@ type EditFormType = EditPageResponse & {
 
 const EditPageForm = ({
   id,
-  overcome,
+  dday,
   name,
   periodType,
   privacy,
   openOvercomModal,
   openSuccessModal,
 }: EditFormType) => {
-  const IS_COMPLETED = overcome === 0
+  const IS_COMPLETED = dday === 0
   const { mutate: editHabit } = useEditHabit()
 
   const formMethod = useEditForm({
@@ -66,9 +66,7 @@ const EditPageForm = ({
             handleClick={openOvercomModal}
             disabled={!IS_COMPLETED}
           >
-            {overcome === 0
-              ? '습관 극복 완료'
-              : `습관 극복 완료 (D-${overcome})`}
+            {dday === 0 ? '습관 극복 완료' : `습관 극복 완료 (D-${dday})`}
           </Button>
         </div>
       </form>

@@ -38,7 +38,7 @@ const RecordEdit = () => {
       <SubHeader handleClickDelete={handleDeleteHabit}>수정하기</SubHeader>
       <EditPageForm
         id={editPage.id}
-        overcome={editPage.overcome}
+        dday={editPage.dday}
         name={editPage.name}
         periodType={editPage.periodType}
         privacy={editPage.privacy}
