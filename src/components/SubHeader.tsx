@@ -7,9 +7,14 @@ import ModalDelete from './ModalDelete'
 interface ISubHeader {
   hidden?: boolean
   children: ReactNode
+  handleClickDelete?: () => void
 }
 
-const SubHeader = ({ hidden = false, children }: ISubHeader) => {
+const SubHeader = ({
+  hidden = false,
+  children,
+  handleClickDelete,
+}: ISubHeader) => {
   const navigate = useNavigate()
   const { isOpen, openModal, closeModal } = useModal()
 
@@ -32,11 +37,13 @@ const SubHeader = ({ hidden = false, children }: ISubHeader) => {
         </p>
       </div>
 
-      <ModalDelete
-        isOpen={isOpen}
-        closeModal={closeModal}
-        handleClick={() => {}}
-      />
+      {!hidden && handleClickDelete && (
+        <ModalDelete
+          isOpen={isOpen}
+          closeModal={closeModal}
+          handleClick={handleClickDelete}
+        />
+      )}
     </>
   )
 }

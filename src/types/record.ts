@@ -28,3 +28,6 @@ export interface EditRequest {
   habitId: number
   formData: EditForm
 }
+
+export type AddForm = EditForm
+export type AddHabitRequest = EditForm

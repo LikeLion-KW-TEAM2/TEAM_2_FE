@@ -1,4 +1,9 @@
-import { EditPageResponse, EditForm, RecordResponse } from '@/types/record'
+import {
+  EditPageResponse,
+  EditForm,
+  RecordResponse,
+  AddHabitRequest,
+} from '@/types/record'
 import { instance } from '../service'
 
 const GET = {
@@ -7,6 +12,12 @@ const GET = {
   },
   editPage(habitId: number): Promise<EditPageResponse> {
     return instance.get(`/home/habit/${habitId}`)
+  },
+}
+
+const POST = {
+  habit(habit: AddHabitRequest) {
+    return instance.post(`/home/habit/create`, habit)
   },
 }
 
@@ -25,6 +36,6 @@ const DELETE = {
   },
 }
 
-const recordService = { GET, PUT, DELETE }
+const recordService = { GET, POST, PUT, DELETE }
 
 export default recordService

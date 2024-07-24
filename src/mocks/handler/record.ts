@@ -32,4 +32,8 @@ export const record = [
     console.log('습관 수정')
     return HttpResponse.json('습관 수정 성공')
   }),
+  http.delete(`http://localhost:8080/home/habit/delete/0`, () => {
+    console.log('습관 삭제')
+    return HttpResponse.json('습관 삭제 성공')
+  }),
 ]

@@ -1,11 +1,10 @@
 import SubHeader from '@/components/SubHeader'
 import { useModal } from '@/hooks/useModal'
 import ModalCompleteHabit from './components/ModalCompleteHabit'
-import { useEditPage } from '@/services/record/useRecordService'
-import { useParams } from 'react-router-dom'
+import { useDeleteHabit, useEditPage } from '@/services/record/useRecordService'
+import { useNavigate, useParams } from 'react-router-dom'
 import EditPageForm from './components/EditPageForm'
-import { Modal } from '@/components/modal/Modal'
-import Button from '@/components/Button'
+import ModalEdit from './components/ModalEdit'
 
 const RecordEdit = () => {
   const {
@@ -19,15 +18,24 @@ const RecordEdit = () => {
     closeModal: closeSuccessModal,
   } = useModal()
 
-  const { id: habitId } = useParams()
-  const { data: editPage, status } = useEditPage(parseInt(habitId as string))
+  const { mutate: deleteHabit } = useDeleteHabit()
+
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const habitId = parseInt(id as string)
+  const { data: editPage, status } = useEditPage(habitId)
+
+  const handleDeleteHabit = () => {
+    deleteHabit(habitId)
+    navigate('/')
+  }
 
   if (status === 'pending') return null
   if (status === 'error') return null
 
   return (
     <div>
-      <SubHeader>수정하기</SubHeader>
+      <SubHeader handleClickDelete={handleDeleteHabit}>수정하기</SubHeader>
       <EditPageForm
         id={editPage.id}
         overcome={editPage.overcome}
@@ -42,17 +50,7 @@ const RecordEdit = () => {
         closeModal={closeOvercomModal}
       />
 
-      <Modal isOpen={isSuccessModalOpen} closeModal={closeSuccessModal}>
-        <h4 className="mb-6 font-bold">수정이 완료되었습니다.</h4>
-        <Button
-          width="w-full"
-          className="flex-1"
-          size="small"
-          handleClick={closeSuccessModal}
-        >
-          닫기
-        </Button>
-      </Modal>
+      <ModalEdit isOpen={isSuccessModalOpen} closeModal={closeSuccessModal} />
     </div>
   )
 }

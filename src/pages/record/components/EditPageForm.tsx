@@ -34,6 +34,7 @@ const EditPageForm = ({
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = formMethod
 
   const handleSubmitEditHabit = (formData: EditForm) => {
@@ -52,8 +53,8 @@ const EditPageForm = ({
           <InputField.Input type="text" register={register('name')} />
         </InputField>
 
-        <SelectPeriod />
-        <SelectPrivacy />
+        <SelectPeriod setValue={setValue} />
+        <SelectPrivacy setValue={setValue} />
 
         <div className="flexColumn absolute bottom-10 left-4 right-4 gap-4">
           <Button type="submit" width="w-full" size="medium">

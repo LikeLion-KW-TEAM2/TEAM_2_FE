@@ -2,12 +2,15 @@ import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
 import { useToggle } from '@/hooks/useToggle'
 import { EditForm } from '@/types/record'
-import { useFormContext } from 'react-hook-form'
+import { UseFormSetValue } from 'react-hook-form'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const SelectPrivacy = () => {
+interface SelectPrivacyProps {
+  setValue: UseFormSetValue<EditForm>
+}
+
+const SelectPrivacy = ({ setValue }: SelectPrivacyProps) => {
   const [isPrivateDropDownOpen, handlePrivateDropDownOpen] = useToggle()
-  const { setValue } = useFormContext<EditForm>()
 
   const handlePrivateChange = (privacy: number) => {
     setValue('privacy', privacy)

@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import recordService from './recordService'
 import queryKeys from './queries'
-import { EditRequest } from '@/types/record'
+import { AddHabitRequest, EditRequest } from '@/types/record'
 
 export const useRecord = () => {
   return useQuery({
@@ -38,5 +38,14 @@ export const useEditHabit = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.all })
     },
+  })
+}
+
+export const useAddHabit = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (habit: AddHabitRequest) => recordService.POST.habit(habit),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.all }),
   })
 }
