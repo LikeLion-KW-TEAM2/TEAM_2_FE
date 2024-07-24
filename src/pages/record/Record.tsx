@@ -27,7 +27,7 @@ const Record = () => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <HabitList list={recordData.list} habitsData={habitsData?.habits} />
+      <HabitList list={recordData.habits} habitsData={habitsData?.habits} />
     </NavLayout>
   )
 }

@@ -7,7 +7,7 @@ export interface Record {
 
 export interface RecordResponse {
   mylmage: string
-  list: Record[]
+  habits: Record[]
 }
 
 export interface EditPageResponse {
