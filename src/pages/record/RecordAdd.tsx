@@ -3,9 +3,15 @@ import SubHeader from '@/components/SubHeader'
 import { useModal } from '@/hooks/useModal'
 import AddPageForm from './components/AddPageForm'
 import { Modal } from '@/components/modal/Modal'
+import { useNavigate } from 'react-router-dom'
 
 const RecordAdd = () => {
+  const navigate = useNavigate()
   const { isOpen, openModal, closeModal } = useModal()
+  const handleClickAddModal = () => {
+    closeModal()
+    navigate('/')
+  }
 
   return (
     <div>
@@ -20,7 +26,7 @@ const RecordAdd = () => {
             width="w-full"
             className="flex-1"
             size="small"
-            handleClick={closeModal}
+            handleClick={handleClickAddModal}
           >
             고마워
           </Button>
