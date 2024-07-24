@@ -3,8 +3,8 @@ import 'dayjs/locale/ko'
 import { Dispatch, SetStateAction, useState } from 'react'
 
 interface IHabitCalendar {
-  selectedDate: string | null
-  setSelectedDate: Dispatch<SetStateAction<string | null>>
+  selectedDate: string
+  setSelectedDate: Dispatch<SetStateAction<string>>
 }
 
 const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {

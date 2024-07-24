@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import recordService from './recordService'
 import queryKeys from './queries'
-import { AddHabitRequest, EditRequest, RecordResponse } from '@/types/record'
+import { AddHabitRequest, CheckHabitRequest, EditRequest } from '@/types/record'
 
 export const useRecord = () => {
   return useQuery({
@@ -19,7 +19,8 @@ export const useEditPage = (habitId: number) => {
 
 export const useCheckHabit = () => {
   return useMutation({
-    mutationFn: (habitId: number) => recordService.PUT.check(habitId),
+    mutationFn: (checkData: CheckHabitRequest) =>
+      recordService.PUT.check(checkData),
   })
 }
 

@@ -4,6 +4,7 @@ import {
   RecordResponse,
   AddHabitRequest,
   HabitsByDateResponse,
+  CheckHabitRequest,
 } from '@/types/record'
 import { instance } from '../service'
 
@@ -26,8 +27,8 @@ const POST = {
 }
 
 const PUT = {
-  check(habitId: number) {
-    return instance.put(`/home/habit/check/${habitId}`)
+  check({ habitId, date }: CheckHabitRequest) {
+    return instance.put(`/home/habit/check/${habitId}`, { date: date })
   },
   edit(habitId: number, formData: EditForm) {
     return instance.put(`/home/habit/change/${habitId}`, formData)

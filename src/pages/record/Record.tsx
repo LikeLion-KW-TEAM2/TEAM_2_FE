@@ -9,7 +9,7 @@ import HabitList from './HabitList'
 const Record = () => {
   dayjs.locale('ko')
   const now = dayjs().format('YYYY-MM-DD')
-  const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const [selectedDate, setSelectedDate] = useState<string>(now)
   const { data: recordData, status } = useRecord()
   const { data: habitsData, refetch } = useHabitsByDate(selectedDate || now)
 
@@ -27,7 +27,11 @@ const Record = () => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <HabitList list={recordData.habits} habitsData={habitsData?.habits} />
+      <HabitList
+        list={recordData.habits}
+        habitsData={habitsData?.habits}
+        selectedDate={selectedDate}
+      />
     </NavLayout>
   )
 }

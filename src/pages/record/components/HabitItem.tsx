@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-const HabitItem = ({ id, name, status }: Record) => {
+const HabitItem = ({ id, name, status, selectedDate }: Record) => {
   const [isChecked, setIsChecked] = useState<boolean>(status === 1)
   const { mutate: checkMutate } = useCheckHabit()
   const handleCheckHabit = () => {
-    checkMutate(id, { onSuccess: () => setIsChecked((prev) => !prev) })
+    checkMutate(
+      { habitId: id, date: selectedDate as string },
+      { onSuccess: () => setIsChecked((prev) => !prev) },
+    )
   }
 
   useEffect(() => {

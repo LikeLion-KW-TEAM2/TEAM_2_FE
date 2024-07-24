@@ -3,6 +3,7 @@ export interface Record {
   name: string
   status: number
   createdAt: string
+  selectedDate: string
 }
 
 export interface RecordResponse {
@@ -42,4 +43,9 @@ export interface Habits {
 export interface HabitsByDateResponse {
   myImage: string
   habits: Habits[]
+}
+
+export interface CheckHabitRequest {
+  habitId: number
+  date: string
 }

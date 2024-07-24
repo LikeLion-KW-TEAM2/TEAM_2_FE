@@ -7,9 +7,11 @@ import { useEffect, useState } from 'react'
 interface IHabitList {
   list: Habits[]
   habitsData?: Habits[]
+  selectedDate: string
 }
 
-const HabitList = ({ list, habitsData }: IHabitList) => {
+const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
+  console.log(selectedDate)
   const [habitList, setHabitList] = useState<Habits[]>(list || [])
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const HabitList = ({ list, habitsData }: IHabitList) => {
           name={name}
           status={status}
           createdAt={createdAt}
+          selectedDate={selectedDate}
           key={id}
         />
       ))}
