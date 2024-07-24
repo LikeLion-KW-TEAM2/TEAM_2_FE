@@ -49,3 +49,10 @@ export const useAddHabit = () => {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.all }),
   })
 }
+
+export const useHabitsByDate = (date: string) => {
+  return useQuery({
+    queryKey: queryKeys.habit(date),
+    queryFn: () => recordService.GET.habitByDate(date),
+  })
+}

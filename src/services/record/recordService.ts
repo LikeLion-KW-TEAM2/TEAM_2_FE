@@ -3,6 +3,7 @@ import {
   EditForm,
   RecordResponse,
   AddHabitRequest,
+  HabitsByDateResponse,
 } from '@/types/record'
 import { instance } from '../service'
 
@@ -12,6 +13,9 @@ const GET = {
   },
   editPage(habitId: number): Promise<EditPageResponse> {
     return instance.get(`/home/habit/${habitId}`)
+  },
+  habitByDate(date: string): Promise<HabitsByDateResponse> {
+    return instance.get(`/home/${date}`)
   },
 }
 

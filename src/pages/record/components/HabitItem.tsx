@@ -1,15 +1,19 @@
-import { useToggle } from '@/hooks/useToggle'
 import { useCheckHabit } from '@/services/record/useRecordService'
 import { Record } from '@/types/record'
+import { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
 const HabitItem = ({ id, name, status }: Record) => {
-  const [isChecked, handleChecked] = useToggle(status === 1)
+  const [isChecked, setIsChecked] = useState<boolean>(status === 1)
   const { mutate: checkMutate } = useCheckHabit()
   const handleCheckHabit = () => {
-    checkMutate(id, { onSuccess: handleChecked })
+    checkMutate(id, { onSuccess: () => setIsChecked((prev) => !prev) })
   }
+
+  useEffect(() => {
+    setIsChecked(status === 1)
+  }, [status])
 
   return (
     <div className="flexAlign gap-3">

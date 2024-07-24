@@ -31,3 +31,15 @@ export interface EditRequest {
 
 export type AddForm = EditForm
 export type AddHabitRequest = EditForm
+
+export interface Habits {
+  id: number
+  name: string
+  status: number
+  createdAt: string
+}
+
+export interface HabitsByDateResponse {
+  myImage: string
+  habits: Habits[]
+}

@@ -1,8 +1,13 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
-const HabitCalendar = () => {
+interface IHabitCalendar {
+  selectedDate: string | null
+  setSelectedDate: Dispatch<SetStateAction<string | null>>
+}
+
+const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
   dayjs.locale('ko')
   const now = dayjs()
   const [year, setYear] = useState(now.get('year'))
@@ -10,7 +15,13 @@ const HabitCalendar = () => {
   const [date, setDate] = useState(now.get('date'))
   const daysInMonth = dayjs(`${year}-${month}`).daysInMonth()
 
-  const CURRENT_DAY_STYLE = `bg-primary-200 rounded-full`
+  const CURRENT_DAY_STYLE = `bg-primary-400 rounded-full`
+  const SELECTED_DAY_STYLE = `bg-primary-200 rounded-full`
+
+  const handleDateClick = (date: string) => {
+    const formattedDate = dayjs(date).format('YYYY-MM-DD')
+    setSelectedDate(formattedDate)
+  }
 
   return (
     <div className="margin-auto w-full">
@@ -18,10 +29,15 @@ const HabitCalendar = () => {
       <div className="flex flex-nowrap overflow-x-scroll scrollbar-hide">
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = dayjs(`${year}-${month}-${i}`).format('dd')
+          const date = `${year}-${month}-${i + 1}`
+          const isCurrentDay = now.format('YYYY-M-D') === date
+          const isSelectedDay =
+            selectedDate === dayjs(date).format('YYYY-MM-DD')
           return (
             <div
               key={i}
-              className={`flexColumnAlign ${day === '토' && 'text-primary-600'} ${day === '일' && 'text-error-primary'} ${now.format('YYYY-M-DD') === `${year}-${month}-${i + 1}` && CURRENT_DAY_STYLE} h-12 w-12 flex-shrink-0`}
+              onClick={() => handleDateClick(date)}
+              className={`flexColumnAlign ${day === '토' && 'text-primary-600'} ${day === '일' && 'text-error-primary'} ${isCurrentDay && CURRENT_DAY_STYLE} ${isSelectedDay && SELECTED_DAY_STYLE} h-12 w-12 flex-shrink-0 cursor-pointer`}
             >
               <p className={`text-small`}>{day}</p>
               <p key={i + 1} className="text-large font-bold">
