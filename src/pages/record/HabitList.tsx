@@ -33,7 +33,7 @@ const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
       <div className="flexAlign cursor-pointer gap-2 self-center text-secondary-500">
         <AiOutlinePlusCircle size={12} />
         <Link to={'/record/add'}>
-          <p className="text-medium">추가하기</p>
+          <p className="text-medium">습관 추가하기</p>
         </Link>
       </div>
     </div>
