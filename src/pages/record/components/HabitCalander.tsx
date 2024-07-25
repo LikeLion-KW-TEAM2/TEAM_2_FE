@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 
 interface IHabitCalendar {
   selectedDate: string
@@ -23,6 +23,14 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
     setSelectedDate(formattedDate)
   }
 
+  const todayRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (todayRef.current) {
+      todayRef.current.scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    }
+  }, [])
+
   return (
     <div className="margin-auto w-full">
       <p className="mb-4 text-large font-bold text-primary-700">{month}월</p>
@@ -36,6 +44,7 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
           return (
             <div
               key={i}
+              ref={isCurrentDay ? todayRef : null}
               onClick={() => handleDateClick(date)}
               className={`flexColumnAlign ${day === '토' && 'text-primary-600'} ${day === '일' && 'text-error-primary'} ${isCurrentDay && CURRENT_DAY_STYLE} ${isSelectedDay && SELECTED_DAY_STYLE} h-12 w-12 flex-shrink-0 cursor-pointer`}
             >
