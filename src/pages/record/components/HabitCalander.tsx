@@ -12,18 +12,17 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
   const now = dayjs()
   const [year, setYear] = useState(now.get('year'))
   const [month, setMonth] = useState(now.get('month') + 1)
-  const [date, setDate] = useState(now.get('date'))
   const daysInMonth = dayjs(`${year}-${month}`).daysInMonth()
 
   const CURRENT_DAY_STYLE = `bg-primary-400 rounded-full`
   const SELECTED_DAY_STYLE = `bg-primary-200 rounded-full`
 
-  const handleDateClick = (date: string) => {
-    const formattedDate = dayjs(date).format('YYYY-MM-DD')
-    setSelectedDate(formattedDate)
-  }
-
   const todayRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isDragging = useRef(false)
+  const startX = useRef(0)
+  const scrollLeft = useRef(0)
+  const [isDragMoved, setIsDragMoved] = useState(false)
 
   useEffect(() => {
     if (todayRef.current) {
@@ -31,10 +30,47 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
     }
   }, [])
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (containerRef.current) {
+      isDragging.current = true
+      startX.current = e.pageX - containerRef.current.offsetLeft
+      scrollLeft.current = containerRef.current.scrollLeft
+      setIsDragMoved(false)
+    }
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return
+    e.preventDefault()
+    setIsDragMoved(true)
+    if (containerRef.current) {
+      const x = e.pageX - containerRef.current.offsetLeft
+      const walk = x - startX.current
+      containerRef.current.scrollLeft = scrollLeft.current - walk
+    }
+  }
+
+  const handleMouseUpOrLeave = () => {
+    isDragging.current = false
+  }
+
+  const handleDateClick = (date: string) => {
+    if (!isDragMoved) {
+      const formattedDate = dayjs(date).format('YYYY-MM-DD')
+      setSelectedDate(formattedDate)
+    }
+  }
   return (
     <div className="margin-auto w-full">
       <p className="mb-4 text-large font-bold text-primary-700">{month}월</p>
-      <div className="flex flex-nowrap overflow-x-scroll scrollbar-hide">
+      <div
+        className="flex flex-nowrap overflow-x-scroll scrollbar-hide"
+        ref={containerRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+      >
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = dayjs(`${year}-${month}-${i}`).format('dd')
           const date = `${year}-${month}-${i + 1}`
