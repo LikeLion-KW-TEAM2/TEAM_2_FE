@@ -19,6 +19,11 @@ const Friend = () => {
         {friendData?.friends.map((friend) => (
           <FriendItem friend={friend} key={friend.userId} />
         ))}
+        {friendData?.friends.length === 0 && (
+          <p className="text-center text-secondary-500">
+            친구 목록이 없습니다.
+          </p>
+        )}
       </div>
     </NavLayout>
   )
