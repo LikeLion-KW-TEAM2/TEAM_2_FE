@@ -49,3 +49,8 @@ export interface CheckHabitRequest {
   habitId: number
   date: string
 }
+
+export interface AddFriendRequest {
+  userId: string
+  name: string
+}

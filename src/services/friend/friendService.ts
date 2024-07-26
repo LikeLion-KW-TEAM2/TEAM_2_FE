@@ -5,6 +5,7 @@ import {
   SearchResponse,
 } from '@/types/friend'
 import { instance } from '../service'
+import { AddFriendRequest } from '@/types/record'
 
 const GET = {
   friend(): Promise<FriendPageResponse> {
@@ -19,8 +20,8 @@ const GET = {
 }
 
 const POST = {
-  add(searchId: string) {
-    return instance.post(`/friend/create/${searchId}`, {})
+  add(friend: AddFriendRequest) {
+    return instance.post(`/friend/create`, friend)
   },
   guestbook(guestbook: GuestbookRequest) {
     return instance.post(`/friend/guestbook`, guestbook)

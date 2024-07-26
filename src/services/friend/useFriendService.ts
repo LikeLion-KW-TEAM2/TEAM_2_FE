@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import queryKeys from './queries'
 import friendService from './friendService'
 import { GuestbookRequest } from '@/types/friend'
+import { AddFriendRequest } from '@/types/record'
 
 export const useFriendPageList = () => {
   return useQuery({
@@ -21,7 +22,7 @@ export const useAddition = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (searchId: string) => friendService.POST.add(searchId),
+    mutationFn: (friend: AddFriendRequest) => friendService.POST.add(friend),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.all })
     },
