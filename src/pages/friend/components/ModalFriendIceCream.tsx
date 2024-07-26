@@ -8,10 +8,12 @@ import convertLevelToIcecream from '@/utils/convertLevelToIcecream'
 import { BsSend } from 'react-icons/bs'
 import bgIcecream from '@/assets/images/icecream-bg.svg'
 import useInput from '@/hooks/useInput'
+import { useEffect, useState } from 'react'
 
 type ModalIcecream = ModalType & { userId: string }
 
 const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
+  const [isSuccess, setIsSuccess] = useState(false)
   const { data: modalData, status } = useFriendIcecream(userId)
   const { input, onChange, reset } = useInput({ content: '' })
   const { mutate: sendMessage } = useGuestBook()
@@ -19,10 +21,17 @@ const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
     sendMessage(
       { userId, content: input.content },
       {
-        onSuccess: () => reset(),
+        onSuccess: () => {
+          setIsSuccess(true)
+          reset()
+        },
       },
     )
   }
+
+  useEffect(() => {
+    setIsSuccess(false)
+  }, [closeModal])
 
   if (status === 'pending') return null
   if (status === 'error') return null
@@ -65,11 +74,15 @@ const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
         <div className="rounded-full bg-secondary-200 p-1 text-secondary-500">
           <BsSend
             size={16}
-            className="-translate-x-[1px] translate-y-[1px]"
+            className="-translate-x-[1px] translate-y-[1px] cursor-pointer"
             onClick={handleClickSendMessage}
           />
         </div>
       </div>
+
+      <p className="h-4 text-xsmall text-[#15B53D]">
+        {isSuccess && '성공적으로 작성되었습니다.'}
+      </p>
     </Modal>
   )
 }
