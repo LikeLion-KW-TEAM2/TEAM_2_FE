@@ -3,6 +3,7 @@ import HabitItem from './components/HabitItem'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import ErrorMessage from '@/components/ErrorMessage'
 
 interface IHabitList {
   list: Habits[]
@@ -11,7 +12,6 @@ interface IHabitList {
 }
 
 const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
-  console.log(selectedDate)
   const [habitList, setHabitList] = useState<Habits[]>(list || [])
 
   useEffect(() => {
@@ -30,6 +30,9 @@ const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
           key={id}
         />
       ))}
+      {habitList.length === 0 && (
+        <ErrorMessage>습관 목록이 없습니다.</ErrorMessage>
+      )}
       <div className="flexAlign cursor-pointer gap-2 self-center text-secondary-500">
         <AiOutlinePlusCircle size={12} />
         <Link to={'/record/add'}>

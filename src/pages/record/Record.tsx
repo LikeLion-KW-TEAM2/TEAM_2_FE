@@ -5,6 +5,7 @@ import { useHabitsByDate, useRecord } from '@/services/record/useRecordService'
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import HabitList from './HabitList'
+import defaultImage from '@/utils/defaultImage'
 
 const Record = () => {
   dayjs.locale('ko')
@@ -18,17 +19,16 @@ const Record = () => {
   }, [selectedDate, refetch])
 
   if (status === 'pending') return null
-  if (status === 'error') return null
 
   return (
     <NavLayout>
-      <HeaderWithProfile src={recordData.mylmage} />
+      <HeaderWithProfile src={recordData?.mylmage || defaultImage()} />
       <HabitCalendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
       <HabitList
-        list={recordData.habits}
+        list={recordData?.habits || []}
         habitsData={habitsData?.habits}
         selectedDate={selectedDate}
       />
