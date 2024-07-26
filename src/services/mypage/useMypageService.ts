@@ -29,10 +29,9 @@ export const useDeleteFriend = () => {
       queryClient.setQueryData<FriendListResponse>(
         queryKeys.friendList(),
         (oldData): FriendListResponse => {
-          if (!oldData) return { list: [] }
+          if (!oldData) return []
           return {
-            ...oldData,
-            list: oldData.list.filter((friend) => friend.userId !== variables),
+            ...oldData.filter((friend) => friend.userId !== variables),
           }
         },
       )

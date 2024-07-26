@@ -31,7 +31,7 @@ const FriendList = () => {
       <SubHeader hidden>친구 목록 관리</SubHeader>
 
       <div className="flexColumn gap-8">
-        {friendList?.list.map(({ userId, name, image }) => (
+        {friendList?.map(({ userId, name, image }) => (
           <div className="flexBetweenAlign px-4" key={userId}>
             <TextWithProfile>
               <TextWithProfile.Image src={image} />

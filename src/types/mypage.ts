@@ -7,11 +7,10 @@ export interface FriendType {
   userId: string
   name: string
   image: string
-}
-export interface FriendListResponse {
-  list: FriendType[]
+  count?: number
 }
 
+export type FriendListResponse = FriendType[]
 export interface AccountInfoResponse {
   name: string
   myImage: string
