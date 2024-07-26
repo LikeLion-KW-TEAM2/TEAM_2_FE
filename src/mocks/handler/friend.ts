@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 
 const friendPage = {
   myImage: '/src/assets/images/default.svg',
-  list: [
+  friends: [
     {
       userId: 'qwer1234',
       name: '고로냐',
@@ -51,8 +51,8 @@ const addFriend = () => {
       isFriend: false,
     },
   ]
-  friendPage.list = [
-    ...friendPage.list,
+  friendPage.friends = [
+    ...friendPage.friends,
     {
       userId: 'abcd4521',
       name: '이로케',

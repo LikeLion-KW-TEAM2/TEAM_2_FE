@@ -6,7 +6,6 @@ import { useFriendPageList } from '@/services/friend/useFriendService'
 
 const Friend = () => {
   const { data: friendData, status } = useFriendPageList()
-  console.log(friendData)
 
   if (status === 'pending') return null
   if (status === 'error') return null
@@ -17,7 +16,7 @@ const Friend = () => {
       <SearchInput />
 
       <div className="flexColumn flex-1 overflow-y-scroll scrollbar-hide">
-        {friendData?.list.map((friend) => (
+        {friendData?.friends.map((friend) => (
           <FriendItem friend={friend} key={friend.userId} />
         ))}
       </div>

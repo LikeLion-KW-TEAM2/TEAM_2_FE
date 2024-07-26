@@ -16,7 +16,7 @@ export type SearchResponse = SearchFriend[]
 
 export interface FriendPageResponse {
   myImage: string
-  list: FriendType[]
+  friends: FriendType[]
 }
 
 export interface FriendIcecreamResponse {
