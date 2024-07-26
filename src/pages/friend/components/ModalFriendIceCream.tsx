@@ -27,7 +27,7 @@ const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
   if (status === 'pending') return null
   if (status === 'error') return null
 
-  const { name, countList, level } = modalData
+  const { name, habits, icecream } = modalData
 
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>
@@ -36,14 +36,14 @@ const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
       <div className="relative mb-3 h-[280px]">
         <img src={bgIcecream} className="mx-auto h-full" alt="ice-cream" />
         <img
-          src={convertLevelToIcecream(level)}
+          src={convertLevelToIcecream(icecream)}
           className="absolute bottom-8 left-1/2 w-[86px] -translate-x-1/2"
           alt="ice-cream"
         />
       </div>
       <p className="mb-1 text-small font-medium">습관 목록</p>
       <ul className="grid list-disc grid-cols-2 items-center text-xsmall">
-        {countList.map((item) => (
+        {habits.map((item) => (
           <li key={item} className="ml-4">
             {item}
           </li>

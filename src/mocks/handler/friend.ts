@@ -63,7 +63,7 @@ const addFriend = () => {
 
 const icecream = {
   name: '고로케',
-  countList: ['다리꼬기', '짝다리짚기'],
+  habits: ['다리꼬기', '짝다리짚기'],
   level: 1,
 }
 

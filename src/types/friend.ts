@@ -21,8 +21,8 @@ export interface FriendPageResponse {
 
 export interface FriendIcecreamResponse {
   name: string
-  countList: string[]
-  level: number
+  habits: string[]
+  icecream: number
 }
 
 export interface GuestbookRequest {
