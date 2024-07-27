@@ -1,15 +1,4 @@
-import { ReactNode } from 'react'
-
-interface IButton {
-  type?: 'button' | 'submit' | 'reset' | undefined
-  size: string
-  width?: string
-  children: ReactNode
-  disabled?: boolean
-  error?: boolean
-  className?: string
-  handleClick?: () => void
-}
+import { IButton } from '@/types/common'
 
 const Button = ({
   type = 'button',
@@ -22,16 +11,16 @@ const Button = ({
   handleClick,
 }: IButton) => {
   let style = ''
-  if (size === 'large') style = 'px-8 py-3 text-large'
-  else if (size === 'medium') style = 'px-6 py-2 text-medium'
-  else if (size === 'small') style = 'px-5 py-[6px] text-small'
-  else if (size === 'xsmall') style = 'px-4 py-1 text-xsmall'
-
   const bgColor = error
     ? 'bg-error-primary'
     : disabled
       ? 'bg-secondary-400'
       : 'bg-primary-600'
+
+  if (size === 'large') style = 'px-8 py-3 text-large'
+  else if (size === 'medium') style = 'px-6 py-2 text-medium'
+  else if (size === 'small') style = 'px-5 py-[6px] text-small'
+  else if (size === 'xsmall') style = 'px-4 py-1 text-xsmall'
 
   return (
     <button
