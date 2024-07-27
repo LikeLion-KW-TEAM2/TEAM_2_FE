@@ -1,3 +1,4 @@
+import ErrorMessage from '@/components/ErrorMessage'
 import ModalDelete from '@/components/ModalDelete'
 import SubHeader from '@/components/SubHeader'
 import { TextWithProfile } from '@/components/TextWithProfile'
@@ -24,7 +25,6 @@ const FriendList = () => {
   }
 
   if (status === 'pending') return null
-  if (status === 'error') return null
 
   return (
     <div>
@@ -52,6 +52,9 @@ const FriendList = () => {
             />
           </div>
         ))}
+        {friendList?.length === 0 && (
+          <ErrorMessage>친구 목록이 없습니다.</ErrorMessage>
+        )}
       </div>
       <ModalDelete
         isOpen={isOpen}
