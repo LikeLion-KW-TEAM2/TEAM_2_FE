@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-interface IItem {
+export interface IItem {
   onClick?: () => void
   children: ReactNode
 }
