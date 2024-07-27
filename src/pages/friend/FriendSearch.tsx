@@ -8,6 +8,7 @@ import { useSearchParams } from 'react-router-dom'
 import { AddFriendRequest } from '@/types/record'
 import { useModal } from '@/hooks/useModal'
 import ModalAddFriend from './components/ModalAddFriend'
+import ErrorMessage from '@/components/ErrorMessage'
 
 const FriendSearch = () => {
   const [searchParams, _] = useSearchParams()
@@ -21,7 +22,6 @@ const FriendSearch = () => {
   }
 
   if (status === 'pending') return null
-  if (status === 'error') return null
 
   return (
     <>
@@ -30,7 +30,7 @@ const FriendSearch = () => {
         <SearchInput />
 
         <div className="flexColumn flex-1 gap-5 overflow-y-scroll scrollbar-hide">
-          {searchData.map(({ userId, name, image, isFriend }) => (
+          {searchData?.map(({ userId, name, image, isFriend }) => (
             <div key={userId} className="flexBetweenAlign">
               <TextWithProfile>
                 <TextWithProfile.Image src={image} />
@@ -53,6 +53,7 @@ const FriendSearch = () => {
               </Button>
             </div>
           ))}
+          {!searchData && <ErrorMessage>검색 결과가 없습니다.</ErrorMessage>}
         </div>
       </NavLayout>
       <ModalAddFriend isOpen={isOpen} closeModal={closeModal} />
