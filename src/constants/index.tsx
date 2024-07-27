@@ -51,3 +51,11 @@ export const AGREE_LIST = [
   '개인정보 수집 및 이용 동의',
   '광고성 정보 수신 동의 (선택)',
 ]
+
+export const MYPAGE_LIST = [
+  { text: '비밀번호 변경', link: '/mypage/password' },
+  { text: '개선된 습관 목록', link: '/mypage/complete-habit' },
+  { text: '친구 목록 관리', link: '/mypage/friend-list' },
+  { text: '서비스 이용 약관', link: '/mypage' },
+  { text: '자주 묻는 질문', link: '/mypage' },
+]

@@ -1,28 +1,28 @@
-export interface MypageResponse {
-  name: string
-  image: string
-}
-
-export interface FriendType {
+export interface IFriend {
   userId: string
   name: string
   image: string
   count?: number
 }
 
-export type FriendListResponse = FriendType[]
-export interface AccountInfoResponse {
-  name: string
-  myImage: string
-}
-
-interface Habit {
+interface IHabit {
   name: string
   startDate: string
   endDate: string
 }
 
-export type CompleteHabitResponse = Habit[]
+export interface AccountInfoRequest {
+  name: string
+  myImage: string
+}
 
-export type AccountInfoRequest = AccountInfoResponse
-export type EditAccountInfoRequest = AccountInfoResponse
+export type EditAccountInfoRequest = AccountInfoRequest
+
+export interface MypageResponse {
+  name: string
+  image: string
+}
+
+export type FriendListResponse = IFriend[]
+export type AccountInfoResponse = AccountInfoRequest
+export type CompleteHabitResponse = IHabit[]

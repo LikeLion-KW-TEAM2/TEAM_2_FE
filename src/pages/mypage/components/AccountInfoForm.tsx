@@ -7,11 +7,12 @@ import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import { useEditAccountInfo } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
+import profileImage from '@/utils/profileImage'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
     name: name || '',
-    myImage: myImage || defaultImg,
+    myImage: profileImage(myImage),
   })
 
   const {
@@ -39,7 +40,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
             <InputField.Label>프로필 이미지</InputField.Label>
             <div className="flexBetweenAlign mt-4">
               <img
-                src={defaultImg}
+                src={profileImage(myImage)}
                 className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
                 alt="profile-img"
               />

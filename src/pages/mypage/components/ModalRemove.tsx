@@ -4,12 +4,8 @@ import { ModalClickType } from '@/types/common'
 
 const ModalRemove = ({ isOpen, closeModal, handleClick }: ModalClickType) => {
   const handleClickDeleteButton = () => {
-    try {
-      handleClick()
-      closeModal()
-    } catch {
-      console.log('실패')
-    }
+    handleClick()
+    closeModal()
   }
 
   return (
