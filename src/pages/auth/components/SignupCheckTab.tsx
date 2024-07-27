@@ -5,12 +5,7 @@ import Button from '@/components/Button'
 import { Modal } from '@/components/modal/Modal'
 import { Link } from 'react-router-dom'
 import { ModalType } from '@/types/common'
-
-const AGREE_LIST = [
-  '사용자 이용 약관 동의',
-  '개인정보 수집 및 이용 동의',
-  '광고성 정보 수신 동의 (선택)',
-]
+import { AGREE_LIST } from '@/constants'
 
 const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
   const {

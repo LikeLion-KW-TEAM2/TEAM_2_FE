@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 import authService from './authService'
 import {
-  RequestDuplicationId,
-  RequestLoginForm,
+  DuplicationIdRequest,
+  LoginFormRequest,
   SignupFormRequest,
 } from '@/types/auth'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +14,7 @@ export function useLogin() {
   const { setToken } = useTokenActions()
 
   return useMutation({
-    mutationFn: (loginData: RequestLoginForm) => {
+    mutationFn: (loginData: LoginFormRequest) => {
       const formData = new FormData()
       formData.append('userId', loginData.userId)
       formData.append('password', loginData.password)
@@ -43,7 +43,7 @@ export function useSignup() {
 
 export function useCheckOfDuplicationId() {
   return useMutation({
-    mutationFn: (userId: RequestDuplicationId) =>
+    mutationFn: (userId: DuplicationIdRequest) =>
       authService.POST.idValidate(userId),
     onError: (error: any) => {
       console.error('error', error)

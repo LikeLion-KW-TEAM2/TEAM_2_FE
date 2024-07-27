@@ -1,15 +1,15 @@
-import { ReactNode } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
-export interface RequestDuplicationId {
+export interface DuplicationIdRequest {
   userId: string
 }
 
-export interface RequestLoginForm {
+export interface LoginFormRequest {
   userId: string
   password: string
 }
 
-export interface SignupForm {
+export interface ISignupForm {
   name: string
   userId: string
   password: string
@@ -17,11 +17,15 @@ export interface SignupForm {
   agree: number
 }
 
-export type SignupFormRequest = Omit<SignupForm, 'confirm'>
-export type PasswordForm = Pick<SignupForm, 'password' | 'confirm'>
+export type SignupFormRequest = Omit<ISignupForm, 'confirm'>
+export type PasswordForm = Pick<ISignupForm, 'password' | 'confirm'>
 
 export interface ICheckInput {
   isChecked: boolean
   handleClick: () => void
   children: ReactNode
+}
+
+export interface IInputTab {
+  setCurrentTab: Dispatch<SetStateAction<number>>
 }

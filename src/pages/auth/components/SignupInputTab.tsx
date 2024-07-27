@@ -1,14 +1,11 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { useCheckOfDuplicationId } from '@/services/auth/useAuthService'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { IInputTab } from '@/types/auth'
+import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-interface InputTabType {
-  setCurrentTab: Dispatch<SetStateAction<number>>
-}
-
-const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
+const SignupInputTab = ({ setCurrentTab }: IInputTab) => {
   const {
     register,
     formState: { errors },
@@ -23,14 +20,10 @@ const SignupInputTab = ({ setCurrentTab }: InputTabType) => {
 
   const handleClickNextButton = async () => {
     const isValid = await trigger(['name', 'userId', 'password', 'confirm'])
-    if (isValid && !isError) {
-      console.log('성공')
-      setCurrentTab(1)
-    } else {
-      if (!hasCheckedDuplication) {
+    if (isValid && !isError) setCurrentTab(1)
+    else {
+      if (!hasCheckedDuplication)
         setError('id', { message: '아이디 중복 확인을 해주세요.' })
-      }
-      console.log('실패')
     }
   }
 

@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { useLoginForm } from '@/hooks/schema/useLoginForm'
 import { useLogin } from '@/services/auth/useAuthService'
-import { RequestLoginForm } from '@/types/auth'
+import { LoginFormRequest } from '@/types/auth'
 import { FormProvider } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ const Login = () => {
   const { mutate: loginMutate, isError, error } = useLogin()
   const { handleSubmit, register } = formMethod
 
-  const handleLoginFormSubmit = (loginForm: RequestLoginForm) => {
+  const handleLoginFormSubmit = (loginForm: LoginFormRequest) => {
     const formData = new FormData()
     formData.append('userId', loginForm.userId)
     formData.append('password', loginForm.password)
