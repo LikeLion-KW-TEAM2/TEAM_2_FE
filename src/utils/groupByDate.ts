@@ -1,6 +1,6 @@
-import { GuestbookContent } from '@/types/guestbook'
+import { IGuestbookContent } from '@/types/guestbook'
 
-const groupByDate = (guestbooks: GuestbookContent[]) => {
+const groupByDate = (guestbooks: IGuestbookContent[]) => {
   const grouped = guestbooks.reduce(
     (acc, guestbook) => {
       const date = guestbook.createdAt
@@ -10,7 +10,7 @@ const groupByDate = (guestbooks: GuestbookContent[]) => {
       acc[date].push(guestbook)
       return acc
     },
-    {} as { [date: string]: GuestbookContent[] },
+    {} as { [date: string]: IGuestbookContent[] },
   )
 
   return Object.entries(grouped).map(([date, items]) => ({

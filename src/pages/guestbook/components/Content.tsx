@@ -1,10 +1,5 @@
+import { IContent } from '@/types/guestbook'
 import { BiTrash } from 'react-icons/bi'
-
-interface IContent {
-  content: string
-  name: string
-  openModal: () => void
-}
 
 const Content = ({ content, name, openModal }: IContent) => {
   return (
