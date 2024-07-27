@@ -1,4 +1,4 @@
-import defaultImg from '@/assets/images/default.svg'
+import profileImage from '@/utils/profileImage'
 import { Link } from 'react-router-dom'
 
 interface IHeaderWithProfile {
@@ -11,7 +11,7 @@ const HeaderWithProfile = ({ src }: IHeaderWithProfile) => {
       <h1 className="font-bold text-primary-900">돈두댓</h1>
       <Link to={'/mypage'}>
         <img
-          src={src || defaultImg}
+          src={profileImage(src)}
           className="h-14 w-14 rounded-full border-[0.5px] border-secondary-200 bg-secondary-50 object-cover"
           alt="default-img"
         />
