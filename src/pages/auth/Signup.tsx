@@ -6,11 +6,7 @@ import { FormProvider } from 'react-hook-form'
 import { RequestSignupForm } from '@/types/auth'
 import { useSignup } from '@/services/auth/useAuthService'
 import { useModal } from '@/hooks/useModal'
-
-const SIGNUP_HEADER = [
-  '돈두댓에서 사용할 정보를 기입해주세요.',
-  '돈두댓 서비스 이용 약관에 동의해주세요.',
-]
+import { SIGNUP_HEADER } from '@/constants'
 
 const Signup = () => {
   const formMethod = useSignupForm()

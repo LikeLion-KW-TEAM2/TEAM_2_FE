@@ -40,3 +40,8 @@ export const NAV_ITEMS = [
   { name: '친구', link: '/friend', icon: <PiUsersThreeBold size={24} /> },
   { name: '방명록', link: '/guestbook', icon: <BiBookHeart size={24} /> },
 ]
+
+export const SIGNUP_HEADER = [
+  '돈두댓에서 사용할 정보를 기입해주세요.',
+  '돈두댓 서비스 이용 약관에 동의해주세요.',
+]
