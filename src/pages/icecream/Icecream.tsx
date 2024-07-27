@@ -12,12 +12,11 @@ const Icecream = () => {
   const { data: icecreamData, status } = useIcecreamLevel()
 
   if (status === 'pending') return null
-  if (status === 'error') return null
 
   return (
     <>
       <NavLayout>
-        <HeaderWithProfile src={icecreamData.myImage} />
+        <HeaderWithProfile src={icecreamData?.myImage} />
         <div className="flexBetweenAlign">
           <div className="flexColumn gap-1 text-large font-medium">
             <p>나만의 습관 아이스크림이 녹지 않도록</p>
@@ -34,7 +33,7 @@ const Icecream = () => {
           <div className="relative">
             <img src={bgIcecream} className="w-full" alt="bg" />
             <img
-              src={convertLevelToIcecream(icecreamData.icecream)}
+              src={convertLevelToIcecream(icecreamData?.icecream || 0)}
               className="absolute bottom-16 left-2/4 w-[149px] -translate-x-1/2 transition-all hover:-translate-y-4"
               alt="icecream"
             />
