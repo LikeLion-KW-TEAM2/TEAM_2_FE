@@ -8,11 +8,10 @@ const Friend = () => {
   const { data: friendData, status } = useFriendPageList()
 
   if (status === 'pending') return null
-  if (status === 'error') return null
 
   return (
     <NavLayout>
-      <HeaderWithProfile src={friendData.myImage} />
+      <HeaderWithProfile src={friendData?.myImage} />
       <SearchInput />
 
       <div className="flexColumn flex-1 overflow-y-scroll scrollbar-hide">

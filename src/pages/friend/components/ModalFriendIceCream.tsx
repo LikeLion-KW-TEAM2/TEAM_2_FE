@@ -3,20 +3,23 @@ import {
   useFriendIcecream,
   useGuestBook,
 } from '@/services/friend/useFriendService'
-import { ModalType } from '@/types/common'
 import convertLevelToIcecream from '@/utils/convertLevelToIcecream'
 import { BsSend } from 'react-icons/bs'
 import bgIcecream from '@/assets/images/icecream-bg.svg'
 import useInput from '@/hooks/useInput'
 import { useEffect, useState } from 'react'
+import { IModalIcecream } from '@/types/friend'
 
-type ModalIcecream = ModalType & { userId: string }
-
-const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
+const ModalFriendIceCream = ({
+  isOpen,
+  closeModal,
+  userId,
+}: IModalIcecream) => {
   const [isSuccess, setIsSuccess] = useState(false)
   const { data: modalData, status } = useFriendIcecream(userId)
   const { input, onChange, reset } = useInput({ content: '' })
   const { mutate: sendMessage } = useGuestBook()
+
   const handleClickSendMessage = () => {
     sendMessage(
       { userId, content: input.content },
@@ -34,25 +37,25 @@ const ModalFriendIceCream = ({ isOpen, closeModal, userId }: ModalIcecream) => {
   }, [closeModal])
 
   if (status === 'pending') return null
-  if (status === 'error') return null
-
-  const { name, habits, icecream } = modalData
+  if (status === 'error') closeModal()
 
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>
-      <h4 className="mb-3 text-center font-bold">{name}님의 아이스크림</h4>
+      <h4 className="mb-3 text-center font-bold">
+        {modalData?.name}님의 아이스크림
+      </h4>
 
       <div className="relative mb-3 h-[280px]">
         <img src={bgIcecream} className="mx-auto h-full" alt="ice-cream" />
         <img
-          src={convertLevelToIcecream(icecream)}
+          src={convertLevelToIcecream(modalData?.icecream || 0)}
           className="absolute bottom-8 left-1/2 w-[86px] -translate-x-1/2"
           alt="ice-cream"
         />
       </div>
       <p className="mb-1 text-small font-medium">습관 목록</p>
       <ul className="grid list-disc grid-cols-2 items-center text-xsmall">
-        {habits.map((item) => (
+        {modalData?.habits.map((item) => (
           <li key={item} className="ml-4">
             {item}
           </li>

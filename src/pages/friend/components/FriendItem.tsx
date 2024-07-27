@@ -1,12 +1,8 @@
 import Button from '@/components/Button'
 import { TextWithProfile } from '@/components/TextWithProfile'
 import { useModal } from '@/hooks/useModal'
-import { FriendType } from '@/types/friend'
 import ModalFriendIceCream from './ModalFriendIceCream'
-
-interface IFriendItem {
-  friend: FriendType
-}
+import { IFriendItem } from '@/types/friend'
 
 const FriendItem = ({ friend }: IFriendItem) => {
   const { userId, name, image, count } = friend

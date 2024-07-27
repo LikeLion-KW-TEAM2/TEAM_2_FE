@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const SearchInput = () => {
   const navigate = useNavigate()
   const { input, onChange, reset } = useInput({ searchId: '' })
+
   const handleClickSearch = () => {
     reset()
     navigate(`/friend/search?search=${input.searchId}`)

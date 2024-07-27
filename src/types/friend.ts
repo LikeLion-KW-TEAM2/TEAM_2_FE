@@ -1,31 +1,39 @@
-export interface FriendType {
+import { ModalType } from './common'
+
+interface IFriend {
   userId: string
   name: string
   image: string
   count: number
 }
 
-export interface SearchFriend {
+interface ISearchFriend {
   userId: string
   name: string
   image: string
   isFriend: boolean
 }
 
-export type SearchResponse = SearchFriend[]
+export interface IFriendItem {
+  friend: IFriend
+}
+
+export type IModalIcecream = ModalType & { userId: string }
+
+export interface GuestbookRequest {
+  userId: string
+  content: string
+}
+
+export type SearchResponse = ISearchFriend[]
 
 export interface FriendPageResponse {
   myImage: string
-  friends: FriendType[]
+  friends: IFriend[]
 }
 
 export interface FriendIcecreamResponse {
   name: string
   habits: string[]
   icecream: number
-}
-
-export interface GuestbookRequest {
-  userId: string
-  content: string
 }
