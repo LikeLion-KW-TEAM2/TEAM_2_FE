@@ -29,13 +29,15 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
 
   return (
     <div className="margin-auto w-full">
-      <div className="flexBetweenAlign mb-4 w-[94px]">
+      <div className="flexBetweenAlign mb-4 w-[170px]">
         <IoIosArrowBack
           size={20}
           className="cursor-pointer text-secondary-300"
           onClick={handlePreviousMonth}
         />
-        <p className="text-large font-bold text-primary-700">{month}월</p>
+        <p className="text-large font-bold text-primary-700">
+          {year}년 {month}월
+        </p>
         <IoIosArrowForward
           size={20}
           className="cursor-pointer text-secondary-300"
