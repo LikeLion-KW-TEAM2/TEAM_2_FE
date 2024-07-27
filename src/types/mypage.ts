@@ -17,13 +17,12 @@ export interface AccountInfoResponse {
 }
 
 interface Habit {
-  habits_id: string
-  habits_term: string
+  name: string
+  startDate: string
+  endDate: string
 }
 
-export interface CompleteHabitResponse {
-  list: Habit[]
-}
+export type CompleteHabitResponse = Habit[]
 
 export type AccountInfoRequest = AccountInfoResponse
 export type EditAccountInfoRequest = AccountInfoResponse
