@@ -1,6 +1,5 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
-import defaultImg from '@/assets/images/default.svg'
 import { FormProvider } from 'react-hook-form'
 import { AccountInfoResponse, EditAccountInfoRequest } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
