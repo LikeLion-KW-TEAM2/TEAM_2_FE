@@ -14,13 +14,11 @@ const Signup = () => {
   const { isOpen, openModal, closeModal } = useModal()
   const [currentTab, setCurrentTab] = useState<number>(0)
   const { mutate: signupMutate } = useSignup()
-  const onSubmit = ({ name, userId, password, agree }: SignupFormRequest) => {
-    signupMutate(
-      { name, userId, password, agree },
-      {
-        onSuccess: () => openModal(),
-      },
-    )
+
+  const onSubmit = (formData: SignupFormRequest) => {
+    signupMutate(formData, {
+      onSuccess: () => openModal(),
+    })
   }
 
   return (

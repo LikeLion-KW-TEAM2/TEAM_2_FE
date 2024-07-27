@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface RequestDuplicationId {
   userId: string
 }
@@ -17,3 +19,9 @@ export interface SignupForm {
 
 export type SignupFormRequest = Omit<SignupForm, 'confirm'>
 export type PasswordForm = Pick<SignupForm, 'password' | 'confirm'>
+
+export interface ICheckInput {
+  isChecked: boolean
+  handleClick: () => void
+  children: ReactNode
+}

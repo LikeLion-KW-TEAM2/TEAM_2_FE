@@ -1,12 +1,6 @@
-import { ReactNode } from 'react'
+import { ICheckInput } from '@/types/auth'
 import { FaCheck } from 'react-icons/fa'
 import { IoIosArrowForward } from 'react-icons/io'
-
-interface ICheckInput {
-  isChecked: boolean
-  handleClick: () => void
-  children: ReactNode
-}
 
 const CheckInput = ({ isChecked, children, handleClick }: ICheckInput) => {
   return (
