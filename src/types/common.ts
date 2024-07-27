@@ -23,5 +23,11 @@ export interface IButton {
   handleClick?: () => void
 }
 
+export interface ISubHeader {
+  hidden?: boolean
+  children: ReactNode
+  handleClickDelete?: () => void
+}
+
 export type ModalType = Pick<IModal, 'isOpen' | 'closeModal' | 'handleClick'>
 export type ModalClickType = ModalType & { handleClick: () => void }

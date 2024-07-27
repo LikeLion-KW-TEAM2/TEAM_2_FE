@@ -1,14 +1,8 @@
 import { useModal } from '@/hooks/useModal'
-import { ReactNode } from 'react'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import ModalDelete from './ModalDelete'
-
-interface ISubHeader {
-  hidden?: boolean
-  children: ReactNode
-  handleClickDelete?: () => void
-}
+import { ISubHeader } from '@/types/common'
 
 const SubHeader = ({
   hidden = false,
