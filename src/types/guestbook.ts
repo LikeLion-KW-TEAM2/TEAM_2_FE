@@ -1,14 +1,12 @@
 export interface GuestbookContent {
   id: number
+  userId: string
+  writer: string
   content: string
-  name: string
-}
-export interface GuestbookListByDay {
-  date: string
-  list: GuestbookContent[]
+  createdAt: string
 }
 
 export interface GuestbookResponse {
   myImage: string
-  guestBooks: GuestbookListByDay[]
+  guestbooks: GuestbookContent[]
 }
