@@ -1,17 +1,13 @@
 import { InputField } from '@/components/InputField'
 import { FormProvider } from 'react-hook-form'
 import { useAddHabit } from '@/services/record/useRecordService'
-import { AddForm } from '@/types/record'
+import { IAddForm } from '@/types/record'
 import SelectPeriod from './SelectPeriod'
 import SelectPrivacy from './SelectPrivacy'
 import Button from '@/components/Button'
 import { useAddForm } from '@/hooks/useAddForm'
 
-interface IAddPageForm {
-  openModal: () => void
-}
-
-const AddPageForm = ({ openModal }: IAddPageForm) => {
+const AddPageForm = ({ openModal }: { openModal: () => void }) => {
   const { mutate: addHabit } = useAddHabit()
   const formMethod = useAddForm()
 
@@ -22,7 +18,7 @@ const AddPageForm = ({ openModal }: IAddPageForm) => {
     setValue,
   } = formMethod
 
-  const handleSubmitAddHabit = (formData: AddForm) => {
+  const handleSubmitAddHabit = (formData: IAddForm) => {
     addHabit(formData)
     openModal()
   }

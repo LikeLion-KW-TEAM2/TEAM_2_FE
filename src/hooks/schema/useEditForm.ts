@@ -1,4 +1,4 @@
-import { EditForm } from '@/types/record'
+import { IEditForm } from '@/types/record'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -9,8 +9,8 @@ const schema = z.object({
   privacy: z.number(),
 })
 
-export const useEditForm = (defaultValues?: EditForm) => {
-  const formMethod = useForm<EditForm>({
+export const useEditForm = (defaultValues?: IEditForm) => {
+  const formMethod = useForm<IEditForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     defaultValues,

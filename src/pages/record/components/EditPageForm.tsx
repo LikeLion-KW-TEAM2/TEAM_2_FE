@@ -5,12 +5,7 @@ import SelectPeriod from './SelectPeriod'
 import SelectPrivacy from './SelectPrivacy'
 import { useEditForm } from '@/hooks/schema/useEditForm'
 import { useEditHabit } from '@/services/record/useRecordService'
-import { EditForm, EditPageResponse } from '@/types/record'
-
-type EditFormType = EditPageResponse & {
-  openOvercomModal: () => void
-  openSuccessModal: () => void
-}
+import { IEditForm, EditFormType } from '@/types/record'
 
 const EditPageForm = ({
   id,
@@ -37,7 +32,7 @@ const EditPageForm = ({
     setValue,
   } = formMethod
 
-  const handleSubmitEditHabit = (formData: EditForm) => {
+  const handleSubmitEditHabit = (formData: IEditForm) => {
     editHabit({ habitId: id, formData })
     openSuccessModal()
   }

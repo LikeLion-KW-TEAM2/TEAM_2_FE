@@ -1,15 +1,10 @@
 import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
 import { useToggle } from '@/hooks/useToggle'
-import { EditForm } from '@/types/record'
-import { UseFormSetValue } from 'react-hook-form'
+import { ISetValue } from '@/types/record'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-interface SelectPeriodProps {
-  setValue: UseFormSetValue<EditForm>
-}
-
-const SelectPeriod = ({ setValue }: SelectPeriodProps) => {
+const SelectPeriod = ({ setValue }: ISetValue) => {
   const [isDateDropDownOpen, handleDateDropDownOpen] = useToggle()
 
   const handlePeriodChange = (periodType: number) => {

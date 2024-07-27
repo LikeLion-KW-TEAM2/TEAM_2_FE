@@ -1,28 +1,16 @@
 import { useCheckHabit } from '@/services/record/useRecordService'
-import { HabitsByDateResponse, Record } from '@/types/record'
-import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+import { IHabitItem } from '@/types/record'
 import { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-const HabitItem = ({
-  id,
-  name,
-  status,
-  selectedDate,
-  refetch,
-}: Record & {
-  refetch: (
-    options?: RefetchOptions,
-  ) => Promise<QueryObserverResult<HabitsByDateResponse, Error>>
-}) => {
+const HabitItem = ({ id, name, status, selectedDate, refetch }: IHabitItem) => {
   const [isChecked, setIsChecked] = useState<boolean>(status === 1)
   const { mutate: checkMutate } = useCheckHabit()
   const handleCheckHabit = () => {
     checkMutate(
       { habitId: id, date: selectedDate as string },
       { onSuccess: () => refetch() },
-      // { onSuccess: () => setIsChecked((prev) => !prev) },
     )
   }
 

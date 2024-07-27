@@ -19,7 +19,6 @@ const RecordEdit = () => {
   } = useModal()
 
   const { mutate: deleteHabit } = useDeleteHabit()
-
   const navigate = useNavigate()
   const { id } = useParams()
   const habitId = parseInt(id as string)
@@ -31,7 +30,7 @@ const RecordEdit = () => {
   }
 
   if (status === 'pending') return null
-  if (status === 'error') return null
+  if (status === 'error') return navigate(-1)
 
   return (
     <div>

@@ -1,4 +1,11 @@
-export interface Record {
+import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+import { UseFormSetValue } from 'react-hook-form'
+
+export interface ISetValue {
+  setValue: UseFormSetValue<IEditForm>
+}
+
+interface IRecord {
   id: number
   name: string
   status: number
@@ -6,9 +13,56 @@ export interface Record {
   selectedDate: string
 }
 
+export interface IEditForm {
+  name: string
+  periodType: number
+  privacy: number
+}
+
+export interface IHabits {
+  id: number
+  name: string
+  status: number
+  createdAt: string
+}
+
+export type IHabitItem = IRecord & {
+  refetch: (
+    options?: RefetchOptions,
+  ) => Promise<QueryObserverResult<HabitsByDateResponse, Error>>
+}
+
+export interface IHabitList {
+  list: IHabits[]
+  habitsData?: IHabits[]
+  selectedDate: string
+  refetch: (
+    options?: RefetchOptions,
+  ) => Promise<QueryObserverResult<HabitsByDateResponse, Error>>
+}
+
+export type IAddForm = IEditForm
+
+export interface EditRequest {
+  habitId: number
+  formData: IEditForm
+}
+
+export type AddHabitRequest = IEditForm
+
+export interface CheckHabitRequest {
+  habitId: number
+  date: string
+}
+
+export interface AddFriendRequest {
+  userId: string
+  name: string
+}
+
 export interface RecordResponse {
   mylmage: string
-  habits: Record[]
+  habits: IRecord[]
 }
 
 export interface EditPageResponse {
@@ -19,38 +73,12 @@ export interface EditPageResponse {
   dday: number
 }
 
-export interface EditForm {
-  name: string
-  periodType: number
-  privacy: number
-}
-
-export interface EditRequest {
-  habitId: number
-  formData: EditForm
-}
-
-export type AddForm = EditForm
-export type AddHabitRequest = EditForm
-
-export interface Habits {
-  id: number
-  name: string
-  status: number
-  createdAt: string
-}
-
 export interface HabitsByDateResponse {
   myImage: string
-  habits: Habits[]
+  habits: IHabits[]
 }
 
-export interface CheckHabitRequest {
-  habitId: number
-  date: string
-}
-
-export interface AddFriendRequest {
-  userId: string
-  name: string
+export type EditFormType = EditPageResponse & {
+  openOvercomModal: () => void
+  openSuccessModal: () => void
 }

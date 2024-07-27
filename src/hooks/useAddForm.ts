@@ -1,4 +1,4 @@
-import { AddForm } from '@/types/record'
+import { IAddForm } from '@/types/record'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -10,7 +10,7 @@ const schema = z.object({
 })
 
 export const useAddForm = () => {
-  const formMethod = useForm<AddForm>({
+  const formMethod = useForm<IAddForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     resolver: zodResolver(schema),

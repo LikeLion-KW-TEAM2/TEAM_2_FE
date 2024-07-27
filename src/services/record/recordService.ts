@@ -1,6 +1,6 @@
 import {
   EditPageResponse,
-  EditForm,
+  IEditForm,
   RecordResponse,
   AddHabitRequest,
   HabitsByDateResponse,
@@ -30,7 +30,7 @@ const PUT = {
   check({ habitId, date }: CheckHabitRequest) {
     return instance.put(`/home/habit/check/${habitId}`, { date: date })
   },
-  edit(habitId: number, formData: EditForm) {
+  edit(habitId: number, formData: IEditForm) {
     return instance.put(`/home/habit/change/${habitId}`, formData)
   },
 }
