@@ -1,7 +1,7 @@
 import SignupInputTab from './components/SignupInputTab'
 import SignupCheckTab from './components/SignupCheckTab'
 import { useState } from 'react'
-import { useSignupForm } from '@/hooks/useSignupForm'
+import { useSignupForm } from '@/hooks/schema/useSignupForm'
 import { FormProvider } from 'react-hook-form'
 import { RequestSignupForm } from '@/types/auth'
 import { useSignup } from '@/services/auth/useAuthService'

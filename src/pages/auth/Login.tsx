@@ -1,6 +1,6 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
-import { useLoginForm } from '@/hooks/useLoginForm'
+import { useLoginForm } from '@/hooks/schema/useLoginForm'
 import { useLogin } from '@/services/auth/useAuthService'
 import { RequestLoginForm } from '@/types/auth'
 import { FormProvider } from 'react-hook-form'

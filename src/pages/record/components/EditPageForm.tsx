@@ -3,7 +3,7 @@ import { InputField } from '@/components/InputField'
 import { FormProvider } from 'react-hook-form'
 import SelectPeriod from './SelectPeriod'
 import SelectPrivacy from './SelectPrivacy'
-import { useEditForm } from '@/hooks/useEditForm'
+import { useEditForm } from '@/hooks/schema/useEditForm'
 import { useEditHabit } from '@/services/record/useRecordService'
 import { EditForm, EditPageResponse } from '@/types/record'
 
