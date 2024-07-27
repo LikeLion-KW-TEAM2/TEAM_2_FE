@@ -6,7 +6,7 @@ import { useMypage } from '@/services/mypage/useMypageService'
 
 const MYPAGE_LIST = [
   { text: '비밀번호 변경', link: '/mypage/password' },
-  { text: '개선한 습관 목록', link: '/mypage/complete-habit' },
+  { text: '개선된 습관 목록', link: '/mypage/complete-habit' },
   { text: '친구 목록 관리', link: '/mypage/friend-list' },
   { text: '서비스 이용 약관', link: '/mypage' },
   { text: '자주 묻는 질문', link: '/mypage' },
