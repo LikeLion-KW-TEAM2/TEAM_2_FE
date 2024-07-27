@@ -30,9 +30,7 @@ export const useDeleteFriend = () => {
         queryKeys.friendList(),
         (oldData): FriendListResponse => {
           if (!oldData) return []
-          return {
-            ...oldData.filter((friend) => friend.userId !== variables),
-          }
+          return [...oldData.filter((friend) => friend.userId !== variables)]
         },
       )
     },
