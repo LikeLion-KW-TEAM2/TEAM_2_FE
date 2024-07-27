@@ -3,7 +3,7 @@ import SignupCheckTab from './components/SignupCheckTab'
 import { useState } from 'react'
 import { useSignupForm } from '@/hooks/schema/useSignupForm'
 import { FormProvider } from 'react-hook-form'
-import { RequestSignupForm } from '@/types/auth'
+import { SignupFormRequest } from '@/types/auth'
 import { useSignup } from '@/services/auth/useAuthService'
 import { useModal } from '@/hooks/useModal'
 import { SIGNUP_HEADER } from '@/constants'
@@ -14,7 +14,7 @@ const Signup = () => {
   const { isOpen, openModal, closeModal } = useModal()
   const [currentTab, setCurrentTab] = useState<number>(0)
   const { mutate: signupMutate } = useSignup()
-  const onSubmit = ({ name, userId, password, agree }: RequestSignupForm) => {
+  const onSubmit = ({ name, userId, password, agree }: SignupFormRequest) => {
     signupMutate(
       { name, userId, password, agree },
       {

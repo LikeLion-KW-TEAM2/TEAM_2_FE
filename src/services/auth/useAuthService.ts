@@ -3,7 +3,7 @@ import authService from './authService'
 import {
   RequestDuplicationId,
   RequestLoginForm,
-  RequestSignupForm,
+  SignupFormRequest,
 } from '@/types/auth'
 import { useNavigate } from 'react-router-dom'
 import { useTokenActions } from '@/store/token'
@@ -33,7 +33,7 @@ export function useLogin() {
 
 export function useSignup() {
   return useMutation({
-    mutationFn: (signupData: RequestSignupForm) =>
+    mutationFn: (signupData: SignupFormRequest) =>
       authService.POST.signup(signupData),
     onError: (error: any) => {
       console.error('error', error)

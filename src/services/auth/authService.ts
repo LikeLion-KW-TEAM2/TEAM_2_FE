@@ -1,4 +1,4 @@
-import { RequestDuplicationId, RequestSignupForm } from '@/types/auth'
+import { RequestDuplicationId, SignupFormRequest } from '@/types/auth'
 import { instanceWithoutAuth } from '../service'
 
 const POST = {
@@ -9,7 +9,7 @@ const POST = {
       },
     })
   },
-  signup(signupData: RequestSignupForm): Promise<any> {
+  signup(signupData: SignupFormRequest): Promise<any> {
     return instanceWithoutAuth.post(`/signup`, signupData)
   },
   idValidate(userId: RequestDuplicationId): Promise<any> {
