@@ -31,6 +31,7 @@ const Record = () => {
         list={recordData?.habits || []}
         habitsData={habitsData?.habits}
         selectedDate={selectedDate}
+        refetch={refetch}
       />
     </NavLayout>
   )

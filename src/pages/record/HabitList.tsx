@@ -1,17 +1,21 @@
-import { Habits } from '@/types/record'
+import { Habits, HabitsByDateResponse } from '@/types/record'
 import HabitItem from './components/HabitItem'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ErrorMessage from '@/components/ErrorMessage'
+import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
 
 interface IHabitList {
   list: Habits[]
   habitsData?: Habits[]
   selectedDate: string
+  refetch: (
+    options?: RefetchOptions,
+  ) => Promise<QueryObserverResult<HabitsByDateResponse, Error>>
 }
 
-const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
+const HabitList = ({ list, habitsData, selectedDate, refetch }: IHabitList) => {
   const [habitList, setHabitList] = useState<Habits[]>(list || [])
 
   useEffect(() => {
@@ -27,6 +31,7 @@ const HabitList = ({ list, habitsData, selectedDate }: IHabitList) => {
           status={status}
           createdAt={createdAt}
           selectedDate={selectedDate}
+          refetch={refetch}
           key={id}
         />
       ))}
