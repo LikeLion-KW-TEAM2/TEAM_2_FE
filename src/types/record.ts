@@ -1,8 +1,14 @@
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+import { Dispatch, SetStateAction } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 
 export interface ISetValue {
   setValue: UseFormSetValue<IEditForm>
+}
+
+export interface IHabitCalendar {
+  selectedDate: string
+  setSelectedDate: Dispatch<SetStateAction<string>>
 }
 
 interface IRecord {

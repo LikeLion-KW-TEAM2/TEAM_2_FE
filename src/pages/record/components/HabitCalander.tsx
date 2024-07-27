@@ -1,68 +1,47 @@
+import useCalendar from '@/hooks/useCalendar'
+import useScroll from '@/hooks/useScroll'
+import { IHabitCalendar } from '@/types/record'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
-
-interface IHabitCalendar {
-  selectedDate: string
-  setSelectedDate: Dispatch<SetStateAction<string>>
-}
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
-  dayjs.locale('ko')
-  const now = dayjs()
-  const [year, setYear] = useState(now.get('year'))
-  const [month, setMonth] = useState(now.get('month') + 1)
-  const daysInMonth = dayjs(`${year}-${month}`).daysInMonth()
+  const {
+    now,
+    year,
+    month,
+    daysInMonth,
+    handlePreviousMonth,
+    handleNextMonth,
+  } = useCalendar()
+
+  const {
+    todayRef,
+    containerRef,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUpOrLeave,
+    handleDateClick,
+  } = useScroll(setSelectedDate)
 
   const CURRENT_DAY_STYLE = `bg-primary-400 rounded-full`
   const SELECTED_DAY_STYLE = `bg-primary-200 rounded-full`
 
-  const todayRef = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const isDragging = useRef(false)
-  const startX = useRef(0)
-  const scrollLeft = useRef(0)
-  const [isDragMoved, setIsDragMoved] = useState(false)
-
-  useEffect(() => {
-    if (todayRef.current) {
-      todayRef.current.scrollIntoView({ behavior: 'smooth', inline: 'center' })
-    }
-  }, [])
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (containerRef.current) {
-      isDragging.current = true
-      startX.current = e.pageX - containerRef.current.offsetLeft
-      scrollLeft.current = containerRef.current.scrollLeft
-      setIsDragMoved(false)
-    }
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current) return
-    e.preventDefault()
-    setIsDragMoved(true)
-    if (containerRef.current) {
-      const x = e.pageX - containerRef.current.offsetLeft
-      const walk = x - startX.current
-      containerRef.current.scrollLeft = scrollLeft.current - walk
-    }
-  }
-
-  const handleMouseUpOrLeave = () => {
-    isDragging.current = false
-  }
-
-  const handleDateClick = (date: string) => {
-    if (!isDragMoved) {
-      const formattedDate = dayjs(date).format('YYYY-MM-DD')
-      setSelectedDate(formattedDate)
-    }
-  }
   return (
     <div className="margin-auto w-full">
-      <p className="mb-4 text-large font-bold text-primary-700">{month}월</p>
+      <div className="flexBetweenAlign mb-4 w-[94px]">
+        <IoIosArrowBack
+          size={20}
+          className="cursor-pointer text-secondary-300"
+          onClick={handlePreviousMonth}
+        />
+        <p className="text-large font-bold text-primary-700">{month}월</p>
+        <IoIosArrowForward
+          size={20}
+          className="cursor-pointer text-secondary-300"
+          onClick={handleNextMonth}
+        />
+      </div>
       <div
         className="flex flex-nowrap overflow-x-scroll scrollbar-hide"
         ref={containerRef}
@@ -72,8 +51,8 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
         onMouseLeave={handleMouseUpOrLeave}
       >
         {Array.from({ length: daysInMonth }, (_, i) => {
-          const day = dayjs(`${year}-${month}-${i}`).format('dd')
           const date = `${year}-${month}-${i + 1}`
+          const day = dayjs(date).format('dd')
           const isCurrentDay = now.format('YYYY-M-D') === date
           const isSelectedDay =
             selectedDate === dayjs(date).format('YYYY-MM-DD')
