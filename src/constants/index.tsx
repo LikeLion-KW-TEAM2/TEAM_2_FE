@@ -1,5 +1,8 @@
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import onboardingIcecream from '@/assets/images/onboarding.svg'
+import { TbPencilCheck } from 'react-icons/tb'
+import { PiIceCreamBold, PiUsersThreeBold } from 'react-icons/pi'
+import { BiBookHeart } from 'react-icons/bi'
 
 export const ONBOARDING_DATA = [
   {
@@ -29,4 +32,11 @@ export const ONBOARDING_DATA = [
     first: '친구의 아이스크림을 구경하고',
     second: '응원의 말도 적을 수 있어요.',
   },
+]
+
+export const NAV_ITEMS = [
+  { name: '기록', link: '/record', icon: <TbPencilCheck size={24} /> },
+  { name: '아이스크림', link: '/icecream', icon: <PiIceCreamBold size={24} /> },
+  { name: '친구', link: '/friend', icon: <PiUsersThreeBold size={24} /> },
+  { name: '방명록', link: '/guestbook', icon: <BiBookHeart size={24} /> },
 ]

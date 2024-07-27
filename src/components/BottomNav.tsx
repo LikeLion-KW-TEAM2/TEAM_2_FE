@@ -1,15 +1,6 @@
+import { NAV_ITEMS } from '@/constants'
 import { ReactNode, useEffect, useState } from 'react'
-import { TbPencilCheck } from 'react-icons/tb'
-import { PiIceCreamBold, PiUsersThreeBold } from 'react-icons/pi'
-import { BiBookHeart } from 'react-icons/bi'
 import { Link, useLocation } from 'react-router-dom'
-
-const NAV_ITEMS = [
-  { name: '기록', link: '/record', icon: <TbPencilCheck size={24} /> },
-  { name: '아이스크림', link: '/icecream', icon: <PiIceCreamBold size={24} /> },
-  { name: '친구', link: '/friend', icon: <PiUsersThreeBold size={24} /> },
-  { name: '방명록', link: '/guestbook', icon: <BiBookHeart size={24} /> },
-]
 
 interface Item {
   item: {
