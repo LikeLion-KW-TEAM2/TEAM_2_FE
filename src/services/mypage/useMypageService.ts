@@ -6,6 +6,8 @@ import {
   AccountInfoResponse,
   FriendListResponse,
 } from '@/types/mypage'
+import { instance } from '../service'
+import { useNavigate } from 'react-router-dom'
 
 export const useMypage = () => {
   return useQuery({
@@ -74,5 +76,17 @@ export const useCompleteHabits = () => {
 export const useEditPassword = () => {
   return useMutation({
     mutationFn: (password: string) => mypageService.POST.editPassword(password),
+  })
+}
+
+export const useRemove = () => {
+  const navigate = useNavigate()
+
+  return useMutation({
+    mutationFn: () => mypageService.DELETE.remove(),
+    onSuccess: () => {
+      delete instance.defaults.headers.common['Authorization']
+      navigate('/login')
+    },
   })
 }

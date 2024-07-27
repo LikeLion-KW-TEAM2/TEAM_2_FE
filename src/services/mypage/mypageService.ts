@@ -32,8 +32,11 @@ const POST = {
 }
 
 const DELETE = {
-  friend(id: string): Promise<any> {
+  friend(id: string) {
     return instance.delete(`/mypage/friend/${id}`)
+  },
+  remove() {
+    return instance.delete(`/mypage/remove`)
   },
 }
 

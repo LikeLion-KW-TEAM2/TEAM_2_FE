@@ -2,7 +2,10 @@ import SubHeader from '@/components/SubHeader'
 import { IoIosArrowForward } from 'react-icons/io'
 import { TextWithProfile } from '@/components/TextWithProfile'
 import { Link } from 'react-router-dom'
-import { useMypage } from '@/services/mypage/useMypageService'
+import { useMypage, useRemove } from '@/services/mypage/useMypageService'
+import { useModal } from '@/hooks/useModal'
+import ModalRemove from './components/ModalRemove'
+import { useTokenActions } from '@/store/token'
 
 const MYPAGE_LIST = [
   { text: '비밀번호 변경', link: '/mypage/password' },
@@ -14,9 +17,17 @@ const MYPAGE_LIST = [
 
 const Mypage = () => {
   const { data: mypageData, status } = useMypage()
+  const { mutate: remove } = useRemove()
+  const { isOpen, openModal, closeModal } = useModal()
+  const { resetToken } = useTokenActions()
+
+  const handleClickRemoveButton = () => {
+    resetToken()
+    remove()
+  }
+
   if (status === 'pending') return null
   if (status === 'error') return null
-
   const { name, image } = mypageData
 
   return (
@@ -45,8 +56,15 @@ const Mypage = () => {
             <li>{item.text}</li>
           </Link>
         ))}
-        <li className="cursor-pointer text-error-primary">계정 탈퇴</li>
+        <li className="cursor-pointer text-error-primary" onClick={openModal}>
+          계정 탈퇴
+        </li>
       </ul>
+      <ModalRemove
+        isOpen={isOpen}
+        closeModal={closeModal}
+        handleClick={handleClickRemoveButton}
+      />
     </div>
   )
 }
