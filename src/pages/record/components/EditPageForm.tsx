@@ -21,7 +21,7 @@ const EditPageForm = ({
 
   const formMethod = useEditForm({
     name: name || '',
-    periodType: periodType || 5,
+    periodType: periodType || 0,
     privacy: privacy || 0,
   })
 
@@ -48,8 +48,8 @@ const EditPageForm = ({
           <InputField.Input type="text" register={register('name')} />
         </InputField>
 
-        <SelectPeriod setValue={setValue} />
-        <SelectPrivacy setValue={setValue} />
+        <SelectPeriod periodType={periodType} setValue={setValue} />
+        <SelectPrivacy privacy={privacy} setValue={setValue} />
 
         <div className="flexColumn absolute bottom-10 left-4 right-4 gap-4">
           <Button type="submit" width="w-full" size="medium">

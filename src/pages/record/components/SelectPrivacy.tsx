@@ -1,14 +1,20 @@
 import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
+import { PRIVACY_ARR } from '@/constants'
 import { useToggle } from '@/hooks/useToggle'
-import { ISetValue } from '@/types/record'
+import { ISelectedForm } from '@/types/record'
+import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const SelectPrivacy = ({ setValue }: ISetValue) => {
+const SelectPrivacy = ({ setValue, privacy }: ISelectedForm) => {
   const [isPrivateDropDownOpen, handlePrivateDropDownOpen] = useToggle()
+  const [selectedPrivacy, setSelectedPrivacy] = useState(
+    PRIVACY_ARR[privacy || 0],
+  )
 
-  const handlePrivateChange = (privacy: number) => {
-    setValue('privacy', privacy)
+  const handlePrivateChange = (privacy: string) => {
+    setValue('privacy', PRIVACY_ARR.indexOf(privacy))
+    setSelectedPrivacy(privacy)
     handlePrivateDropDownOpen()
   }
 
@@ -21,17 +27,19 @@ const SelectPrivacy = ({ setValue }: ISetValue) => {
             className="flexAlign cursor-pointer gap-1"
             onClick={handlePrivateDropDownOpen}
           >
-            <p className="text-large">모두 보기</p>
+            <p className="text-large">{selectedPrivacy}</p>
             {isPrivateDropDownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
           </div>
           {isPrivateDropDownOpen && (
             <DropDown>
-              <DropDown.Item onClick={() => handlePrivateChange(0)}>
-                모두 보기
-              </DropDown.Item>
-              <DropDown.Item onClick={() => handlePrivateChange(1)}>
-                나만 보기
-              </DropDown.Item>
+              {PRIVACY_ARR.map((privacy) => (
+                <DropDown.Item
+                  key={privacy}
+                  onClick={() => handlePrivateChange(privacy)}
+                >
+                  {privacy}
+                </DropDown.Item>
+              ))}
             </DropDown>
           )}
         </div>

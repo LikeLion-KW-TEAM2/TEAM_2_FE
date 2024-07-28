@@ -59,3 +59,6 @@ export const MYPAGE_LIST = [
   { text: '서비스 이용 약관', link: '/mypage' },
   { text: '자주 묻는 질문', link: '/mypage' },
 ]
+
+export const PERIOD_TYPE = ['매일', '주중', '주말']
+export const PRIVACY_ARR = ['모두 보기', '나만 보기']

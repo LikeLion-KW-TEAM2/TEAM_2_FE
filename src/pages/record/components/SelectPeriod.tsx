@@ -1,14 +1,18 @@
 import { DropDown } from '@/components/DropDown'
 import { InputField } from '@/components/InputField'
+import { PERIOD_TYPE } from '@/constants'
 import { useToggle } from '@/hooks/useToggle'
-import { ISetValue } from '@/types/record'
+import { ISelectedForm } from '@/types/record'
+import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const SelectPeriod = ({ setValue }: ISetValue) => {
+const SelectPeriod = ({ setValue, periodType }: ISelectedForm) => {
   const [isDateDropDownOpen, handleDateDropDownOpen] = useToggle()
+  const [selectedName, setSelectedName] = useState(PERIOD_TYPE[periodType || 0])
 
-  const handlePeriodChange = (periodType: number) => {
-    setValue('periodType', periodType)
+  const handlePeriodChange = (periodType: string) => {
+    setValue('periodType', PERIOD_TYPE.indexOf(periodType))
+    setSelectedName(periodType)
     handleDateDropDownOpen()
   }
 
@@ -21,20 +25,19 @@ const SelectPeriod = ({ setValue }: ISetValue) => {
             className="flexAlign cursor-pointer gap-1"
             onClick={handleDateDropDownOpen}
           >
-            <p className="text-large">매일</p>
+            <p className="text-large">{selectedName}</p>
             {isDateDropDownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
           </div>
           {isDateDropDownOpen && (
             <DropDown>
-              <DropDown.Item onClick={() => handlePeriodChange(7)}>
-                매일
-              </DropDown.Item>
-              <DropDown.Item onClick={() => handlePeriodChange(5)}>
-                주중
-              </DropDown.Item>
-              <DropDown.Item onClick={() => handlePeriodChange(2)}>
-                주말
-              </DropDown.Item>
+              {PERIOD_TYPE.map((date) => (
+                <DropDown.Item
+                  key={date}
+                  onClick={() => handlePeriodChange(date)}
+                >
+                  {date}
+                </DropDown.Item>
+              ))}
             </DropDown>
           )}
         </div>
