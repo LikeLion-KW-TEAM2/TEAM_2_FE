@@ -15,6 +15,7 @@ import RecordEdit from '@/pages/record/RecordEdit'
 import RecordAdd from '@/pages/record/RecordAdd'
 import Onboarding from '../Onboarding/Onboarding'
 import { LoginPrivateRoute, PrivateRoute } from './PrivateRouter'
+import ErrorPage from '../ErrorPage'
 
 const Router = () => {
   return (
@@ -40,7 +41,7 @@ const Router = () => {
         <Route path="/mypage/complete-habit" element={<CompleteHabit />} />
       </Route>
 
-      <Route path="*" element={<div>404</div>} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
 }

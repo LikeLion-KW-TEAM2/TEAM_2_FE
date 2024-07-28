@@ -5,6 +5,7 @@ import { useDeleteHabit, useEditPage } from '@/services/record/useRecordService'
 import { useNavigate, useParams } from 'react-router-dom'
 import EditPageForm from './components/EditPageForm'
 import ModalEdit from './components/ModalEdit'
+import ErrorPage from '@/components/ErrorPage'
 
 const RecordEdit = () => {
   const {
@@ -30,7 +31,7 @@ const RecordEdit = () => {
   }
 
   if (status === 'pending') return null
-  if (status === 'error') return navigate(-1)
+  if (status === 'error') return <ErrorPage />
 
   return (
     <div>
