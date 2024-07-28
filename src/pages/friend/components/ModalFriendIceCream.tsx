@@ -9,6 +9,7 @@ import bgIcecream from '@/assets/images/icecream-bg.svg'
 import useInput from '@/hooks/useInput'
 import { useEffect, useState } from 'react'
 import { IModalIcecream } from '@/types/friend'
+import Loading from '@/components/Loading'
 
 const ModalFriendIceCream = ({
   isOpen,
@@ -16,7 +17,7 @@ const ModalFriendIceCream = ({
   userId,
 }: IModalIcecream) => {
   const [isSuccess, setIsSuccess] = useState(false)
-  const { data: modalData, status } = useFriendIcecream(userId)
+  const { data: modalData, isPending, isError } = useFriendIcecream(userId)
   const { input, onChange, reset } = useInput({ content: '' })
   const { mutate: sendMessage } = useGuestBook()
 
@@ -36,8 +37,8 @@ const ModalFriendIceCream = ({
     setIsSuccess(false)
   }, [closeModal])
 
-  if (status === 'pending') return null
-  if (status === 'error') closeModal()
+  if (isPending) return <Loading />
+  if (isError) closeModal()
 
   return (
     <Modal closeBtn isOpen={isOpen} closeModal={closeModal}>

@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import EditPageForm from './components/EditPageForm'
 import ModalEdit from './components/ModalEdit'
 import ErrorPage from '@/components/ErrorPage'
+import Loading from '@/components/Loading'
 
 const RecordEdit = () => {
   const {
@@ -23,28 +24,31 @@ const RecordEdit = () => {
   const navigate = useNavigate()
   const { id } = useParams()
   const habitId = parseInt(id as string)
-  const { data: editPage, status } = useEditPage(habitId)
+  const { data: editPage, isPending, isError } = useEditPage(habitId)
 
   const handleDeleteHabit = () => {
     deleteHabit(habitId)
     navigate('/')
   }
 
-  if (status === 'pending') return null
-  if (status === 'error') return <ErrorPage />
+  if (isError) return <ErrorPage />
 
   return (
     <div>
       <SubHeader handleClickDelete={handleDeleteHabit}>수정하기</SubHeader>
-      <EditPageForm
-        id={editPage.id}
-        dday={editPage.dday}
-        name={editPage.name}
-        periodType={editPage.periodType}
-        privacy={editPage.privacy}
-        openOvercomModal={openOvercomModal}
-        openSuccessModal={openSuccessModal}
-      />
+      {isPending ? (
+        <Loading />
+      ) : (
+        <EditPageForm
+          id={editPage.id}
+          dday={editPage.dday}
+          name={editPage.name}
+          periodType={editPage.periodType}
+          privacy={editPage.privacy}
+          openOvercomModal={openOvercomModal}
+          openSuccessModal={openSuccessModal}
+        />
+      )}
       <ModalCompleteHabit
         isOpen={isOvercomModalOpen}
         closeModal={closeOvercomModal}

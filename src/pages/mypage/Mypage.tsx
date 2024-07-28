@@ -9,7 +9,7 @@ import { useTokenActions } from '@/store/token'
 import { MYPAGE_LIST } from '@/constants'
 
 const Mypage = () => {
-  const { data: mypageData, status } = useMypage()
+  const { data: mypageData } = useMypage()
   const { mutate: remove } = useRemove()
   const { isOpen, openModal, closeModal } = useModal()
   const { resetToken } = useTokenActions()
@@ -19,12 +19,9 @@ const Mypage = () => {
     remove()
   }
 
-  if (status === 'pending') return null
-
   return (
     <div>
       <SubHeader hidden>마이페이지</SubHeader>
-
       {mypageData && (
         <Link
           to={'/mypage/account-info'}

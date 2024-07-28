@@ -6,12 +6,13 @@ import { useModal } from '@/hooks/useModal'
 import bgIcecream from '@/assets/images/icecream-bg.svg'
 import { useIcecreamLevel } from '@/services/icecream/useIcecreamService'
 import convertLevelToIcecream from '@/utils/convertLevelToIcecream'
+import Loading from '@/components/Loading'
 
 const Icecream = () => {
   const { isOpen, openModal, closeModal } = useModal()
-  const { data: icecreamData, status } = useIcecreamLevel()
+  const { data: icecreamData, isPending } = useIcecreamLevel()
 
-  if (status === 'pending') return null
+  if (isPending) return <Loading />
 
   return (
     <>

@@ -2,11 +2,12 @@ import SubHeader from '@/components/SubHeader'
 import { useAccountInfo } from '@/services/mypage/useMypageService'
 import AccountInfoForm from './components/AccountInfoForm'
 import profileImage from '@/utils/profileImage'
+import Loading from '@/components/Loading'
 
 const AccountInfo = () => {
-  const { data: accountInfoData, status } = useAccountInfo()
+  const { data: accountInfoData, isPending } = useAccountInfo()
 
-  if (status === 'pending') return null
+  if (isPending) return <Loading />
 
   return (
     <div>
