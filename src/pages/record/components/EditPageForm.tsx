@@ -46,6 +46,7 @@ const EditPageForm = ({
         <InputField>
           <InputField.Label error={errors?.name}>NOT-TO-DO</InputField.Label>
           <InputField.Input type="text" register={register('name')} />
+          <InputField.ExampleMessage />
         </InputField>
 
         <SelectPeriod periodType={periodType} setValue={setValue} />

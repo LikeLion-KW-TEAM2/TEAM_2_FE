@@ -17,7 +17,7 @@ import Onboarding from '../Onboarding/Onboarding'
 import { LoginPrivateRoute, PrivateRoute } from './PrivateRouter'
 import ErrorPage from '../ErrorPage'
 
-const Router = () => {
+const RouterComponent = () => {
   return (
     <Routes>
       <Route element={<LoginPrivateRoute />}>
@@ -46,4 +46,4 @@ const Router = () => {
   )
 }
 
-export default Router
+export default RouterComponent
