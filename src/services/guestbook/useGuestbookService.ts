@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import queryKeys from './queries'
 import guestbookService from './guestbookService'
-import { GuestbookResponse } from '@/types/guestbook'
 
 export const useGuestBookList = () => {
   return useQuery({
