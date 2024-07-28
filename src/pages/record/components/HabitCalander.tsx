@@ -24,8 +24,7 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
     handleDateClick,
   } = useScroll(setSelectedDate)
 
-  const CURRENT_DAY_STYLE = `bg-primary-400 rounded-full`
-  const SELECTED_DAY_STYLE = `bg-primary-200 rounded-full`
+  const CURRENT_DAY_STYLE = `bg-secondary-200 rounded`
 
   return (
     <div className="margin-auto w-full">
@@ -63,10 +62,16 @@ const HabitCalendar = ({ selectedDate, setSelectedDate }: IHabitCalendar) => {
               key={i}
               ref={isCurrentDay ? todayRef : null}
               onClick={() => handleDateClick(date)}
-              className={`flexColumnAlign ${day === '토' && 'text-primary-600'} ${day === '일' && 'text-error-primary'} ${isCurrentDay && CURRENT_DAY_STYLE} ${isSelectedDay && SELECTED_DAY_STYLE} h-12 w-12 flex-shrink-0 cursor-pointer`}
+              className={`flexColumnAlign relative ${day === '토' && 'text-primary-600'} ${day === '일' && 'text-error-primary'} ${isCurrentDay && CURRENT_DAY_STYLE} h-12 w-12 flex-shrink-0 cursor-pointer`}
             >
-              <p className={`text-small`}>{day}</p>
-              <p key={i + 1} className="text-large font-bold">
+              {isSelectedDay && (
+                <div
+                  className={`absolute bottom-0 left-0 right-0 top-0 rounded-full bg-primary-100`}
+                />
+              )}
+
+              <p className={`z-10 text-small`}>{day}</p>
+              <p key={i + 1} className="z-10 text-large font-bold">
                 {i + 1}
               </p>
             </div>
