@@ -35,6 +35,7 @@ const AddPageForm = ({ openModal }: { openModal: () => void }) => {
             placeholder="고치고 싶은 습관을 적어주세요."
             register={register('name')}
           />
+          <InputField.ExampleMessage />
         </InputField>
 
         <SelectPeriod setValue={setValue} />
