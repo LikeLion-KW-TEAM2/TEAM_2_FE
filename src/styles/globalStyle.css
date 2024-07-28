@@ -48,6 +48,15 @@
     font-size: 18px;
     line-height: 24px;
   }
+
+  input {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
 }
 
 @layer components {
