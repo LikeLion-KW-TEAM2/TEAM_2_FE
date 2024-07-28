@@ -3,7 +3,7 @@ import Splash from './components/Splash'
 import Router from './components/Router/Router'
 
 function App() {
-  const [showSplash, setShowSplash] = useState<boolean>(true)
+  const [showSplash, setShowSplash] = useState<boolean>()
 
   useEffect(() => {
     const timer = setTimeout(() => {
