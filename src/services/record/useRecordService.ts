@@ -1,12 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import recordService from './recordService'
 import queryKeys from './queries'
-import {
-  AddHabitRequest,
-  CheckHabitRequest,
-  EditRequest,
-  HabitsByDateResponse,
-} from '@/types/record'
+import { AddHabitRequest, CheckHabitRequest, EditRequest } from '@/types/record'
 
 export const useRecord = () => {
   return useQuery({
@@ -29,43 +24,10 @@ export const useCheckHabit = () => {
     mutationFn: (checkData: CheckHabitRequest) =>
       recordService.PUT.check(checkData),
     onSuccess: (_, variables) => {
-      console.log(variables)
       queryClient.invalidateQueries({
         queryKey: queryKeys.habit(variables.date),
       })
     },
-    // onMutate: async (variables) => {
-    //   await queryClient.cancelQueries({
-    //     queryKey: [queryKeys.habit(variables.date)],
-    //   })
-
-    //   const oldData = queryClient.getQueryData<HabitsByDateResponse>([
-    //     queryKeys.habit(variables.date),
-    //   ])
-
-    //   if (oldData?.habits) {
-    //     queryClient.setQueryData<HabitsByDateResponse>(
-    //       [queryKeys.habit(variables.date)],
-    //       {
-    //         ...oldData,
-    //         habits: oldData.habits.map((habit) =>
-    //           habit.id === variables.habitId
-    //             ? { ...habit, status: habit.status === 0 ? 1 : 0 }
-    //             : habit,
-    //         ),
-    //       },
-    //     )
-    //   }
-
-    //   return { oldData: oldData || { myImage: '', habits: [] } }
-    // },
-    // onError: (err, variables, context) => {
-    //   if (context?.oldData) {
-    //     queryClient.setQueryData([queryKeys.habit(variables.date)], {
-    //       ...context.oldData,
-    //     })
-    //   }
-    // },
   })
 }
 
