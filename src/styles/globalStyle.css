@@ -57,6 +57,17 @@
       display: none;
     }
   }
+
+  input,
+  textarea,
+  button {
+    appearance: none;
+    border-radius: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+  }
 }
 
 @layer components {

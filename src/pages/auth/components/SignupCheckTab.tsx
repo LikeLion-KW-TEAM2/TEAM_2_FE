@@ -18,7 +18,7 @@ const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
 
   return (
     <>
-      <div className="text-secondary-900">
+      <div className="flexColumn h-full text-secondary-900">
         <div className="flexAlign mb-8 gap-2" onClick={handleAllCheckClick}>
           <BsCheckSquareFill
             size={24}
@@ -27,7 +27,7 @@ const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
           <h5 className="font-bold">모두 동의합니다.</h5>
         </div>
 
-        <div className="flexColumn gap-5">
+        <div className="flexColumn flex-1 gap-5">
           {AGREE_LIST.map((item, index) => (
             <CheckInput
               key={index}
@@ -43,7 +43,7 @@ const SignupCheckTab = ({ isOpen, closeModal }: ModalType) => {
           type="submit"
           width="w-auto"
           size="large"
-          className="absolute bottom-10 left-4 right-4"
+          className="my-10"
           disabled={isButtonDisabled}
         >
           회원가입 완료

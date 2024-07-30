@@ -9,8 +9,8 @@ const Onboarding = () => {
   const { currentTab, carouselRef, onDotClick, ...event } = useTouchEvent()
 
   return (
-    <div className="flexCenter h-full">
-      <div className="flexColumnAlign">
+    <div className="flexColumnAlign h-full">
+      <div className="flexColumnAlign flex-1 justify-center">
         <div
           ref={carouselRef}
           {...event}
@@ -22,13 +22,15 @@ const Onboarding = () => {
         <SectionDot currentTab={currentTab} onDotClick={onDotClick} />
       </div>
 
-      {currentTab === 2 && (
-        <Link to={'/login'} className="absolute bottom-5">
-          <Button width="w-[167px]" size="large">
-            시작하기
-          </Button>
-        </Link>
-      )}
+      <div className="h-[71px] py-5">
+        {currentTab === 2 && (
+          <Link to={'/login'}>
+            <Button width="w-[167px]" size="large">
+              시작하기
+            </Button>
+          </Link>
+        )}
+      </div>
     </div>
   )
 }

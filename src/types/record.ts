@@ -69,7 +69,7 @@ export interface AddFriendRequest {
 }
 
 export interface RecordResponse {
-  mylmage: string
+  myImage: string
   habits: IRecord[]
 }
 

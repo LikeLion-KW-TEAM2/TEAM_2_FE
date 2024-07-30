@@ -20,7 +20,12 @@ export type EditAccountInfoRequest = AccountInfoRequest
 
 export interface MypageResponse {
   name: string
-  image: string
+  myImage: string
+}
+
+export interface UploadImageResponse {
+  name: string
+  myImage: string
 }
 
 export type FriendListResponse = IFriend[]

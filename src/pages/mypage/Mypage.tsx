@@ -28,7 +28,7 @@ const Mypage = () => {
           className="flexAlign mb-7 mt-8 gap-3 rounded-2xl border border-secondary-200 px-4 py-6 shadow-small"
         >
           <TextWithProfile>
-            <TextWithProfile.Image src={mypageData.image} />
+            <TextWithProfile.Image src={mypageData.myImage} />
             <TextWithProfile.TextContainer>
               <TextWithProfile.PrimaryText>
                 {mypageData.name}

@@ -90,3 +90,9 @@ export const useRemove = () => {
     },
   })
 }
+
+export const useUploadImage = () => {
+  return useMutation({
+    mutationFn: (image: FormData) => mypageService.POST.uploadImage(image),
+  })
+}
