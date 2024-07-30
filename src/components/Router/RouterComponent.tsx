@@ -10,7 +10,7 @@ import FriendList from '@/pages/mypage/FriendList'
 import Mypage from '@/pages/mypage/Mypage'
 import PasswordEdit from '@/pages/mypage/PasswordEdit'
 import Record from '@/pages/record/Record'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import RecordEdit from '@/pages/record/RecordEdit'
 import RecordAdd from '@/pages/record/RecordAdd'
 import Onboarding from '../Onboarding/Onboarding'
@@ -41,7 +41,7 @@ const RouterComponent = () => {
         <Route path="/mypage/complete-habit" element={<CompleteHabit />} />
       </Route>
 
-      <Route path="*" element={<Navigate to={'/login'} />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
 }
