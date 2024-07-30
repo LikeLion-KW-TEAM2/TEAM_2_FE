@@ -10,7 +10,7 @@ const AccountInfo = () => {
   if (isPending) return <Loading />
 
   return (
-    <div>
+    <div className="flexColumn h-full">
       <SubHeader hidden>회원 정보 수정</SubHeader>
       <AccountInfoForm
         name={accountInfoData?.name || ''}
