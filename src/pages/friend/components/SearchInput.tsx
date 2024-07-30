@@ -19,7 +19,7 @@ const SearchInput = () => {
         name="searchId"
         value={input.searchId}
         onChange={onChange}
-        className="flex-1 text-secondary-900 focus:outline-none"
+        className="flex-1 bg-transparent text-secondary-900 focus:outline-none"
         placeholder="친구의 아이디를 입력해주세요"
       />
       {input.searchId && (
