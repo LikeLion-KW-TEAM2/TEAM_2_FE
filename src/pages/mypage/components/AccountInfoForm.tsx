@@ -29,8 +29,8 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const { isOpen, openModal, closeModal } = useModal()
   const [image, setImage] = useState(profileImage(myImage))
 
-  const onSubmit = ({ name, myImage }: EditAccountInfoRequest) => {
-    editAccount({ name, myImage }, { onSuccess: () => openModal() })
+  const onSubmit = (account: EditAccountInfoRequest) => {
+    editAccount(account, { onSuccess: () => openModal() })
   }
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -48,8 +48,8 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
 
     uploadImage(sendImgData, {
       onSuccess: (res) => {
-        setValue('myImage', res.myImage)
         setImage(res.myImage)
+        setValue('myImage', res.myImage)
       },
     })
   }
@@ -57,47 +57,49 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   return (
     <>
       <FormProvider {...formMethod}>
-        <form className="flexColumn gap-7" onSubmit={handleSubmit(onSubmit)}>
-          <InputField>
-            <InputField.Label error={errors?.name}>닉네임</InputField.Label>
-            <InputField.Input type="text" register={register('name')} />
-          </InputField>
+        <form className="flexColumn flex-1" onSubmit={handleSubmit(onSubmit)}>
+          <div className="flexColumn flex-1 gap-7">
+            <InputField>
+              <InputField.Label error={errors?.name}>닉네임</InputField.Label>
+              <InputField.Input type="text" register={register('name')} />
+            </InputField>
 
-          <InputField>
-            <InputField.Label>프로필 이미지</InputField.Label>
-            <div className="flexBetweenAlign mt-4">
-              <img
-                src={image}
-                className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
-                alt="profile-img"
-              />
-              <div className="flexColumn w-[130px] gap-3">
-                <input
-                  ref={fileInputRef}
-                  className="-m-[1px] h-[1px] w-[1px] overflow-hidden border-none p-0"
-                  type="file"
-                  id="profile-image"
-                  name="profile-image"
-                  accept="image/*"
-                  onChange={handleChangeImage}
+            <InputField>
+              <InputField.Label>프로필 이미지</InputField.Label>
+              <div className="flexBetweenAlign mt-4">
+                <img
+                  src={`${image}?${new Date().getTime()}`}
+                  className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
+                  alt="profile-img"
                 />
-                <Button
-                  width="w-full"
-                  size="xsmall"
-                  handleClick={handleUploadClick}
-                >
-                  이미지 업로드
-                </Button>
-                <Button width="w-full" size="xsmall">
-                  기본 이미지로 변경
-                </Button>
+                <div className="flexColumn w-[130px] gap-3">
+                  <input
+                    ref={fileInputRef}
+                    className="-m-[1px] h-[1px] w-[1px] overflow-hidden border-none p-0"
+                    type="file"
+                    id="profile-image"
+                    name="profile-image"
+                    accept="image/*"
+                    onChange={handleChangeImage}
+                  />
+                  <Button
+                    width="w-full"
+                    size="xsmall"
+                    handleClick={handleUploadClick}
+                  >
+                    이미지 업로드
+                  </Button>
+                  <Button width="w-full" size="xsmall">
+                    기본 이미지로 변경
+                  </Button>
+                </div>
               </div>
-            </div>
-          </InputField>
+            </InputField>
+          </div>
 
           <Button
             type="submit"
-            className="absolute bottom-[70px] right-4"
+            className="mb-[70px] mt-10 self-end"
             size="medium"
           >
             수정 완료
