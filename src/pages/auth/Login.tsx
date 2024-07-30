@@ -25,7 +25,10 @@ const Login = () => {
       </h1>
 
       <FormProvider {...formMethod}>
-        <form onSubmit={handleSubmit(handleLoginFormSubmit)}>
+        <form
+          className="flexColumn h-full"
+          onSubmit={handleSubmit(handleLoginFormSubmit)}
+        >
           <div className="flexColumn flex-1 gap-7">
             <InputField>
               <InputField.Label>아이디</InputField.Label>
@@ -51,7 +54,7 @@ const Login = () => {
             </p>
           )}
 
-          <div className="flexColumn absolute bottom-10 left-4 right-4 gap-3">
+          <div className="flexColumn my-10 gap-3">
             <Button type="submit" size="large" width="w-full">
               로그인
             </Button>
