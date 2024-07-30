@@ -20,7 +20,7 @@ export type EditAccountInfoRequest = AccountInfoRequest
 
 export interface MypageResponse {
   name: string
-  image: string
+  myImage: string
 }
 
 export interface UploadImageResponse {
