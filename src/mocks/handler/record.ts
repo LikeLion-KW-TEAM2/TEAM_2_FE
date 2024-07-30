@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 const homeData = {
-  mylmage: '/src/assets/images/default.svg',
+  myImage: '/src/assets/images/default.svg',
   list: [
     { id: 0, name: '다리 꼬기', status: 0, createdAt: '2024-07-21' },
     { id: 1, name: '옆으로 누워서 자기', status: 1, createdAt: '2024-07-21' },
@@ -10,7 +10,7 @@ const homeData = {
 }
 
 const homeDataByDate = {
-  mylmage: '/src/assets/images/default.svg',
+  myImage: '/src/assets/images/default.svg',
   habits: [
     { id: 0, name: '다리 꼬기', status: 0, createdAt: '2024-07-21' },
     { id: 1, name: '옆으로 누워서 자기', status: 1, createdAt: '2024-07-21' },

@@ -23,6 +23,11 @@ export interface MypageResponse {
   image: string
 }
 
+export interface UploadImageResponse {
+  name: string
+  myImage: string
+}
+
 export type FriendListResponse = IFriend[]
 export type AccountInfoResponse = AccountInfoRequest
 export type CompleteHabitResponse = IHabit[]

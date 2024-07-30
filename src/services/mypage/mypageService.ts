@@ -4,6 +4,7 @@ import {
   CompleteHabitResponse,
   FriendListResponse,
   MypageResponse,
+  UploadImageResponse,
 } from '@/types/mypage'
 import { instance } from '../service'
 
@@ -28,6 +29,13 @@ const POST = {
   },
   editPassword(password: string): Promise<any> {
     return instance.post(`/mypage/edit/password`, password)
+  },
+  uploadImage(image: FormData): Promise<UploadImageResponse> {
+    return instance.post(`/mypage/edit/image`, image, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
   },
 }
 

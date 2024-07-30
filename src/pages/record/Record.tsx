@@ -5,7 +5,6 @@ import { useHabitsByDate, useRecord } from '@/services/record/useRecordService'
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 import HabitList from './HabitList'
-import profileImage from '@/utils/profileImage'
 import Loading from '@/components/Loading'
 
 const Record = () => {
@@ -23,7 +22,7 @@ const Record = () => {
 
   return (
     <NavLayout>
-      <HeaderWithProfile src={profileImage(recordData?.mylmage)} />
+      <HeaderWithProfile src={recordData?.myImage} />
       <HabitCalendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
