@@ -54,6 +54,20 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
     })
   }
 
+  const handleChangeDefaultImage = () => {
+    const sendImgData = new FormData()
+
+    const emptyBlob = new Blob()
+    sendImgData.append('image', 'default')
+
+    uploadImage(sendImgData, {
+      onSuccess: (res) => {
+        setImage(res.myImage)
+        setValue('myImage', res.myImage)
+      },
+    })
+  }
+
   return (
     <>
       <FormProvider {...formMethod}>
@@ -89,7 +103,11 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
                   >
                     이미지 업로드
                   </Button>
-                  <Button width="w-full" size="xsmall">
+                  <Button
+                    width="w-full"
+                    size="xsmall"
+                    handleClick={handleChangeDefaultImage}
+                  >
                     기본 이미지로 변경
                   </Button>
                 </div>
