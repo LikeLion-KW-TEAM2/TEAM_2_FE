@@ -22,7 +22,7 @@ const Onboarding = () => {
         <SectionDot currentTab={currentTab} onDotClick={onDotClick} />
       </div>
 
-      <div className="h-[71px] py-5">
+      <div className="my-5 h-[71px]">
         {currentTab === 2 && (
           <Link to={'/login'}>
             <Button width="w-[167px]" size="large">

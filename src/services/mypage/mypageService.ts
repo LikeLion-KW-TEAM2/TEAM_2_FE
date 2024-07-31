@@ -37,6 +37,9 @@ const POST = {
       },
     })
   },
+  uploadDefaultImage(): Promise<UploadImageResponse> {
+    return instance.post(`/mypage/edit/defaultimage`, { image: 'default' })
+  },
 }
 
 const DELETE = {

@@ -5,12 +5,14 @@ import { AccountInfoResponse, EditAccountInfoRequest } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import {
   useEditAccountInfo,
+  useUploadDefaultImage,
   useUploadImage,
 } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
 import profileImage from '@/utils/profileImage'
 import { useRef, useState } from 'react'
+import defaultImage from '@/assets/images/default.svg'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
@@ -26,6 +28,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   } = formMethod
   const { mutate: editAccount } = useEditAccountInfo()
   const { mutate: uploadImage } = useUploadImage()
+  const { mutate: uploadDefaultImage } = useUploadDefaultImage()
   const { isOpen, openModal, closeModal } = useModal()
   const [image, setImage] = useState(profileImage(myImage))
 
@@ -54,6 +57,15 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
     })
   }
 
+  const handleChangeDefaultImage = () => {
+    uploadDefaultImage(undefined, {
+      onSuccess: () => {
+        setImage(defaultImage)
+        setValue('myImage', defaultImage)
+      },
+    })
+  }
+
   return (
     <>
       <FormProvider {...formMethod}>
@@ -68,7 +80,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
               <InputField.Label>프로필 이미지</InputField.Label>
               <div className="flexBetweenAlign mt-4">
                 <img
-                  src={`${image}?${new Date().getTime()}`}
+                  src={profileImage(`${image}?${new Date().getTime()}`)}
                   className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
                   alt="profile-img"
                 />
@@ -89,7 +101,11 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
                   >
                     이미지 업로드
                   </Button>
-                  <Button width="w-full" size="xsmall">
+                  <Button
+                    width="w-full"
+                    size="xsmall"
+                    handleClick={handleChangeDefaultImage}
+                  >
                     기본 이미지로 변경
                   </Button>
                 </div>
