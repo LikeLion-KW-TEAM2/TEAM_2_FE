@@ -5,12 +5,14 @@ import { AccountInfoResponse, EditAccountInfoRequest } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import {
   useEditAccountInfo,
+  useUploadDefaultImage,
   useUploadImage,
 } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
 import profileImage from '@/utils/profileImage'
 import { useRef, useState } from 'react'
+import defaultImage from '@/assets/images/default.svg'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
@@ -26,6 +28,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   } = formMethod
   const { mutate: editAccount } = useEditAccountInfo()
   const { mutate: uploadImage } = useUploadImage()
+  const { mutate: uploadDefaultImage } = useUploadDefaultImage()
   const { isOpen, openModal, closeModal } = useModal()
   const [image, setImage] = useState(profileImage(myImage))
 
@@ -55,13 +58,10 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   }
 
   const handleChangeDefaultImage = () => {
-    const sendImgData = new FormData()
-    sendImgData.append('image', 'default')
-
-    uploadImage(sendImgData, {
-      onSuccess: (res) => {
-        setImage(res.myImage)
-        setValue('myImage', res.myImage)
+    uploadDefaultImage(undefined, {
+      onSuccess: () => {
+        setImage(defaultImage)
+        setValue('myImage', defaultImage)
       },
     })
   }
@@ -80,7 +80,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
               <InputField.Label>프로필 이미지</InputField.Label>
               <div className="flexBetweenAlign mt-4">
                 <img
-                  src={`${image}?${new Date().getTime()}`}
+                  src={profileImage(`${image}?${new Date().getTime()}`)}
                   className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
                   alt="profile-img"
                 />

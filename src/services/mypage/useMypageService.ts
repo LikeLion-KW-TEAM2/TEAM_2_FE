@@ -96,3 +96,9 @@ export const useUploadImage = () => {
     mutationFn: (image: FormData) => mypageService.POST.uploadImage(image),
   })
 }
+
+export const useUploadDefaultImage = () => {
+  return useMutation({
+    mutationFn: () => mypageService.POST.uploadDefaultImage(),
+  })
+}
