@@ -13,7 +13,7 @@ interface IHabit {
 
 export interface AccountInfoRequest {
   name: string
-  myImage: string
+  myImage: string | File
 }
 
 export type EditAccountInfoRequest = AccountInfoRequest
@@ -25,9 +25,13 @@ export interface MypageResponse {
 
 export interface UploadImageResponse {
   name: string
+  myImage: File
+}
+
+export type AccountInfoResponse = {
+  name: string
   myImage: string
 }
 
 export type FriendListResponse = IFriend[]
-export type AccountInfoResponse = AccountInfoRequest
 export type CompleteHabitResponse = IHabit[]

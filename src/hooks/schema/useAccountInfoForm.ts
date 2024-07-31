@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 const schema = z.object({
   name: z.string().min(3, { message: '닉네임은 3글자 이상입니다.' }),
-  myImage: z.string(),
+  myImage: z.union([z.string(), z.instanceof(File)]),
 })
 
 export const useAccountInfoForm = (defaultValues: AccountInfoRequest) => {
