@@ -80,6 +80,15 @@ export default {
           '-webkit-overflow-scrolling': 'touch',
         },
       },
+      keyframes: {
+        'bounce-up-down': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-16px)' },
+        },
+      },
+      animation: {
+        'bounce-up-down': 'bounce-up-down 0.3s ease-in-out',
+      },
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

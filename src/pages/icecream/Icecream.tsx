@@ -7,10 +7,19 @@ import bgIcecream from '@/assets/images/icecream-bg.svg'
 import { useIcecreamLevel } from '@/services/icecream/useIcecreamService'
 import convertLevelToIcecream from '@/utils/convertLevelToIcecream'
 import Loading from '@/components/Loading'
+import { useState } from 'react'
 
 const Icecream = () => {
   const { isOpen, openModal, closeModal } = useModal()
   const { data: icecreamData, isPending } = useIcecreamLevel()
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  const handleClick = () => {
+    setIsAnimating(true)
+    setTimeout(() => {
+      setIsAnimating(false)
+    }, 500)
+  }
 
   if (isPending) return <Loading />
 
@@ -33,11 +42,14 @@ const Icecream = () => {
         <section className="mt-4">
           <div className="relative">
             <img src={bgIcecream} className="w-full" alt="bg" />
-            <img
-              src={convertLevelToIcecream(icecreamData?.icecream || 0)}
-              className="absolute bottom-16 left-2/4 w-[149px] -translate-x-1/2 transition-all hover:-translate-y-4"
-              alt="icecream"
-            />
+            <div className="absolute bottom-16 w-full">
+              <img
+                src={convertLevelToIcecream(icecreamData?.icecream || 0)}
+                className={`mx-auto w-[149px] cursor-pointer ${isAnimating && 'animate-bounce-up-down'}`}
+                alt="icecream"
+                onClick={handleClick}
+              />
+            </div>
           </div>
         </section>
       </NavLayout>
