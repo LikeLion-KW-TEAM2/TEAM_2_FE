@@ -7,12 +7,12 @@ import icecream6 from '@/assets/images/icecream-6.svg'
 
 const convertLevelToIcecream = (level: number) => {
   const imageArr = [
-    icecream1,
-    icecream2,
-    icecream3,
-    icecream4,
-    icecream5,
     icecream6,
+    icecream5,
+    icecream4,
+    icecream3,
+    icecream2,
+    icecream1,
   ]
 
   return imageArr[level]
