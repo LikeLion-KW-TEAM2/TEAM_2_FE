@@ -23,11 +23,6 @@ function setInterceptors(instance: AxiosInstance) {
       return response.data
     },
     (error) => {
-      const token = useToken()
-      if (!token && error.response.status === 401) {
-        window.location.href = '/login'
-      }
-
       return Promise.reject(error)
     },
   )
