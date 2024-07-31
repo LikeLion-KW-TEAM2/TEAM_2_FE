@@ -14,27 +14,32 @@ import { Route, Routes } from 'react-router-dom'
 import RecordEdit from '@/pages/record/RecordEdit'
 import RecordAdd from '@/pages/record/RecordAdd'
 import Onboarding from '../Onboarding/Onboarding'
+import { LoginPrivateRoute, PrivateRoute } from './PrivateRouter'
 import ErrorPage from '../ErrorPage'
 
 const RouterComponent = () => {
   return (
     <Routes>
-      <Route path="/" element={<Onboarding />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route element={<LoginPrivateRoute />}>
+        <Route path="/" element={<Onboarding />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Route>
 
-      <Route path="/record" element={<Record />} />
-      <Route path="/record/edit/:id" element={<RecordEdit />} />
-      <Route path="/record/add" element={<RecordAdd />} />
-      <Route path="/friend" element={<Friend />} />
-      <Route path="/friend/search" element={<FriendSearch />} />
-      <Route path="/guestbook" element={<Guestbook />} />
-      <Route path="/icecream" element={<Icecream />} />
-      <Route path="/mypage" element={<Mypage />} />
-      <Route path="/mypage/account-info" element={<AccountInfo />} />
-      <Route path="/mypage/password" element={<PasswordEdit />} />
-      <Route path="/mypage/friend-list" element={<FriendList />} />
-      <Route path="/mypage/complete-habit" element={<CompleteHabit />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/record" element={<Record />} />
+        <Route path="/record/edit/:id" element={<RecordEdit />} />
+        <Route path="/record/add" element={<RecordAdd />} />
+        <Route path="/friend" element={<Friend />} />
+        <Route path="/friend/search" element={<FriendSearch />} />
+        <Route path="/guestbook" element={<Guestbook />} />
+        <Route path="/icecream" element={<Icecream />} />
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/mypage/account-info" element={<AccountInfo />} />
+        <Route path="/mypage/password" element={<PasswordEdit />} />
+        <Route path="/mypage/friend-list" element={<FriendList />} />
+        <Route path="/mypage/complete-habit" element={<CompleteHabit />} />
+      </Route>
 
       <Route path="*" element={<ErrorPage />} />
     </Routes>
