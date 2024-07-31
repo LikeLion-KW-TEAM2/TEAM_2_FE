@@ -17,9 +17,9 @@ const SearchInput = () => {
       <input
         type="search"
         name="searchId"
+        enterKeyHint="search"
         value={input.searchId}
         onChange={onChange}
-        size={27}
         className="flex-1 bg-transparent text-secondary-900 focus:outline-none"
         placeholder="친구의 아이디를 입력해주세요"
       />
