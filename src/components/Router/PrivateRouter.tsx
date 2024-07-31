@@ -8,5 +8,6 @@ export const LoginPrivateRoute = () => {
 
 export const PrivateRoute = () => {
   const isAuthenticated = useToken()
+  console.log(isAuthenticated)
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
 }

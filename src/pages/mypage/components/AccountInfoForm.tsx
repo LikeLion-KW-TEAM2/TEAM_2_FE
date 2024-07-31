@@ -56,8 +56,6 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
 
   const handleChangeDefaultImage = () => {
     const sendImgData = new FormData()
-
-    const emptyBlob = new Blob()
     sendImgData.append('image', 'default')
 
     uploadImage(sendImgData, {
