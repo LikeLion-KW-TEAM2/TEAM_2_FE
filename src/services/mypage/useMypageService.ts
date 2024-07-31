@@ -1,11 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import queryKeys from './queries'
 import mypageService from './mypageService'
-import {
-  AccountInfoRequest,
-  AccountInfoResponse,
-  FriendListResponse,
-} from '@/types/mypage'
+import { AccountInfoRequest, FriendListResponse } from '@/types/mypage'
 import { instance } from '../service'
 import { useNavigate } from 'react-router-dom'
 
@@ -46,26 +42,6 @@ export const useAccountInfo = () => {
   })
 }
 
-export const useEditAccountInfo = () => {
-  const queryClient = useQueryClient()
-  return useMutation({
-    mutationFn: (accountInfo: AccountInfoRequest) =>
-      mypageService.POST.editAccount(accountInfo),
-    onSuccess(_, variables) {
-      queryClient.setQueryData<AccountInfoResponse>(
-        queryKeys.accountInfo(),
-        (oldData): AccountInfoResponse => {
-          if (!oldData) return { ...variables }
-          return {
-            ...oldData,
-            ...variables,
-          }
-        },
-      )
-    },
-  })
-}
-
 export const useCompleteHabits = () => {
   return useQuery({
     queryKey: queryKeys.completeHabit(),
@@ -92,13 +68,25 @@ export const useRemove = () => {
 }
 
 export const useUploadImage = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
-    mutationFn: (image: FormData) => mypageService.POST.uploadImage(image),
+    mutationFn: (sendForm: FormData) =>
+      mypageService.POST.uploadImage(sendForm),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.accountInfo() })
+    },
   })
 }
 
 export const useUploadDefaultImage = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
-    mutationFn: () => mypageService.POST.uploadDefaultImage(),
+    mutationFn: (formData: AccountInfoRequest) =>
+      mypageService.POST.uploadDefaultImage(formData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.accountInfo() })
+    },
   })
 }

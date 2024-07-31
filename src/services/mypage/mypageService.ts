@@ -24,21 +24,20 @@ const GET = {
 }
 
 const POST = {
-  editAccount(accountInfo: AccountInfoRequest): Promise<any> {
-    return instance.post(`/mypage/edit`, accountInfo)
-  },
   editPassword(password: string): Promise<any> {
     return instance.post(`/mypage/edit/password`, password)
   },
-  uploadImage(image: FormData): Promise<UploadImageResponse> {
-    return instance.post(`/mypage/edit/image`, image, {
+  uploadImage(sendForm: FormData): Promise<UploadImageResponse> {
+    return instance.post(`/mypage/edit/image`, sendForm, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
   },
-  uploadDefaultImage(): Promise<UploadImageResponse> {
-    return instance.post(`/mypage/edit/defaultimage`, { image: 'default' })
+  uploadDefaultImage(
+    formData: AccountInfoRequest,
+  ): Promise<UploadImageResponse> {
+    return instance.post(`/mypage/edit/defaultimage`, formData)
   },
 }
 

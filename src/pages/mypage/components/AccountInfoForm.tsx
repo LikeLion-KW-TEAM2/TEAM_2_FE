@@ -1,18 +1,16 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { FormProvider } from 'react-hook-form'
-import { AccountInfoResponse, EditAccountInfoRequest } from '@/types/mypage'
+import { AccountInfoRequest, AccountInfoResponse } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import {
-  useEditAccountInfo,
   useUploadDefaultImage,
   useUploadImage,
 } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
 import profileImage from '@/utils/profileImage'
-import { useRef, useState } from 'react'
-import defaultImage from '@/assets/images/default.svg'
+import useImageUpload from '@/hooks/useImageUpload'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
@@ -25,45 +23,33 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
     formState: { errors },
     handleSubmit,
     setValue,
+    getValues,
   } = formMethod
-  const { mutate: editAccount } = useEditAccountInfo()
+
+  const {
+    fileInputRef,
+    image,
+    handleUploadClick,
+    handleChangeImage,
+    handleChangeDefaultImage,
+  } = useImageUpload({ myImage, setValue })
+
   const { mutate: uploadImage } = useUploadImage()
   const { mutate: uploadDefaultImage } = useUploadDefaultImage()
   const { isOpen, openModal, closeModal } = useModal()
-  const [image, setImage] = useState(profileImage(myImage))
 
-  const onSubmit = (account: EditAccountInfoRequest) => {
-    editAccount(account, { onSuccess: () => openModal() })
-  }
+  const onSubmit = (formData: AccountInfoRequest) => {
+    const isDefault = image?.includes('default.svg')
 
-  const fileInputRef = useRef<HTMLInputElement>(null)
+    if (isDefault) {
+      uploadDefaultImage(formData, { onSuccess: () => openModal() })
+    } else {
+      const sendForm = new FormData()
+      sendForm.append('name', getValues('name'))
+      sendForm.append('image', getValues('myImage') as File)
 
-  const handleUploadClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click()
+      uploadImage(sendForm, { onSuccess: () => openModal() })
     }
-  }
-
-  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files as FileList
-    const sendImgData = new FormData()
-    sendImgData.append('image', files[0])
-
-    uploadImage(sendImgData, {
-      onSuccess: (res) => {
-        setImage(res.myImage)
-        setValue('myImage', res.myImage)
-      },
-    })
-  }
-
-  const handleChangeDefaultImage = () => {
-    uploadDefaultImage(undefined, {
-      onSuccess: () => {
-        setImage(defaultImage)
-        setValue('myImage', defaultImage)
-      },
-    })
   }
 
   return (
@@ -80,7 +66,7 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
               <InputField.Label>프로필 이미지</InputField.Label>
               <div className="flexBetweenAlign mt-4">
                 <img
-                  src={profileImage(`${image}?${new Date().getTime()}`)}
+                  src={image}
                   className="ml-8 h-[92px] w-[92px] rounded-full border-[0.9px] border-secondary-200"
                   alt="profile-img"
                 />
