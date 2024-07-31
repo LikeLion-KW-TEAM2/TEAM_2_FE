@@ -15,22 +15,30 @@ const queryClient = new QueryClient({
   },
 })
 
-async function enableMocking() {
-  if (import.meta.env.VITE_REACT_APP_MOCK !== 'development') {
-    return
-  }
+// async function enableMocking() {
+//   if (import.meta.env.VITE_REACT_APP_MOCK !== 'development') {
+//     return
+//   }
 
-  const { worker } = await import('./mocks/browser')
+//   const { worker } = await import('./mocks/browser')
 
-  return worker.start()
-}
+//   return worker.start()
+// }
 
-enableMocking().then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </BrowserRouter>,
-  )
-})
+// enableMocking().then(() => {
+//   ReactDOM.createRoot(document.getElementById('root')!).render(
+//     <BrowserRouter>
+//       <QueryClientProvider client={queryClient}>
+//         <App />
+//       </QueryClientProvider>
+//     </BrowserRouter>,
+//   )
+// })
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </BrowserRouter>,
+)
