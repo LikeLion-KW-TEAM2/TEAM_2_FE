@@ -1,4 +1,3 @@
-import { useToken } from '@/store/token'
 import axios, { AxiosInstance } from 'axios'
 
 let baseURL = ''
