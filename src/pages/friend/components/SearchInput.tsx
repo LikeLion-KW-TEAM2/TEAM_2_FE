@@ -13,7 +13,7 @@ const SearchInput = () => {
   }
 
   return (
-    <div className="flexAlign mb-8 gap-3 rounded-xl px-4 py-2 shadow-md">
+    <div className="flexAlign mb-8 gap-3 overflow-hidden rounded-xl px-4 py-2 shadow-md">
       <input
         type="search"
         name="searchId"
@@ -33,7 +33,7 @@ const SearchInput = () => {
       )}
       <RiSearchLine
         size={24}
-        className="cursor-pointer text-secondary-400"
+        className="flex-shrink-0 cursor-pointer text-secondary-400"
         onClick={handleClickSearch}
       />
     </div>
