@@ -15,7 +15,7 @@ const FriendSearch = () => {
   const [searchParams, _] = useSearchParams()
   const { isOpen, openModal, closeModal } = useModal()
   const searchId = searchParams.get('search') as string
-  const { data: searchData, isPending } = useSearchList(searchId)
+  const { data: searchData, isPending, isError } = useSearchList(searchId)
   const { mutate: addFriend } = useAddition()
 
   const handleClickAddButton = ({ userId, name }: AddFriendRequest) => {
@@ -55,7 +55,7 @@ const FriendSearch = () => {
                 </Button>
               </div>
             ))}
-            {!searchData && <ErrorMessage>검색 결과가 없습니다.</ErrorMessage>}
+            {isError && <ErrorMessage>검색 결과가 없습니다.</ErrorMessage>}
           </div>
         )}
       </NavLayout>
