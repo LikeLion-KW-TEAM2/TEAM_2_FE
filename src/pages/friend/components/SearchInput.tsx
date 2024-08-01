@@ -1,6 +1,6 @@
 import useInput from '@/hooks/useInput'
+import { AiOutlineSearch } from 'react-icons/ai'
 import { CgClose } from 'react-icons/cg'
-import { RiSearchLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 const SearchInput = () => {
@@ -38,7 +38,7 @@ const SearchInput = () => {
           onClick={reset}
         />
       )}
-      <RiSearchLine
+      <AiOutlineSearch
         size={24}
         className="flex-shrink-0 cursor-pointer text-secondary-400"
         onClick={handleClickSearch}
