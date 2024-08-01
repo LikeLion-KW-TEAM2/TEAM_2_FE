@@ -22,7 +22,7 @@ const SearchInput = () => {
   }
 
   return (
-    <div className="mb-8 flex items-center gap-3 overflow-hidden rounded-xl px-4 py-2 shadow-md">
+    <div className="mb-8 flex w-full items-center gap-3 overflow-hidden rounded-xl px-4 py-2 shadow-md">
       <input
         type="search"
         name="searchId"
