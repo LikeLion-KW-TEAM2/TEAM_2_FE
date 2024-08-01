@@ -55,7 +55,9 @@ const FriendSearch = () => {
                 </Button>
               </div>
             ))}
-            {isError && <ErrorMessage>검색 결과가 없습니다.</ErrorMessage>}
+            {(isError || searchData.length === 0) && (
+              <ErrorMessage>검색 결과가 없습니다.</ErrorMessage>
+            )}
           </div>
         )}
       </NavLayout>
