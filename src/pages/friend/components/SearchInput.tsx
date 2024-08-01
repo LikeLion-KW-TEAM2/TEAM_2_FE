@@ -12,6 +12,12 @@ const SearchInput = () => {
     navigate(`/friend/search?search=${input.searchId}`)
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleClickSearch()
+    }
+  }
+
   return (
     <div className="flexAlign mb-8 gap-3 overflow-hidden rounded-xl px-4 py-2 shadow-md">
       <input
@@ -20,6 +26,7 @@ const SearchInput = () => {
         enterKeyHint="search"
         value={input.searchId}
         onChange={onChange}
+        onKeyDown={handleKeyDown}
         className="flex-1 bg-transparent text-secondary-900 focus:outline-none"
         placeholder="친구의 아이디를 입력해주세요"
       />
