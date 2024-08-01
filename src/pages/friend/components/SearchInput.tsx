@@ -1,15 +1,18 @@
 import useInput from '@/hooks/useInput'
+import { useSearchActions } from '@/store/search'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgClose } from 'react-icons/cg'
 import { useNavigate } from 'react-router-dom'
 
 const SearchInput = () => {
   const navigate = useNavigate()
-  const { input, onChange, reset } = useInput({ searchId: '' })
+  const { input: searchInput, onChange, reset } = useInput({ searchId: '' })
+  const { setSearch } = useSearchActions()
 
   const handleClickSearch = () => {
-    navigate(`/friend/search?search=${input.searchId}`)
+    setSearch(searchInput.searchId)
     reset()
+    navigate('/friend/search')
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -24,13 +27,13 @@ const SearchInput = () => {
         type="search"
         name="searchId"
         enterKeyHint="search"
-        value={input.searchId}
+        value={searchInput.searchId}
         onChange={onChange}
         onKeyDown={handleKeyDown}
         className="flex-1 bg-transparent text-secondary-900 focus:outline-none"
         placeholder="친구의 아이디를 입력해주세요"
       />
-      {input.searchId && (
+      {searchInput.searchId && (
         <CgClose
           size={16}
           strokeWidth={1}

@@ -5,6 +5,7 @@ import ModalDelete from './ModalDelete'
 import { ISubHeader } from '@/types/common'
 
 const SubHeader = ({
+  to,
   hidden = false,
   children,
   handleClickDelete,
@@ -18,7 +19,7 @@ const SubHeader = ({
         <AiOutlineLeft
           size={20}
           className="absolute left-4 top-5 cursor-pointer text-secondary-400"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(to ? to : '-1')}
         />
         <h5 className="font-bold text-primary-900">{children}</h5>
         <p

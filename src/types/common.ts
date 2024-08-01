@@ -26,6 +26,7 @@ export interface IButton {
 }
 
 export interface ISubHeader {
+  to?: string
   hidden?: boolean
   children: ReactNode
   handleClickDelete?: () => void

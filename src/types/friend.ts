@@ -14,6 +14,12 @@ interface ISearchFriend {
   isFriend: boolean
 }
 
+export interface ISearchResult {
+  openModal: () => void
+  searchData: SearchResponse | undefined
+  status: string
+}
+
 export interface IFriendItem {
   friend: IFriend
 }
