@@ -30,6 +30,7 @@ const SearchInput = () => {
         value={searchInput.searchId}
         onChange={onChange}
         onKeyDown={handleKeyDown}
+        size={5}
         className="flex-1 bg-transparent text-secondary-900 focus:outline-none"
         placeholder="친구의 아이디를 입력해주세요"
       />
