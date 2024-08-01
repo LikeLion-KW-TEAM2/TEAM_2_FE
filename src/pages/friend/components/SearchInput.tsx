@@ -8,8 +8,8 @@ const SearchInput = () => {
   const { input, onChange, reset } = useInput({ searchId: '' })
 
   const handleClickSearch = () => {
-    reset()
     navigate(`/friend/search?search=${input.searchId}`)
+    reset()
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
