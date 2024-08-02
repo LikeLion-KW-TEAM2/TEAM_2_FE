@@ -13,7 +13,7 @@ export const useFriendPageList = () => {
 
 export const useSearchList = (id: string) => {
   return useQuery({
-    queryKey: queryKeys.search(),
+    queryKey: queryKeys.search(id),
     queryFn: () => friendService.GET.search(id),
   })
 }

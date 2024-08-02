@@ -13,6 +13,11 @@ export const useAddForm = () => {
   const formMethod = useForm<IAddForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
+    defaultValues: {
+      name: '',
+      periodType: 0,
+      privacy: 0,
+    },
     resolver: zodResolver(schema),
   })
   return formMethod
