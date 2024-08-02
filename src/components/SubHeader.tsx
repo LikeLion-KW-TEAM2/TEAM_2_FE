@@ -5,7 +5,7 @@ import ModalDelete from './ModalDelete'
 import { ISubHeader } from '@/types/common'
 
 const SubHeader = ({
-  to,
+  to = '',
   hidden = false,
   children,
   handleClickDelete,
@@ -13,13 +13,18 @@ const SubHeader = ({
   const navigate = useNavigate()
   const { isOpen, openModal, closeModal } = useModal()
 
+  const handleClickBackButton = () => {
+    if (to === '') navigate(-1)
+    else navigate(to)
+  }
+
   return (
     <>
       <div className="flexCenter relative mb-3 p-4">
         <AiOutlineLeft
           size={20}
           className="absolute left-4 top-5 cursor-pointer text-secondary-400"
-          onClick={() => navigate(to ? to : '-1')}
+          onClick={handleClickBackButton}
         />
         <h5 className="font-bold text-primary-900">{children}</h5>
         <p
