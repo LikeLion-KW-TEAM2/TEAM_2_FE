@@ -1,0 +1,7 @@
+@tailwind utilities;
+
+@layer utilities {
+  .webkit-overflow-scrolling-touch {
+    -webkit-overflow-scrolling: touch;
+  }
+}
