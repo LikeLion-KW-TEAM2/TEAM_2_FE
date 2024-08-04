@@ -12,6 +12,7 @@ import ModalUpdate from '@/components/ModalUpdate'
 import useImageUpload from '@/hooks/useImageUpload'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
+  console.log(myImage)
   const formMethod = useAccountInfoForm({
     name: name || '',
     myImage: myImage,
