@@ -10,12 +10,12 @@ import {
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
 import useImageUpload from '@/hooks/useImageUpload'
+import profileImage from '@/utils/profileImage'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
-  console.log(myImage)
   const formMethod = useAccountInfoForm({
     name: name || '',
-    myImage: myImage,
+    myImage: profileImage(myImage),
   })
 
   const {
@@ -25,6 +25,8 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
     setValue,
     getValues,
   } = formMethod
+
+  console.log(getValues('myImage'))
 
   const {
     fileInputRef,
