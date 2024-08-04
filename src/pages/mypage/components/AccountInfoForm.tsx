@@ -38,11 +38,14 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const { mutate: uploadDefaultImage } = useUploadDefaultImage()
   const { isOpen, openModal, closeModal } = useModal()
 
-  const onSubmit = (formData: AccountInfoRequest) => {
+  const onSubmit = () => {
     const isDefault = image?.includes('default.svg')
 
     if (isDefault) {
-      uploadDefaultImage(formData, { onSuccess: () => openModal() })
+      uploadDefaultImage(
+        { name: getValues('name'), myImage: getValues('myImage') },
+        { onSuccess: () => openModal() },
+      )
     } else {
       const sendForm = new FormData()
       sendForm.append('name', getValues('name'))
