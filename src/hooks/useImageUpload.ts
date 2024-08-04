@@ -30,7 +30,7 @@ const useImageUpload = ({ myImage, setValue }: IImageUpload) => {
 
   const handleChangeDefaultImage = () => {
     setImage(defaultImage)
-    setValue('myImage', defaultImage)
+    setValue('myImage', 'default')
   }
 
   return {
