@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { FormProvider } from 'react-hook-form'
-import { AccountInfoRequest, AccountInfoResponse } from '@/types/mypage'
+import { AccountInfoResponse } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import {
   useUploadDefaultImage,
