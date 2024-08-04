@@ -9,13 +9,12 @@ import {
 } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
-import profileImage from '@/utils/profileImage'
 import useImageUpload from '@/hooks/useImageUpload'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
     name: name || '',
-    myImage: profileImage(myImage),
+    myImage: myImage,
   })
 
   const {
