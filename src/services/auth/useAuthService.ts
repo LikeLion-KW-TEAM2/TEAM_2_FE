@@ -25,9 +25,6 @@ export function useLogin() {
       setToken(headers.authorization)
       navigate('/record')
     },
-    onError: (error: any) => {
-      console.error('error', error)
-    },
   })
 }
 
@@ -35,9 +32,6 @@ export function useSignup() {
   return useMutation({
     mutationFn: (signupData: SignupFormRequest) =>
       authService.POST.signup(signupData),
-    onError: (error: any) => {
-      console.error('error', error)
-    },
   })
 }
 
@@ -45,8 +39,5 @@ export function useCheckOfDuplicationId() {
   return useMutation({
     mutationFn: (userId: DuplicationIdRequest) =>
       authService.POST.idValidate(userId),
-    onError: (error: any) => {
-      console.error('error', error)
-    },
   })
 }

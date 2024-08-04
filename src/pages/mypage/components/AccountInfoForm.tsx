@@ -26,8 +26,6 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
     getValues,
   } = formMethod
 
-  console.log(getValues('myImage'))
-
   const {
     fileInputRef,
     image,
