@@ -3,13 +3,31 @@ import HabitItem from './components/HabitItem'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import ErrorMessage from '@/components/ErrorMessage'
+import Loading from '@/components/Loading'
 
-const HabitList = ({ list, habitsData, selectedDate, refetch }: IHabitList) => {
+const HabitList = ({
+  list,
+  habitsData,
+  selectedDate,
+  isLoading,
+  isError,
+  refetch,
+}: IHabitList) => {
   const [habitList, setHabitList] = useState<IHabits[]>(list || [])
 
   useEffect(() => {
     if (habitsData) setHabitList(habitsData)
   }, [habitsData])
+
+  if (isLoading) return <Loading />
+
+  if (isError)
+    return (
+      <div className="mt-[60px]">
+        <ErrorMessage>습관 목록이 없습니다.</ErrorMessage>
+      </div>
+    )
 
   return (
     <div className="flexColumn mt-[60px] flex-1 gap-6 overflow-y-scroll scrollbar-hide">

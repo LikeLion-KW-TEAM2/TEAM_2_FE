@@ -44,6 +44,8 @@ export interface IHabitList {
   list: IHabits[]
   habitsData?: IHabits[]
   selectedDate: string
+  isLoading: boolean
+  isError: boolean
   refetch: (
     options?: RefetchOptions,
   ) => Promise<QueryObserverResult<HabitsByDateResponse, Error>>

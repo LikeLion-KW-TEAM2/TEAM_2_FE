@@ -68,7 +68,5 @@ export const useHabitsByDate = (date: string) => {
     queryKey: queryKeys.habit(date),
     queryFn: () => recordService.GET.habitByDate(date),
     enabled: false,
-    gcTime: 0,
-    staleTime: 0,
   })
 }
