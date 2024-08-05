@@ -11,14 +11,23 @@ const Record = () => {
   dayjs.locale('ko')
   const now = dayjs().format('YYYY-MM-DD')
   const [selectedDate, setSelectedDate] = useState<string>(now)
-  const { data: recordData, isLoading } = useRecord()
-  const { data: habitsData, refetch } = useHabitsByDate(selectedDate || now)
+  const {
+    data: recordData,
+    isFetching: recordFetching,
+    isError: recordError,
+  } = useRecord()
+  const {
+    data: habitsByDateData,
+    isFetching: habitsByDateFetching,
+    isError: habitsByDateError,
+    refetch,
+  } = useHabitsByDate(selectedDate || now)
 
   useEffect(() => {
     if (selectedDate) refetch()
   }, [selectedDate, refetch])
 
-  if (isLoading) return <Loading />
+  if (recordFetching) return <Loading />
 
   return (
     <NavLayout>
@@ -29,8 +38,10 @@ const Record = () => {
       />
       <HabitList
         list={recordData?.habits || []}
-        habitsData={habitsData?.habits}
+        habitsData={habitsByDateData?.habits}
         selectedDate={selectedDate}
+        isLoading={habitsByDateFetching}
+        isError={recordError || habitsByDateError}
         refetch={refetch}
       />
     </NavLayout>

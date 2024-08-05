@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import { InputField } from '@/components/InputField'
 import { FormProvider } from 'react-hook-form'
-import { AccountInfoRequest, AccountInfoResponse } from '@/types/mypage'
+import { AccountInfoResponse } from '@/types/mypage'
 import { useAccountInfoForm } from '@/hooks/schema/useAccountInfoForm'
 import {
   useUploadDefaultImage,
@@ -9,8 +9,8 @@ import {
 } from '@/services/mypage/useMypageService'
 import { useModal } from '@/hooks/useModal'
 import ModalUpdate from '@/components/ModalUpdate'
-import profileImage from '@/utils/profileImage'
 import useImageUpload from '@/hooks/useImageUpload'
+import profileImage from '@/utils/profileImage'
 
 const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const formMethod = useAccountInfoForm({
@@ -38,15 +38,16 @@ const AccountInfoForm = ({ name, myImage }: AccountInfoResponse) => {
   const { mutate: uploadDefaultImage } = useUploadDefaultImage()
   const { isOpen, openModal, closeModal } = useModal()
 
-  const onSubmit = (formData: AccountInfoRequest) => {
-    const isDefault = image?.includes('default.svg')
+  const onSubmit = () => {
+    const name = getValues('name')
+    const myImage = getValues('myImage')
 
-    if (isDefault) {
-      uploadDefaultImage(formData, { onSuccess: () => openModal() })
+    if (myImage === 'default') {
+      uploadDefaultImage({ name, myImage }, { onSuccess: () => openModal() })
     } else {
       const sendForm = new FormData()
-      sendForm.append('name', getValues('name'))
-      sendForm.append('image', getValues('myImage') as File)
+      sendForm.append('name', name)
+      sendForm.append('image', myImage as File)
 
       uploadImage(sendForm, { onSuccess: () => openModal() })
     }

@@ -26,9 +26,6 @@ export const useAddition = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.all })
     },
-    onError: (error: any) => {
-      console.error('error', error)
-    },
   })
 }
 
@@ -43,8 +40,5 @@ export const useGuestBook = () => {
   return useMutation({
     mutationFn: (message: GuestbookRequest) =>
       friendService.POST.guestbook(message),
-    onError: (error: any) => {
-      console.error('error', error)
-    },
   })
 }
