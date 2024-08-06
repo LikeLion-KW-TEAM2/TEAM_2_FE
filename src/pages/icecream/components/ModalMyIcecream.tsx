@@ -12,10 +12,6 @@ const ModalMyIcecream = ({ isOpen, closeModal }: ModalType) => {
           한달동안 등록된 습관의 개수에 따라 아이스크림의 녹는 정도가
           결정됩니다.
         </li>
-        <li>
-          개선이 완료된 습관에 따라 아이스크림 주변에 드라이아이스가 생겨요.
-          아이스크림의 녹는 속도가 줄어듭니다.
-        </li>
       </ul>
 
       <p className="text-center text-medium font-bold text-primary-600">
