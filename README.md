@@ -19,10 +19,16 @@
 
 - 프론트엔드
 
-  - TypeScript
-  - React
-  - Axios
   - Figma
+  - React
+  - TypeScript
+  - React Hook Form
+  - Axios
+  - TanStack Query
+  - MSW
+  - Tailwind
+  - Day.js
+  - Zustand
   - Vercel
 
 - 백엔드
