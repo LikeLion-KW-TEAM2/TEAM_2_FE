@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# 멋쟁이 사자처럼 대학 12기 중앙 해커톤
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Idea
 
-Currently, two official plugins are available:
+- 돈두댓 - Don't do that
+- 나쁜 습관 개선을 위한 NOT TO DO
+- 습관 개선과 함께 성장하는 아바타
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Member
 
-## Expanding the ESLint configuration
+|                    name                    |           role            |
+| :----------------------------------------: | :-----------------------: |
+| [김동균](https://github.com/KimDongGyun23) |  디자인, 프론트엔드 개발  |
+|  [김동윤](https://github.com/yoonie1219)   |        백엔드 개발        |
+|   [김서경](https://github.com/malangkim)   |        백엔드 개발        |
+|  [박경민](https://github.com/Kyoung-M1N)   | 백엔드 개발, DB설계, 배포 |
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Environment
 
-- Configure the top-level `parserOptions` property like this:
+- 프론트엔드
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+  - TypeScript
+  - React
+  - Axios
+  - Figma
+  - Vercel
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- 백엔드
+  - Java 17
+  - Spring boot 3.3.1
+  - Spring Data JPA
+  - MySQL
+  - AWS EC2, S3 bucket, Code Deploy
+  - NGINX
+  - Github Actions
